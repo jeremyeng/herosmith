@@ -1,0 +1,42 @@
+{
+  "name": "herosmith",
+  "title": "Hero Smith - The intuitive way to create characters",
+  "description": "",
+  "version": "This is auto replaced",
+  "library": "false",
+  "manifestPlusVersion": "1.0.0",
+  "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.9",
+  "author": "jeremyeng",
+  "dependencies": [
+    {
+      "name": "dnd5e",
+      "type": "system"
+    }
+  ],
+  "conflicts": [
+    
+  ],
+  "esmodules": [
+    "public/build/bundle.js"
+  ],
+  "styles": [
+    "public/build/bundle.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "This is auto replaced",
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "media": [
+    {
+      "type": "icon",
+      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+    }
+  ]
+}
