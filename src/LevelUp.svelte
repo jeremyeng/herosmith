@@ -8,6 +8,7 @@
 	let priorLevel;;
 	let level;
 	let classFeatures;
+	let eligibleSubclasses = [];
 
 	$: {
 		className = klass.name;
@@ -20,12 +21,37 @@
       level,
       priorLevel 
 		});
+
+		eligibleSubclasses = [];
+    const subclassData = CONFIG.DND5E.classFeatures[className.toLowerCase()]['subclasses'];
+    for (const subclass in subclassData) {
+      const subclassFeatures = subclassData[subclass]["features"];
+
+      if (Object.keys(subclassFeatures).length === 0) {
+        continue;
+      }
+
+      const levelMilestones = Object.keys(subclassFeatures).map(level => parseInt(level));
+      if (levelMilestones.includes(level)) {
+        eligibleSubclasses = [...eligibleSubclasses, {name: subclass, label: subclassData[subclass].label}]
+      }
+    }
+		console.log('');
 	}
 
 	let tabs = ["Features", "Spells", "Review"];
 
 	let currentTab = "Features";
 	$: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
+
+	function chooseSubclass(event) {
+		classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({ 
+      className,
+      subclassName: event.target.value,
+      level,
+      priorLevel 
+		});
+	}
 	
 </script>
 
@@ -39,10 +65,23 @@
 
 	<div>
     <h1>Features</h1>
+
+		{#if subclassName === "" && eligibleSubclasses.length > 0}
+			<label>Choose a Subclass: 
+				<!-- svelte-ignore a11y-no-onchange -->
+				<select on:change={chooseSubclass}>
+						<option value=""></option>
+						{#each eligibleSubclasses as subclass}
+						<option value={subclass.name}>{subclass.label}</option>
+						{/each}
+				</select>
+			</label>
+		{/if}
+
     <div>
       <ol>
 				{#await classFeatures then features}
-					{#each features as feature}
+					{#each features as feature (feature.id)}
 						<Feature {feature} />
 					{/each}
 				{/await}
