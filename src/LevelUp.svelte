@@ -30,7 +30,7 @@
 </script>
 
 <form>
-	<nav data-group="">
+	<nav>
 		{#each tabs as tab}
     	<!-- svelte-ignore a11y-missing-attribute -->
     	<a class:active={currentTab === tab} on:click="{(event) => currentTab = event.target.text}">{tab}</a>
