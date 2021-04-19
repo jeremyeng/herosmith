@@ -1,5 +1,5 @@
 <script>
-	import Feature from './Feature.svelte';
+	import Item from './Item.svelte';
 	import ClassSpellsLists from './classSpells';
 
 	export let actor;
@@ -131,7 +131,7 @@
 				<ol>
 					{#await classFeatures then features}
 						{#each features as feature (feature.id)}
-							<Feature {feature} />
+							<Item item={feature} />
 						{/each}
 					{/await}
 				</ol>
@@ -146,14 +146,14 @@
 				{#await classSpells then spells}
 					{#each spells as spellsForLevel, i}
 						{#if i === 0}
-							<div>{`Cantrips`}</div>
+							<h2>{`Cantrips`}</h2>
 						{:else}
-							<div>{`Level ${i} Spells`}</div>
+							<h2>{`Level ${i} Spells`}</h2>
 						{/if}
 							<ol>
 								{#each spellsForLevel as spell}
 									<li>
-										{spell.name}
+										<Item item={spell} />
 									</li>
 								{/each}
 							</ol>

@@ -2,22 +2,22 @@
   import { slide } from 'svelte/transition';
   import { sineOut } from 'svelte/easing';
 
-  export let feature;
-  $: featureChatData = feature.getChatData();
+  export let item;
+  $: itemChatData = item.getChatData();
 
   let expanded = false;
 </script>
 
-{#if feature}
-  <li class="feature" on:click="{() => expanded = !expanded}">
+{#if item}
+  <li class="item" on:click="{() => expanded = !expanded}">
     <div class="row">
-      <img class="image" src={feature.img} alt={feature.id}>
-      <h4 class="name">{feature.name}</h4>
+      <img class="image" src={item.img} alt={item.id}>
+      <h4 class="name">{item.name}</h4>
     </div>
     {#if expanded}
       <div class="summary" transition:slide="{{duration: 200, easing: sineOut}}">
-        {@html featureChatData.description.value}
-        {#each featureChatData.properties as property}
+        {@html itemChatData.description.value}
+        {#each itemChatData.properties as property}
           <span class="tag">{@html property}</span>
         {/each}
       </div>  
@@ -26,7 +26,7 @@
 {/if}
 
 <style>
-  .feature {
+  .item {
     margin-bottom: 10px;
   }
 
