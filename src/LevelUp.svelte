@@ -114,7 +114,6 @@
 	<div>
 		<!-- Features -->
 		{#if currentTab === "Features"}
-    	<h1>Features</h1>
 			{#if subclassName === "" && eligibleSubclasses.length > 0}
 				<label>Choose a Subclass: 
 					<!-- svelte-ignore a11y-no-onchange -->
@@ -140,8 +139,6 @@
 
 		<!-- Spells -->
 		{#if currentTab === "Spells"}
-			<h1>Spells</h1>
-
 			<div>
 				{#await classSpells then spells}
 					{#each spells as spellsForLevel, i}
@@ -171,6 +168,7 @@
 		font-family: "Modesto Condensed", "Palatino Linotype", serif;
 		font-size: 20px;
     font-weight: 700;
+		margin-bottom: 15px;
 	}
 
 	a:hover {
