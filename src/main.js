@@ -1,5 +1,4 @@
 import LevelUp from './LevelUp.svelte';
-import { generateClassSpells } from './utils';
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {
@@ -31,13 +30,7 @@ class LevelUpWindow extends Application {
 }
 
 Hooks.on("ready", async function () {
-  const spellsData = await game.packs.get("dnd5e.spells").getData();
-  const spellsList = spellsData.index;
-
-  const classSpells = await generateClassSpells(spellsList);
-
-  console.log(classSpells);
-
+  
 });
 
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {

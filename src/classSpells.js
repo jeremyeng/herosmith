@@ -1,4 +1,4 @@
-export const ClassSpells = {
+const ClassSpells = {
   "barbarian": {
     "0": [],
     "1": [],
@@ -993,3 +993,5 @@ export const ClassSpells = {
     ]
   }
 }
+
+export default ClassSpells;

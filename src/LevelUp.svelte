@@ -1,5 +1,6 @@
 <script>
 	import Feature from './Feature.svelte';
+	import ClassSpellsLists from './classSpells';
 
 	export let actor;
 	export let klass;
@@ -8,6 +9,7 @@
 	let priorLevel;;
 	let level;
 	let classFeatures;
+	let classSpells;
 	let eligibleSubclasses = [];
 
 	$: {
@@ -36,7 +38,8 @@
         eligibleSubclasses = [...eligibleSubclasses, {name: subclass, label: subclassData[subclass].label}]
       }
     }
-		console.log('');
+
+		classSpells = getClassSpells({className, priorLevel, spellProgression: klass.data.data.spellcasting});
 	}
 
 	let tabs = ["Features", "Spells", "Review"];
@@ -52,6 +55,51 @@
       priorLevel 
 		});
 	}
+
+	async function getClassSpells({className="", spellProgression="", priorLevel=1}={}) {
+		// Determine max spellcasting level
+		let spellcastingLevel;
+		
+		switch (spellProgression) {
+			case "full":
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel - 1].length;
+				break;
+			case "half":
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0) - 1].length;
+				break;
+			case "third":
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0) - 1].length;
+				break;
+			case "pact":
+
+				break;
+			default:
+				break;
+		}
+
+    // Get the configuration of spells which may be added
+    const clsConfig = ClassSpellsLists[className.toLowerCase()];
+
+    // Acquire spells up to spellcasting level
+    let ids = [];
+    for ( let [lvl, spellUuids] of Object.entries(clsConfig || {}) ) {
+      lvl = parseInt(lvl);
+      if (lvl <= spellcastingLevel) ids = [...ids, spellUuids];
+    }
+
+    // Load item data for all identified spells
+    const spells = [];
+    for ( let idsForLevel of ids ) {
+			const spellsForLevel = []
+			for( let id of idsForLevel) {
+				spellsForLevel.push(await fromUuid(id));
+			}
+
+			spells.push(spellsForLevel);
+    }
+
+    return spells;
+  }
 	
 </script>
 
@@ -64,29 +112,55 @@
   </nav>
 
 	<div>
-    <h1>Features</h1>
+		<!-- Features -->
+		{#if currentTab === "Features"}
+    	<h1>Features</h1>
+			{#if subclassName === "" && eligibleSubclasses.length > 0}
+				<label>Choose a Subclass: 
+					<!-- svelte-ignore a11y-no-onchange -->
+					<select on:change={chooseSubclass}>
+							<option value=""></option>
+							{#each eligibleSubclasses as subclass}
+							<option value={subclass.name}>{subclass.label}</option>
+							{/each}
+					</select>
+				</label>
+			{/if}
 
-		{#if subclassName === "" && eligibleSubclasses.length > 0}
-			<label>Choose a Subclass: 
-				<!-- svelte-ignore a11y-no-onchange -->
-				<select on:change={chooseSubclass}>
-						<option value=""></option>
-						{#each eligibleSubclasses as subclass}
-						<option value={subclass.name}>{subclass.label}</option>
+			<div>
+				<ol>
+					{#await classFeatures then features}
+						{#each features as feature (feature.id)}
+							<Feature {feature} />
 						{/each}
-				</select>
-			</label>
+					{/await}
+				</ol>
+			</div>
 		{/if}
 
-    <div>
-      <ol>
-				{#await classFeatures then features}
-					{#each features as feature (feature.id)}
-						<Feature {feature} />
-					{/each}
-				{/await}
-      </ol>
-    </div>
+		<!-- Spells -->
+		{#if currentTab === "Spells"}
+			<h1>Spells</h1>
+
+			<div>
+				{#await classSpells then spells}
+					{#each spells as spellsForLevel, i}
+						{#if i === 0}
+							<div>{`Cantrips`}</div>
+						{:else}
+							<div>{`Level ${i} Spells`}</div>
+						{/if}
+							<ol>
+								{#each spellsForLevel as spell}
+									<li>
+										{spell.name}
+									</li>
+								{/each}
+							</ol>
+						{/each}
+					{/await}
+			</div>
+		{/if}
   </div>
 </form>
 
