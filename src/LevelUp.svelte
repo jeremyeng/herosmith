@@ -60,19 +60,19 @@
 		return subclasses;
 	}
 
-	async function getClassSpells({className="", spellcasterType="", priorLevel=1}={}) {
+	async function getClassSpells({className="", spellcasterType="", priorLevel=0}={}) {
 		// Determine max spellcasting level
 		let spellcastingLevel;
 		
 		switch (spellcasterType) {
 			case "full":
-				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel - 1].length;
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel].length;
 				break;
 			case "half":
-				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0) - 1].length;
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0)].length;
 				break;
 			case "third":
-				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0) - 1].length;
+				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0)].length;
 				break;
 			case "pact":
 
