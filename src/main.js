@@ -23,7 +23,8 @@ class LevelUpWindow extends Application {
       target: html.get(0),
       props: {
         actor: this.actor,
-        klass: this.class
+        klass: this.class,
+        closeWindow: this.close.bind(this)
       },
     });
   }

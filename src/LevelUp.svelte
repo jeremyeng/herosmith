@@ -4,7 +4,8 @@
 
 	export let actor;
 	export let klass;
-	
+	export let closeWindow;
+
 	let className;
 	let subclassName;
 	let priorLevel;
@@ -16,6 +17,7 @@
 	let eligibleSubclasses = [];
 	let tabs = ["Features", "Spells", "Review"];
 	let currentTab = "Features";
+	let updates = [];
 
 	$: {
 		className = klass.name;
@@ -103,6 +105,27 @@
     return spells;
   }
 
+	function handleChooseSubclass(event) {
+		chosenSubclassName = event.target.value
+		updates = [...updates, { "data.subclass": chosenSubclassName }];
+	}
+
+	function handleApplyUpdates(event) {
+		event.preventDefault();
+		let allUpdates = {
+      "data.levels": level,
+		}
+		for (const update of updates) {
+			allUpdates = {
+				...allUpdates,
+				...update
+			}
+		}
+		
+		klass.update(allUpdates).then(() => closeWindow());
+	}
+
+
 </script>
 
 <form>
@@ -119,7 +142,7 @@
 			{#if subclassName === "" && eligibleSubclasses.length > 0}
 				<label>Choose a Subclass: 
 					<!-- svelte-ignore a11y-no-onchange -->
-					<select bind:value={chosenSubclassName} on:change="{(event) => chosenSubclassName = event.target.value}">
+					<select bind:value={chosenSubclassName} on:change={handleChooseSubclass}>
 							<option value=""></option>
 							{#each eligibleSubclasses as subclass}
 								<option value={subclass}>{subclass}</option>
@@ -159,6 +182,13 @@
 						{/each}
 					{/await}
 			</div>
+		{/if}
+
+		<!-- Review Updates -->
+		{#if currentTab === "Review"}
+			<footer>
+				<button type="submit" name="Apply Updates" on:click={handleApplyUpdates}><i class="far fa-save"></i>Apply Updates</button>
+			</footer>
 		{/if}
   </div>
 </form>
