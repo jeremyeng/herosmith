@@ -4,28 +4,44 @@
 
 	export let actor;
 	export let klass;
+	
 	let className;
 	let subclassName;
-	let priorLevel;;
+	let priorLevel;
 	let level;
+	let spellcasterType;
+	let chosenSubclassName;
 	let classFeatures;
 	let classSpells;
 	let eligibleSubclasses = [];
+	let tabs = ["Features", "Spells", "Review"];
+	let currentTab = "Features";
 
 	$: {
 		className = klass.name;
 		subclassName = klass.data.data.subclass;
 		priorLevel = klass.data.data.levels;
 		level = priorLevel + 1;
-		classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({ 
-      className,
-      subclassName,
-      level,
-      priorLevel 
-		});
+		spellcasterType = klass.data.data.spellcasting;
+	}
+	$: eligibleSubclasses = getEligibleSubclasses(className);
+	$: chosenSubclassName = subclassName;
+	$: classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({ 
+		className,
+		subclassName: chosenSubclassName,
+		level,
+		priorLevel 
+	});
+	$: classSpells = getClassSpells({
+		className,
+		priorLevel,
+		spellcasterType
+	});
+	$: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
 
-		eligibleSubclasses = [];
-    const subclassData = CONFIG.DND5E.classFeatures[className.toLowerCase()]['subclasses'];
+	function getEligibleSubclasses(className) {
+		const subclassData = CONFIG.DND5E.classFeatures[className.toLowerCase()]['subclasses'];
+		let subclasses = [];
     for (const subclass in subclassData) {
       const subclassFeatures = subclassData[subclass]["features"];
 
@@ -35,32 +51,18 @@
 
       const levelMilestones = Object.keys(subclassFeatures).map(level => parseInt(level));
       if (levelMilestones.includes(level)) {
-        eligibleSubclasses = [...eligibleSubclasses, {name: subclass, label: subclassData[subclass].label}]
+        subclasses.push(subclassData[subclass].label);
       }
     }
 
-		classSpells = getClassSpells({className, priorLevel, spellProgression: klass.data.data.spellcasting});
+		return subclasses;
 	}
 
-	let tabs = ["Features", "Spells", "Review"];
-
-	let currentTab = "Features";
-	$: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
-
-	function chooseSubclass(event) {
-		classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({ 
-      className,
-      subclassName: event.target.value,
-      level,
-      priorLevel 
-		});
-	}
-
-	async function getClassSpells({className="", spellProgression="", priorLevel=1}={}) {
+	async function getClassSpells({className="", spellcasterType="", priorLevel=1}={}) {
 		// Determine max spellcasting level
 		let spellcastingLevel;
 		
-		switch (spellProgression) {
+		switch (spellcasterType) {
 			case "full":
 				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel - 1].length;
 				break;
@@ -100,7 +102,7 @@
 
     return spells;
   }
-	
+
 </script>
 
 <form>
@@ -117,10 +119,10 @@
 			{#if subclassName === "" && eligibleSubclasses.length > 0}
 				<label>Choose a Subclass: 
 					<!-- svelte-ignore a11y-no-onchange -->
-					<select on:change={chooseSubclass}>
+					<select bind:value={chosenSubclassName} on:change="{(event) => chosenSubclassName = event.target.value}">
 							<option value=""></option>
 							{#each eligibleSubclasses as subclass}
-							<option value={subclass.name}>{subclass.label}</option>
+								<option value={subclass}>{subclass}</option>
 							{/each}
 					</select>
 				</label>
