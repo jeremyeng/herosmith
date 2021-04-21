@@ -1,6 +1,7 @@
 <script>
 	import Item from './Item.svelte';
 	import ClassSpellsLists from './classSpells';
+	import ClassSpellProgression from './classSpellProgression';
 
 	export let actor;
 	export let klass;
@@ -25,6 +26,12 @@
 		priorLevel = klass.data.data.levels;
 		level = priorLevel + 1;
 		spellcasterType = klass.data.data.spellcasting;
+		updates = [{
+			type: "updateClass",
+			data: {
+				"data.levels": level 
+			}
+		}];
 	}
 	$: eligibleSubclasses = getEligibleSubclasses(className);
 	$: chosenSubclassName = subclassName;
@@ -107,22 +114,53 @@
 
 	function handleChooseSubclass(event) {
 		chosenSubclassName = event.target.value
-		updates = [...updates, { "data.subclass": chosenSubclassName }];
+		updates = [...updates, { 
+			type: "updateClass",
+			data: { 
+				"data.subclass": chosenSubclassName 
+			}
+		}];
 	}
 
-	function handleApplyUpdates(event) {
-		event.preventDefault();
-		let allUpdates = {
-      "data.levels": level,
+	function handleItemSelected(event) {
+		if (updates.some(update => update.data._id === event.detail.data._id)) {
+			// Remove if already selected
+			updates = updates.filter(update => update.data._id !== event.detail.data._id);
+		} else {
+			// Else add it to updates
+			updates = [...updates, event.detail];
 		}
-		for (const update of updates) {
-			allUpdates = {
-				...allUpdates,
-				...update
+	}
+
+	async function handleApplyUpdates(event) {
+		event.preventDefault();
+
+		let actorUpdates = {};
+		let classUpdates = {};
+		let itemCreations = [];
+
+		for (const {type, data} of updates) {
+			switch (type) {
+				case "updateActor":
+					actorUpdates = { ...actorUpdates, ...data }
+					break;
+				case "updateClass":
+					classUpdates = { ...classUpdates, ...data }
+					break;
+				case "createItem":
+					itemCreations = [...itemCreations, data];
+					break;
+				default:
+					break;
 			}
 		}
 		
-		klass.update(allUpdates).then(() => closeWindow());
+		Promise.all([
+			klass.update(classUpdates),
+			actor.createEmbeddedEntity("OwnedItem", itemCreations),
+		]).then(() => 
+			closeWindow()
+		);
 	}
 
 
@@ -175,7 +213,12 @@
 							<ol>
 								{#each spellsForLevel as spell}
 									<li>
-										<Item item={spell} />
+										<Item item={spell} 
+													selectable={true} 
+													selected={updates.some(update => update.data._id === spell._id)}
+													owned={actor.items.getName(spell.name) && actor.items.getName(spell.name).type === 'spell'}
+													on:selected={handleItemSelected}
+										/>
 									</li>
 								{/each}
 							</ol>
