@@ -12,12 +12,12 @@ class LevelUpWindow extends Application {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       template: `modules/herosmith/templates/level-up-window.html`,
-      tabs: [{navSelector: ".tabs", contentSelector: "form", initial: "features"}],
+      tabs: [{ navSelector: ".tabs", contentSelector: "form", initial: "features" }],
       width: 600,
       height: 600
     });
   }
-  
+
   activateListeners(html) {
     this.component = new LevelUp({
       target: html.get(0),
@@ -31,7 +31,7 @@ class LevelUpWindow extends Application {
 }
 
 Hooks.on("ready", async function () {
-  
+
 });
 
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {

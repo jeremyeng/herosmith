@@ -1,8 +1,8 @@
 <script>
-	import Item from './Item.svelte';
-	import SpellsTab from './SpellsTab.svelte';
-	import ClassSpellsLists from './classSpells';
-	import ClassSpellProgression from './classSpellProgression';
+	import Item from "./Item.svelte";
+	import SpellsTab from "./SpellsTab.svelte";
+	import ClassSpellsLists from "./classSpells";
+	import ClassSpellProgression from "./classSpellProgression";
 
 	export let actor;
 	export let klass;
@@ -30,87 +30,99 @@
 		priorLevel = klass.data.data.levels;
 		level = priorLevel + 1;
 		spellcasterType = klass.data.data.spellcasting;
-	  numCantripsToLearn = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
-		numSlotSpellsToLearn = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
+		numCantripsToLearn =
+			ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
+		numSlotSpellsToLearn =
+			ClassSpellProgression[className.toLowerCase()]["slottedSpells"][
+				priorLevel
+			];
 	}
 	$: eligibleSubclasses = getEligibleSubclasses(className);
 	$: chosenSubclassName = subclassName;
-	$: classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({ 
+	$: classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({
 		className,
 		subclassName: chosenSubclassName,
 		level,
-		priorLevel 
+		priorLevel,
 	});
 	$: classSpells = getClassSpells({
 		className,
 		priorLevel,
-		spellcasterType
+		spellcasterType,
 	});
 	$: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
 
 	function getEligibleSubclasses(className) {
-		const subclassData = CONFIG.DND5E.classFeatures[className.toLowerCase()]['subclasses'];
+		const subclassData =
+			CONFIG.DND5E.classFeatures[className.toLowerCase()]["subclasses"];
 		let subclasses = [];
-    for (const subclass in subclassData) {
-      const subclassFeatures = subclassData[subclass]["features"];
+		for (const subclass in subclassData) {
+			const subclassFeatures = subclassData[subclass]["features"];
 
-      if (Object.keys(subclassFeatures).length === 0) {
-        continue;
-      }
+			if (Object.keys(subclassFeatures).length === 0) {
+				continue;
+			}
 
-      const levelMilestones = Object.keys(subclassFeatures).map(level => parseInt(level));
-      if (levelMilestones.includes(level)) {
-        subclasses.push(subclassData[subclass].label);
-      }
-    }
+			const levelMilestones = Object.keys(subclassFeatures).map((level) =>
+				parseInt(level)
+			);
+			if (levelMilestones.includes(level)) {
+				subclasses.push(subclassData[subclass].label);
+			}
+		}
 
 		return subclasses;
 	}
 
-	async function getClassSpells({className="", spellcasterType="", priorLevel=0}={}) {
+	async function getClassSpells({
+		className = "",
+		spellcasterType = "",
+		priorLevel = 0,
+	} = {}) {
 		// Determine max spellcasting level
 		let spellcastingLevel;
-		
+
 		switch (spellcasterType) {
 			case "full":
 				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel].length;
 				break;
 			case "half":
-				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0)].length;
+				spellcastingLevel =
+					CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0)].length;
 				break;
 			case "third":
-				spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0)].length;
+				spellcastingLevel =
+					CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0)].length;
 				break;
 			case "pact":
-
 				break;
 			default:
 				break;
 		}
 
-    // Get the configuration of spells which may be added
-    const clsConfig = ClassSpellsLists[className.toLowerCase()];
+		// Get the configuration of spells which may be added
+		const clsConfig = ClassSpellsLists[className.toLowerCase()];
 
-    // Acquire spells up to spellcasting level
-    let ids = [];
-    for ( let [lvl, spellUuids] of Object.entries(clsConfig || {}) ) {
-      lvl = parseInt(lvl);
-      if (lvl <= spellcastingLevel) ids = [...ids, spellUuids];
-    }
+		// Acquire spells up to spellcasting level
+		let ids = [];
+		for (let [lvl, spellUuids] of Object.entries(clsConfig || {})) {
+			lvl = parseInt(lvl);
+			if (lvl <= spellcastingLevel) ids = [...ids, spellUuids];
+		}
 
-    // Load item data for all identified spells
-    const spells = [];
-    for ( let idsForLevel of ids ) {
-			const spellsForLevel = []
-			for( let id of idsForLevel) {
+		// Load item data for all identified spells
+		const spells = [];
+		for (let idsForLevel of ids) {
+			const spellsForLevel = [];
+			for (let id of idsForLevel) {
 				spellsForLevel.push(await fromUuid(id));
 			}
 
 			spells.push(spellsForLevel);
-    }
+		}
 
-    return spells;
-  }
+		return spells;
+	}
 
 	async function handleApplyUpdates(event) {
 		event.preventDefault();
@@ -118,41 +130,43 @@
 		let actorUpdates = {};
 		let classUpdates = {
 			"data.subclass": chosenSubclassName,
-			"data.levels": level
+			"data.levels": level,
 		};
-		let itemCreations = selectedCantrips.concat(selectedSlotSpells).map(spell => spell.data);
+		let itemCreations = selectedCantrips
+			.concat(selectedSlotSpells)
+			.map((spell) => spell.data);
 
 		Promise.all([
 			actor.update(actorUpdates),
 			klass.update(classUpdates),
 			actor.createEmbeddedEntity("OwnedItem", itemCreations),
-		]).then(() => 
-			closeWindow()
-		);
+		]).then(() => closeWindow());
 	}
-
-
 </script>
 
 <form>
 	<nav>
 		{#each tabs as tab}
-    	<!-- svelte-ignore a11y-missing-attribute -->
-    	<a class:active={currentTab === tab} on:click="{(event) => currentTab = event.target.text}">{tab}</a>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a
+				class:active={currentTab === tab}
+				on:click={(event) => (currentTab = event.target.text)}>{tab}</a
+			>
 		{/each}
-  </nav>
+	</nav>
 
 	<div>
 		<!-- Features -->
 		{#if currentTab === "Features"}
 			{#if subclassName === "" && eligibleSubclasses.length > 0}
-				<label>Choose a Subclass: 
+				<label
+					>Choose a Subclass:
 					<!-- svelte-ignore a11y-no-onchange -->
-					<select bind:value={chosenSubclassName} >
-							<option value=""></option>
-							{#each eligibleSubclasses as subclass}
-								<option value={subclass}>{subclass}</option>
-							{/each}
+					<select bind:value={chosenSubclassName}>
+						<option value="" />
+						{#each eligibleSubclasses as subclass}
+							<option value={subclass}>{subclass}</option>
+						{/each}
 					</select>
 				</label>
 			{/if}
@@ -172,12 +186,13 @@
 		{#if currentTab === "Spells"}
 			<div>
 				{#await classSpells then spells}
-					<SpellsTab {spells}
-										 {numCantripsToLearn}
-										 {numSlotSpellsToLearn}
-										 ownedSpells={actor.itemTypes['spell']}
-										 bind:selectedCantrips={selectedCantrips}
-										 bind:selectedSlotSpells={selectedSlotSpells}
+					<SpellsTab
+						{spells}
+						{numCantripsToLearn}
+						{numSlotSpellsToLearn}
+						ownedSpells={actor.itemTypes["spell"]}
+						bind:selectedCantrips
+						bind:selectedSlotSpells
 					/>
 				{/await}
 			</div>
@@ -186,10 +201,12 @@
 		<!-- Review Updates -->
 		{#if currentTab === "Review"}
 			<footer>
-				<button type="submit" name="Apply Updates" on:click={handleApplyUpdates}><i class="far fa-save"></i>Apply Updates</button>
+				<button type="submit" name="Apply Updates" on:click={handleApplyUpdates}
+					><i class="far fa-save" />Apply Updates</button
+				>
 			</footer>
 		{/if}
-  </div>
+	</div>
 </form>
 
 <style>
@@ -198,22 +215,21 @@
 		justify-content: space-evenly;
 		font-family: "Modesto Condensed", "Palatino Linotype", serif;
 		font-size: 20px;
-    font-weight: 700;
+		font-weight: 700;
 		margin-bottom: 15px;
 	}
 
 	a:hover {
 		text-shadow: 0 0 10px red;
 	}
-	
+
 	ol {
 		list-style: none;
 		padding: 0;
 	}
 
 	.active {
-		border-bottom: 3px solid #44191A;
+		border-bottom: 3px solid #44191a;
 		text-shadow: 0 0 10px red;
 	}
-
 </style>

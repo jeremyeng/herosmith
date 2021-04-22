@@ -14,9 +14,7 @@
       "type": "system"
     }
   ],
-  "conflicts": [
-    
-  ],
+  "conflicts": [],
   "esmodules": [
     "public/build/bundle.js"
   ],

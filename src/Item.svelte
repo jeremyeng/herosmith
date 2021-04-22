@@ -1,6 +1,6 @@
 <script>
-  import { slide } from 'svelte/transition';
-  import { sineOut } from 'svelte/easing';
+  import { slide } from "svelte/transition";
+  import { sineOut } from "svelte/easing";
 
   export let item;
   $: itemChatData = item.getChatData();
@@ -9,18 +9,18 @@
 </script>
 
 <div class="item">
-  <slot></slot>
-  <div class="row" on:click="{() => expanded = !expanded}">
-    <img class="image" src={item.img} alt={`${item.name} icon`}>
+  <slot />
+  <div class="row" on:click={() => (expanded = !expanded)}>
+    <img class="image" src={item.img} alt={`${item.name} icon`} />
     <h4 class="name">{item.name}</h4>
   </div>
   {#if expanded}
-    <div class="summary" transition:slide="{{duration: 200, easing: sineOut}}">
+    <div class="summary" transition:slide={{ duration: 200, easing: sineOut }}>
       {@html itemChatData.description.value}
       {#each itemChatData.properties as property}
         <span class="tag">{@html property}</span>
       {/each}
-    </div>  
+    </div>
   {/if}
 </div>
 
@@ -28,7 +28,7 @@
   .item {
     display: grid;
     grid-template-columns: min-content;
-		align-items: center;
+    align-items: center;
     margin-bottom: 10px;
   }
 
@@ -40,29 +40,29 @@
     display: flex;
     align-items: center;
     grid-column: 2;
-		font-size: 16px;
-    margin: 0 .5em;
-	}
+    font-size: 16px;
+    margin: 0 0.5em;
+  }
 
   .row:hover {
     text-shadow: 0 0 10px red;
     cursor: pointer;
   }
 
-	.image {
-		margin-right: 10px;
-		max-width: 50px;
-	}
+  .image {
+    margin-right: 10px;
+    max-width: 50px;
+  }
 
-	.summary {
+  .summary {
     grid-column: 2;
     grid-row: 2;
-		flex: 0 0 100%;
+    flex: 0 0 100%;
     font-size: 14px;
     line-height: 16px;
     margin: 0.25em 0.5em;
     color: #191813;
-	}
+  }
 
   .tag {
     display: inline-block;

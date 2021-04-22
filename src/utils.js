@@ -1,6 +1,6 @@
 function nameIntersection(arr1, arr2, arr3) {
   return arr1.filter(a => arr2.some(b => a.name === b.name))
-             .filter(a => arr3.some(b => a.name === b.name));
+    .filter(a => arr3.some(b => a.name === b.name));
 }
 
 export async function generateClassSpells(spellsList) {
@@ -14,7 +14,7 @@ export async function generateClassSpells(spellsList) {
 
     for (let level = 0; level < 10; level++) {
       const levelSpellResponse = await fetch(`https://www.dnd5eapi.co/api/spells?level=${level}`);
-      const levelSpells = await levelSpellResponse.json();  
+      const levelSpells = await levelSpellResponse.json();
 
       const klassLevelSpellIds = nameIntersection(spellsList, klassSpells.results, levelSpells.results).map(x => x._id);
 
