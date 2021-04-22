@@ -18,8 +18,8 @@
 	let classSpells;
 	let selectedCantrips = [];
 	let selectedSlotSpells = [];
-	let numCantripsToLearn;
-	let numSlotSpellsToLearn;
+	let cantripsAtLevel;
+	let slotSpellsAtLevel;
 	let eligibleSubclasses = [];
 	let tabs = ["Features", "Spells", "Review"];
 	let currentTab = "Features";
@@ -30,9 +30,9 @@
 		priorLevel = klass.data.data.levels;
 		level = priorLevel + 1;
 		spellcasterType = klass.data.data.spellcasting;
-		numCantripsToLearn =
+		cantripsAtLevel =
 			ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
-		numSlotSpellsToLearn =
+		slotSpellsAtLevel =
 			ClassSpellProgression[className.toLowerCase()]["slottedSpells"][
 				priorLevel
 			];
@@ -188,8 +188,8 @@
 				{#await classSpells then spells}
 					<SpellsTab
 						{spells}
-						{numCantripsToLearn}
-						{numSlotSpellsToLearn}
+						{cantripsAtLevel}
+						{slotSpellsAtLevel}
 						ownedSpells={actor.itemTypes["spell"]}
 						bind:selectedCantrips
 						bind:selectedSlotSpells
