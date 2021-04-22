@@ -15,13 +15,8 @@
     }
   ],
   "conflicts": [],
-  "esmodules": [
-    "public/build/bundle.js"
-  ],
-  "styles": [
-    "public/build/bundle.css",
-    "public/global.css"
-  ],
+  "esmodules": ["public/build/bundle.js"],
+  "styles": ["public/build/bundle.css", "public/global.css"],
   "languages": [
     {
       "lang": "en",

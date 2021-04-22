@@ -1,18 +1,18 @@
 const ClassSpells = {
-  "barbarian": {
-    "0": [],
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": [],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+  barbarian: {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "bard": {
-    "0": [
+  bard: {
+    0: [
       "Compendium.dnd5e.spells.CAxSzHWizrafT033",
       "Compendium.dnd5e.spells.Bnn9Nzajixvow9xi",
       "Compendium.dnd5e.spells.Utk1OQRwYkMkFRD3",
@@ -21,9 +21,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.oIzA2MEHwxhtQneU",
       "Compendium.dnd5e.spells.udsLtG0BugXHR2JQ",
       "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG",
-      "Compendium.dnd5e.spells.cdrYKaFi98YWaBMw"
+      "Compendium.dnd5e.spells.cdrYKaFi98YWaBMw",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.hDOENzjuj5WpLq7B",
       "Compendium.dnd5e.spells.95K2aUhAGV9qXjnf",
       "Compendium.dnd5e.spells.eS7XnnApoxRxYXPs",
@@ -42,9 +42,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.KhwiSi9fwVfUPtku",
       "Compendium.dnd5e.spells.aL1F8fvYLtNzUbKu",
       "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ",
-      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv"
+      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.X8w9EzYLGc4vQ1H2",
       "Compendium.dnd5e.spells.zwGsAv6kmwzYGhh3",
       "Compendium.dnd5e.spells.3MYDjS6k9IYL0aTj",
@@ -63,9 +63,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.wJKpSvSTbSkTjqyb",
       "Compendium.dnd5e.spells.5VhqFROQYjr1P9lp",
       "Compendium.dnd5e.spells.zMAWdyc8UVb37BK4",
-      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3"
+      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.pO4zGe5LmFIYqJiL",
       "Compendium.dnd5e.spells.cg50KpBkBdPK6vPL",
       "Compendium.dnd5e.spells.15Fa6q1nH27XfbR8",
@@ -80,9 +80,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.2VXGS206tuChoeXy",
       "Compendium.dnd5e.spells.TwlD4PLcltv7Xh7j",
       "Compendium.dnd5e.spells.NXWWWgHtWb7Nv21F",
-      "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8"
+      "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.P6f1PPKPd9BCb742",
       "Compendium.dnd5e.spells.9hQXdMSmerkTsHDe",
       "Compendium.dnd5e.spells.A4RsPuSvB9wFtz1j",
@@ -90,9 +90,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.tEpDmYZNGc9f5OhJ",
       "Compendium.dnd5e.spells.sTIkQK7KuQNOyY0C",
       "Compendium.dnd5e.spells.gXtzz9t1DTzJeLr4",
-      "Compendium.dnd5e.spells.04nMsTWkIFvkbXlY"
+      "Compendium.dnd5e.spells.04nMsTWkIFvkbXlY",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.ATo0Eb63TDtnu6iA",
       "Compendium.dnd5e.spells.MCEpGpvovcXagwQS",
       "Compendium.dnd5e.spells.91Sw6vOIaO7U8DvM",
@@ -108,18 +108,18 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.AGFMPAmuzwWO6Dfz",
       "Compendium.dnd5e.spells.fVbCxFRaORalHB20",
       "Compendium.dnd5e.spells.mbFw57uyfLkyiw5k",
-      "Compendium.dnd5e.spells.8aWtP5hcrmcEesBW"
+      "Compendium.dnd5e.spells.8aWtP5hcrmcEesBW",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.ZRqu3Xh9FmlBCZGy",
       "Compendium.dnd5e.spells.cYI4RNNjI5GAmLhy",
       "Compendium.dnd5e.spells.yw0tYQkOMCgKZ8Ur",
       "Compendium.dnd5e.spells.TfRzwEgBHHkCc6Ql",
       "Compendium.dnd5e.spells.5OGFdJw35QXp6mh6",
       "Compendium.dnd5e.spells.bA2sk9eMKBeY7EPD",
-      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD"
+      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.LTDNWoFVJNLjiiNa",
       "Compendium.dnd5e.spells.PQuEgKyCdovOvhqN",
       "Compendium.dnd5e.spells.Y7uWUO4yqUN0JKl0",
@@ -129,32 +129,32 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.9kGrFXnLiRg3Xnbo",
       "Compendium.dnd5e.spells.jhhT9PsHy5A7EojO",
       "Compendium.dnd5e.spells.B2kbmgbA2WQR00kx",
-      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV"
+      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.eEpy1ONlXumKS1mp",
       "Compendium.dnd5e.spells.hYCrN82dMJFuJODB",
       "Compendium.dnd5e.spells.1RzxKZzkQOoioxPj",
       "Compendium.dnd5e.spells.bllEWfm9xfEKynhv",
-      "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj"
+      "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.6HEEhLdJz32TL4Js",
       "Compendium.dnd5e.spells.dmvaMLFWFtv0qx0S",
-      "Compendium.dnd5e.spells.QbQZKoXOgHWN06aa"
-    ]
+      "Compendium.dnd5e.spells.QbQZKoXOgHWN06aa",
+    ],
   },
-  "cleric": {
-    "0": [
+  cleric: {
+    0: [
       "Compendium.dnd5e.spells.P7mF2MxSuVJwHRRY",
       "Compendium.dnd5e.spells.Bnn9Nzajixvow9xi",
       "Compendium.dnd5e.spells.kjmjY0zlE6IEiQVL",
       "Compendium.dnd5e.spells.dl8YwvMboBqX2OC4",
       "Compendium.dnd5e.spells.n9pJzTDsAwQxJVRl",
       "Compendium.dnd5e.spells.8zT7njvqbpXs4Cel",
-      "Compendium.dnd5e.spells.MUO1uYN7JR1hm4dR"
+      "Compendium.dnd5e.spells.MUO1uYN7JR1hm4dR",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.hDOENzjuj5WpLq7B",
       "Compendium.dnd5e.spells.95K2aUhAGV9qXjnf",
       "Compendium.dnd5e.spells.8dzaICjGy6mTUaUr",
@@ -170,9 +170,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.xmDBqZhRVrtLP8h2",
       "Compendium.dnd5e.spells.Kn7K5PtYUJAKZTTp",
       "Compendium.dnd5e.spells.gvdA9nPuWLck4tBl",
-      "Compendium.dnd5e.spells.jZ6JNykRtdQ90MOo"
+      "Compendium.dnd5e.spells.jZ6JNykRtdQ90MOo",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.Opwh2PdX4runSBlm",
       "Compendium.dnd5e.spells.4v2H3hHb3Ph9XLNd",
       "Compendium.dnd5e.spells.zwGsAv6kmwzYGhh3",
@@ -189,9 +189,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.5VhqFROQYjr1P9lp",
       "Compendium.dnd5e.spells.JbxsYXxSOTZbf9I0",
       "Compendium.dnd5e.spells.JVhKeanAXZH62DrF",
-      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3"
+      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.oyE5nVppa5mde5gT",
       "Compendium.dnd5e.spells.ZU9d6woBdUP8pIPt",
       "Compendium.dnd5e.spells.pO4zGe5LmFIYqJiL",
@@ -210,9 +210,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.I2LUSF5ogc7Bj62e",
       "Compendium.dnd5e.spells.uCud2s4TjMfjiXUb",
       "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8",
-      "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS"
+      "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.ImlCJQwR1VL40Qem",
       "Compendium.dnd5e.spells.pxpb2eOB6bv4phAf",
       "Compendium.dnd5e.spells.7fFHlBk3UNX8gPKL",
@@ -220,9 +220,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.da0a1t2FqaTjRZGT",
       "Compendium.dnd5e.spells.TgHsuhNasPbhu8MO",
       "Compendium.dnd5e.spells.gXtzz9t1DTzJeLr4",
-      "Compendium.dnd5e.spells.QvGcdRUSNRKEQJlK"
+      "Compendium.dnd5e.spells.QvGcdRUSNRKEQJlK",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.d54VDyFulD9xxY7J",
       "Compendium.dnd5e.spells.CjIq8Ed7bu3vVwT1",
       "Compendium.dnd5e.spells.TkJ8Wtg1L7TZtspm",
@@ -235,9 +235,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.Pyzmm8R7rVsNAPsd",
       "Compendium.dnd5e.spells.42O2aNBW7vK90gTL",
       "Compendium.dnd5e.spells.AGFMPAmuzwWO6Dfz",
-      "Compendium.dnd5e.spells.fVbCxFRaORalHB20"
+      "Compendium.dnd5e.spells.fVbCxFRaORalHB20",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.dLJhxDfeyOsc3zsY",
       "Compendium.dnd5e.spells.E4NXux0RHvME1XgP",
       "Compendium.dnd5e.spells.cYI4RNNjI5GAmLhy",
@@ -247,9 +247,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.mgFqi0ev8f7Ut19y",
       "Compendium.dnd5e.spells.fkREcytuZ8sngWtC",
       "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD",
-      "Compendium.dnd5e.spells.76C0FdcxlU8F9Rl2"
+      "Compendium.dnd5e.spells.76C0FdcxlU8F9Rl2",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.XT7nzJmVGgv73uaf",
       "Compendium.dnd5e.spells.T1vpZLam7LezjToj",
       "Compendium.dnd5e.spells.PQuEgKyCdovOvhqN",
@@ -257,31 +257,31 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.J6Jpw5XzB5aTeqnz",
       "Compendium.dnd5e.spells.9kGrFXnLiRg3Xnbo",
       "Compendium.dnd5e.spells.jhhT9PsHy5A7EojO",
-      "Compendium.dnd5e.spells.B2kbmgbA2WQR00kx"
+      "Compendium.dnd5e.spells.B2kbmgbA2WQR00kx",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.Eon0jzGzQRNluTPQ",
       "Compendium.dnd5e.spells.ZPd73HtKF3At11jh",
       "Compendium.dnd5e.spells.x5JNBSyIBBZsjcGT",
-      "Compendium.dnd5e.spells.j8S49Rea8b1640Zi"
+      "Compendium.dnd5e.spells.j8S49Rea8b1640Zi",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.TIoadMIsUKD4edXi",
       "Compendium.dnd5e.spells.XbwGq5kDJNvAxNXV",
       "Compendium.dnd5e.spells.Y6oItIuhOJZ0i0FC",
-      "Compendium.dnd5e.spells.qLeEXZDbW5y4bmLY"
-    ]
+      "Compendium.dnd5e.spells.qLeEXZDbW5y4bmLY",
+    ],
   },
-  "druid": {
-    "0": [
+  druid: {
+    0: [
       "Compendium.dnd5e.spells.SbSvZKkJASyk8jKo",
       "Compendium.dnd5e.spells.P7mF2MxSuVJwHRRY",
       "Compendium.dnd5e.spells.kjmjY0zlE6IEiQVL",
       "Compendium.dnd5e.spells.eCPQuQkIabFKTl9u",
       "Compendium.dnd5e.spells.dl8YwvMboBqX2OC4",
-      "Compendium.dnd5e.spells.VzgFzcmocr1X1cp4"
+      "Compendium.dnd5e.spells.VzgFzcmocr1X1cp4",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.hDOENzjuj5WpLq7B",
       "Compendium.dnd5e.spells.eS7XnnApoxRxYXPs",
       "Compendium.dnd5e.spells.a3XtAO5n2GrqiAh5",
@@ -297,9 +297,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.B0pnIcc52O6G8hi8",
       "Compendium.dnd5e.spells.Kn7K5PtYUJAKZTTp",
       "Compendium.dnd5e.spells.aL1F8fvYLtNzUbKu",
-      "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ"
+      "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.X8w9EzYLGc4vQ1H2",
       "Compendium.dnd5e.spells.JPwIEfgUPVebr5AH",
       "Compendium.dnd5e.spells.hJ6ZiA3fpoY8v9cp",
@@ -316,9 +316,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.bV3yun6MIuFj71Er",
       "Compendium.dnd5e.spells.pRMvmknwLf2tdMTj",
       "Compendium.dnd5e.spells.MAxM77CDUu8dgIRQ",
-      "Compendium.dnd5e.spells.9gYGkrL6qFTsE6fw"
+      "Compendium.dnd5e.spells.9gYGkrL6qFTsE6fw",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.ehvmg9U9fcMEhE4z",
       "Compendium.dnd5e.spells.1Drt0SHxbEAHxprN",
       "Compendium.dnd5e.spells.BV0mpbHh29IbbIj5",
@@ -330,9 +330,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.2VXGS206tuChoeXy",
       "Compendium.dnd5e.spells.13uVuBQP6VaiSPvC",
       "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS",
-      "Compendium.dnd5e.spells.ew6GA8dJy2spQmFW"
+      "Compendium.dnd5e.spells.ew6GA8dJy2spQmFW",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.pybg5MNc3lkerH4Y",
       "Compendium.dnd5e.spells.9hQXdMSmerkTsHDe",
       "Compendium.dnd5e.spells.KgEw3sDr39C6g8nY",
@@ -348,9 +348,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.04nMsTWkIFvkbXlY",
       "Compendium.dnd5e.spells.QvGcdRUSNRKEQJlK",
       "Compendium.dnd5e.spells.ReMbjfeOKoSj3O79",
-      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6"
+      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.wXzkqpeFP8eWgJzK",
       "Compendium.dnd5e.spells.MCEpGpvovcXagwQS",
       "Compendium.dnd5e.spells.dp6xny4v8PDoIGjh",
@@ -364,9 +364,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.zMEo5DKK8uxsuWnq",
       "Compendium.dnd5e.spells.fVbCxFRaORalHB20",
       "Compendium.dnd5e.spells.DUBgwHPakcLDkB6W",
-      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY"
+      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.yN3XZZujhR4aVvPa",
       "Compendium.dnd5e.spells.qcYitWoSMTnKkzM1",
       "Compendium.dnd5e.spells.mgFqi0ev8f7Ut19y",
@@ -374,57 +374,57 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.2RC0EyvBLPH88PZF",
       "Compendium.dnd5e.spells.s7nXgot5gGZVcMrv",
       "Compendium.dnd5e.spells.AQsBc94ES7W7s7iG",
-      "Compendium.dnd5e.spells.8PJAsHmbu6UgDHC0"
+      "Compendium.dnd5e.spells.8PJAsHmbu6UgDHC0",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.J3uILDYS7MiOfmTJ",
       "Compendium.dnd5e.spells.f38w5rd9SgdmWc6F",
       "Compendium.dnd5e.spells.J6Jpw5XzB5aTeqnz",
       "Compendium.dnd5e.spells.9kGrFXnLiRg3Xnbo",
-      "Compendium.dnd5e.spells.ERCv7yuRkQ0YjGx6"
+      "Compendium.dnd5e.spells.ERCv7yuRkQ0YjGx6",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.ohqAIBg6de989CIo",
       "Compendium.dnd5e.spells.GJ2WYm3SQFR0winH",
       "Compendium.dnd5e.spells.ZPd73HtKF3At11jh",
       "Compendium.dnd5e.spells.x5JNBSyIBBZsjcGT",
       "Compendium.dnd5e.spells.hYCrN82dMJFuJODB",
-      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE"
+      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.6HEEhLdJz32TL4Js",
       "Compendium.dnd5e.spells.N2UEFq8X5LRsLcOZ",
       "Compendium.dnd5e.spells.7KjExw0kmuqERa7C",
-      "Compendium.dnd5e.spells.qLeEXZDbW5y4bmLY"
-    ]
+      "Compendium.dnd5e.spells.qLeEXZDbW5y4bmLY",
+    ],
   },
-  "fighter": {
-    "0": [],
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": [],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+  fighter: {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "monk": {
-    "0": [],
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": [],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+  monk: {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "paladin": {
-    "0": [],
-    "1": [
+  paladin: {
+    0: [],
+    1: [
       "Compendium.dnd5e.spells.8dzaICjGy6mTUaUr",
       "Compendium.dnd5e.spells.arzCrMRgcNiQuh43",
       "Compendium.dnd5e.spells.uUWb1wZgtMou0TVP",
@@ -436,9 +436,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.0xmXiPiuYws1OGcX",
       "Compendium.dnd5e.spells.xmDBqZhRVrtLP8h2",
       "Compendium.dnd5e.spells.Kn7K5PtYUJAKZTTp",
-      "Compendium.dnd5e.spells.jZ6JNykRtdQ90MOo"
+      "Compendium.dnd5e.spells.jZ6JNykRtdQ90MOo",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.Opwh2PdX4runSBlm",
       "Compendium.dnd5e.spells.7UwUjJ6owIQkEPrs",
       "Compendium.dnd5e.spells.5eh2HFbS13078Y3H",
@@ -446,35 +446,35 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.SleYkHovQ8NagmeV",
       "Compendium.dnd5e.spells.Sgjrf8qqv97CCWM4",
       "Compendium.dnd5e.spells.MAxM77CDUu8dgIRQ",
-      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3"
+      "Compendium.dnd5e.spells.CylBa7jR8DSbo8Z3",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.BV0mpbHh29IbbIj5",
       "Compendium.dnd5e.spells.BP3GCwa66IAw1yTG",
       "Compendium.dnd5e.spells.15Fa6q1nH27XfbR8",
       "Compendium.dnd5e.spells.y8A4HfTwd93ypdEz",
       "Compendium.dnd5e.spells.XZhdgVK3cLoxNCQl",
-      "Compendium.dnd5e.spells.LmRHHMtplpxr9fX6"
+      "Compendium.dnd5e.spells.LmRHHMtplpxr9fX6",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.pxpb2eOB6bv4phAf",
       "Compendium.dnd5e.spells.VtCXMdyM6mAdIJZb",
       "Compendium.dnd5e.spells.TgHsuhNasPbhu8MO",
-      "Compendium.dnd5e.spells.gXtzz9t1DTzJeLr4"
+      "Compendium.dnd5e.spells.gXtzz9t1DTzJeLr4",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.TkJ8Wtg1L7TZtspm",
       "Compendium.dnd5e.spells.JQyigMNPiDnGI18b",
-      "Compendium.dnd5e.spells.AGFMPAmuzwWO6Dfz"
+      "Compendium.dnd5e.spells.AGFMPAmuzwWO6Dfz",
     ],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "ranger": {
-    "0": [],
-    "1": [
+  ranger: {
+    0: [],
+    1: [
       "Compendium.dnd5e.spells.7p9IuWrSWFgfyQo2",
       "Compendium.dnd5e.spells.hDOENzjuj5WpLq7B",
       "Compendium.dnd5e.spells.uUWb1wZgtMou0TVP",
@@ -485,9 +485,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.0xmXiPiuYws1OGcX",
       "Compendium.dnd5e.spells.ZrTc23tToJ0JpH2h",
       "Compendium.dnd5e.spells.B0pnIcc52O6G8hi8",
-      "Compendium.dnd5e.spells.aL1F8fvYLtNzUbKu"
+      "Compendium.dnd5e.spells.aL1F8fvYLtNzUbKu",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.X8w9EzYLGc4vQ1H2",
       "Compendium.dnd5e.spells.JPwIEfgUPVebr5AH",
       "Compendium.dnd5e.spells.hJ6ZiA3fpoY8v9cp",
@@ -498,9 +498,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.pRMvmknwLf2tdMTj",
       "Compendium.dnd5e.spells.MAxM77CDUu8dgIRQ",
       "Compendium.dnd5e.spells.5VhqFROQYjr1P9lp",
-      "Compendium.dnd5e.spells.9gYGkrL6qFTsE6fw"
+      "Compendium.dnd5e.spells.9gYGkrL6qFTsE6fw",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.1Drt0SHxbEAHxprN",
       "Compendium.dnd5e.spells.BP3GCwa66IAw1yTG",
       "Compendium.dnd5e.spells.aU62xVUBYkAQWIHv",
@@ -509,37 +509,34 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.2VXGS206tuChoeXy",
       "Compendium.dnd5e.spells.13uVuBQP6VaiSPvC",
       "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS",
-      "Compendium.dnd5e.spells.ew6GA8dJy2spQmFW"
+      "Compendium.dnd5e.spells.ew6GA8dJy2spQmFW",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.dEfSELiY1eO3cpX9",
       "Compendium.dnd5e.spells.da0a1t2FqaTjRZGT",
       "Compendium.dnd5e.spells.gXtzz9t1DTzJeLr4",
-      "Compendium.dnd5e.spells.ReMbjfeOKoSj3O79"
+      "Compendium.dnd5e.spells.ReMbjfeOKoSj3O79",
     ],
-    "5": [
-      "Compendium.dnd5e.spells.dp6xny4v8PDoIGjh",
-      "Compendium.dnd5e.spells.DUBgwHPakcLDkB6W"
-    ],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+    5: ["Compendium.dnd5e.spells.dp6xny4v8PDoIGjh", "Compendium.dnd5e.spells.DUBgwHPakcLDkB6W"],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "rogue": {
-    "0": [],
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": [],
-    "6": [],
-    "7": [],
-    "8": [],
-    "9": []
+  rogue: {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
   },
-  "sorcerer": {
-    "0": [
+  sorcerer: {
+    0: [
       "Compendium.dnd5e.spells.JLTQyqXEaJDrTXyW",
       "Compendium.dnd5e.spells.vrN18tbTw7io5MWd",
       "Compendium.dnd5e.spells.CAxSzHWizrafT033",
@@ -553,9 +550,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.udsLtG0BugXHR2JQ",
       "Compendium.dnd5e.spells.ctW81uiX56xZR2c5",
       "Compendium.dnd5e.spells.XvbiNhNqXXIFisIy",
-      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG"
+      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.5SuJewoa1CRWaj1F",
       "Compendium.dnd5e.spells.eS7XnnApoxRxYXPs",
       "Compendium.dnd5e.spells.LWTUqKkUQdMAmOe0",
@@ -572,9 +569,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.z1mx84ONwkXKUZd7",
       "Compendium.dnd5e.spells.BrBZdCCrJRIVg7YX",
       "Compendium.dnd5e.spells.KhwiSi9fwVfUPtku",
-      "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ"
+      "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.8RTDOt80u8aBv9qx",
       "Compendium.dnd5e.spells.zwGsAv6kmwzYGhh3",
       "Compendium.dnd5e.spells.UDUnlfPsOAbq2RSE",
@@ -595,9 +592,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.wJKpSvSTbSkTjqyb",
       "Compendium.dnd5e.spells.KJRVzeMQXPj8Gtyx",
       "Compendium.dnd5e.spells.zMAWdyc8UVb37BK4",
-      "Compendium.dnd5e.spells.UJJu9c2UvCzVljiP"
+      "Compendium.dnd5e.spells.UJJu9c2UvCzVljiP",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.GSvLWcdCZLQkilXT",
       "Compendium.dnd5e.spells.cg50KpBkBdPK6vPL",
       "Compendium.dnd5e.spells.Ek45cBpVXvJdv1Qy",
@@ -617,9 +614,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.TwlD4PLcltv7Xh7j",
       "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8",
       "Compendium.dnd5e.spells.13uVuBQP6VaiSPvC",
-      "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS"
+      "Compendium.dnd5e.spells.YBda6nLKjxdT1LbS",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.pxpb2eOB6bv4phAf",
       "Compendium.dnd5e.spells.pybg5MNc3lkerH4Y",
       "Compendium.dnd5e.spells.9hQXdMSmerkTsHDe",
@@ -629,9 +626,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.WN2LWEljYU6QqnRH",
       "Compendium.dnd5e.spells.04nMsTWkIFvkbXlY",
       "Compendium.dnd5e.spells.ReMbjfeOKoSj3O79",
-      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6"
+      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.ATo0Eb63TDtnu6iA",
       "Compendium.dnd5e.spells.LkvI11Uue774QBKZ",
       "Compendium.dnd5e.spells.RpKjTlYASrfqUPVA",
@@ -642,9 +639,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.mbFw57uyfLkyiw5k",
       "Compendium.dnd5e.spells.HQfd7jJyULIoGxrZ",
       "Compendium.dnd5e.spells.8aWtP5hcrmcEesBW",
-      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY"
+      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.QbTxN5dWIbYZ4jLU",
       "Compendium.dnd5e.spells.KeunEkg1JYbOCOhV",
       "Compendium.dnd5e.spells.HBHbOGKNVVprSlwn",
@@ -653,9 +650,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.5OGFdJw35QXp6mh6",
       "Compendium.dnd5e.spells.yI0XWIgI0IGGsR3R",
       "Compendium.dnd5e.spells.2RC0EyvBLPH88PZF",
-      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD"
+      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.AoTTjapz1FsGOIZz",
       "Compendium.dnd5e.spells.PQuEgKyCdovOvhqN",
       "Compendium.dnd5e.spells.HPvZm8YJO91k6Qdg",
@@ -663,25 +660,25 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.J6Jpw5XzB5aTeqnz",
       "Compendium.dnd5e.spells.eGMhwmuleAM46C6L",
       "Compendium.dnd5e.spells.ERCv7yuRkQ0YjGx6",
-      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV"
+      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.eEpy1ONlXumKS1mp",
       "Compendium.dnd5e.spells.x5JNBSyIBBZsjcGT",
       "Compendium.dnd5e.spells.pV04y1iXoWiom6bp",
       "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj",
-      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE"
+      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.XbwGq5kDJNvAxNXV",
       "Compendium.dnd5e.spells.mF52ldF79Cr7wfQo",
       "Compendium.dnd5e.spells.dmvaMLFWFtv0qx0S",
       "Compendium.dnd5e.spells.JYuRBwxpoFhXduvD",
-      "Compendium.dnd5e.spells.3okM6Gn63zzEULkz"
-    ]
+      "Compendium.dnd5e.spells.3okM6Gn63zzEULkz",
+    ],
   },
-  "wizard": {
-    "0": [
+  wizard: {
+    0: [
       "Compendium.dnd5e.spells.JLTQyqXEaJDrTXyW",
       "Compendium.dnd5e.spells.vrN18tbTw7io5MWd",
       "Compendium.dnd5e.spells.CAxSzHWizrafT033",
@@ -695,9 +692,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.udsLtG0BugXHR2JQ",
       "Compendium.dnd5e.spells.ctW81uiX56xZR2c5",
       "Compendium.dnd5e.spells.XvbiNhNqXXIFisIy",
-      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG"
+      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.7p9IuWrSWFgfyQo2",
       "Compendium.dnd5e.spells.5SuJewoa1CRWaj1F",
       "Compendium.dnd5e.spells.eS7XnnApoxRxYXPs",
@@ -724,9 +721,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.BrBZdCCrJRIVg7YX",
       "Compendium.dnd5e.spells.KhwiSi9fwVfUPtku",
       "Compendium.dnd5e.spells.WTbOQBsarsL1LuXJ",
-      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv"
+      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.4H6YgYdKgnX6ZQ8M",
       "Compendium.dnd5e.spells.8RTDOt80u8aBv9qx",
       "Compendium.dnd5e.spells.8cse7rit0oswRPUP",
@@ -757,9 +754,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.wJKpSvSTbSkTjqyb",
       "Compendium.dnd5e.spells.KJRVzeMQXPj8Gtyx",
       "Compendium.dnd5e.spells.zMAWdyc8UVb37BK4",
-      "Compendium.dnd5e.spells.UJJu9c2UvCzVljiP"
+      "Compendium.dnd5e.spells.UJJu9c2UvCzVljiP",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.oyE5nVppa5mde5gT",
       "Compendium.dnd5e.spells.pO4zGe5LmFIYqJiL",
       "Compendium.dnd5e.spells.GSvLWcdCZLQkilXT",
@@ -787,9 +784,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.NXWWWgHtWb7Nv21F",
       "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8",
       "Compendium.dnd5e.spells.UfHQhA54M4323gVO",
-      "Compendium.dnd5e.spells.13uVuBQP6VaiSPvC"
+      "Compendium.dnd5e.spells.13uVuBQP6VaiSPvC",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.ImlCJQwR1VL40Qem",
       "Compendium.dnd5e.spells.pxpb2eOB6bv4phAf",
       "Compendium.dnd5e.spells.DGONTFbk5eORs5qv",
@@ -812,9 +809,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.8sgwRh8NUNkn9Vi0",
       "Compendium.dnd5e.spells.QvGcdRUSNRKEQJlK",
       "Compendium.dnd5e.spells.ReMbjfeOKoSj3O79",
-      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6"
+      "Compendium.dnd5e.spells.X3DrXgxjwI2dvkD6",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.ATo0Eb63TDtnu6iA",
       "Compendium.dnd5e.spells.a2KJHCIbY5Mi4Dmn",
       "Compendium.dnd5e.spells.LkvI11Uue774QBKZ",
@@ -837,9 +834,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.uAwtVZkiSTyP6ORB",
       "Compendium.dnd5e.spells.8aWtP5hcrmcEesBW",
       "Compendium.dnd5e.spells.o9ZCvuD2B1OTcubb",
-      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY"
+      "Compendium.dnd5e.spells.NmoRmM1mhuM3pqnY",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.QbTxN5dWIbYZ4jLU",
       "Compendium.dnd5e.spells.KeunEkg1JYbOCOhV",
       "Compendium.dnd5e.spells.4smlOvpF5AQHcyg1",
@@ -858,9 +855,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.bA2sk9eMKBeY7EPD",
       "Compendium.dnd5e.spells.2RC0EyvBLPH88PZF",
       "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD",
-      "Compendium.dnd5e.spells.fzZnVKLmBMo2f5up"
+      "Compendium.dnd5e.spells.fzZnVKLmBMo2f5up",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.LTDNWoFVJNLjiiNa",
       "Compendium.dnd5e.spells.AoTTjapz1FsGOIZz",
       "Compendium.dnd5e.spells.PQuEgKyCdovOvhqN",
@@ -875,9 +872,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.wvLbtemkH8gyBpdc",
       "Compendium.dnd5e.spells.jccbeBIfLrqEZnDP",
       "Compendium.dnd5e.spells.B2kbmgbA2WQR00kx",
-      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV"
+      "Compendium.dnd5e.spells.L4J89JXqbKs6puEV",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.Eon0jzGzQRNluTPQ",
       "Compendium.dnd5e.spells.GJ2WYm3SQFR0winH",
       "Compendium.dnd5e.spells.h830iyqParFleNqR",
@@ -889,9 +886,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.clwv2PWOcT822hlr",
       "Compendium.dnd5e.spells.bllEWfm9xfEKynhv",
       "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj",
-      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE"
+      "Compendium.dnd5e.spells.hzK7FQya0BDjSmLE",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.TIoadMIsUKD4edXi",
       "Compendium.dnd5e.spells.6HEEhLdJz32TL4Js",
       "Compendium.dnd5e.spells.XbwGq5kDJNvAxNXV",
@@ -903,29 +900,29 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.JYuRBwxpoFhXduvD",
       "Compendium.dnd5e.spells.QbQZKoXOgHWN06aa",
       "Compendium.dnd5e.spells.Wl2vtJ4hCt2tpWfR",
-      "Compendium.dnd5e.spells.3okM6Gn63zzEULkz"
-    ]
+      "Compendium.dnd5e.spells.3okM6Gn63zzEULkz",
+    ],
   },
-  "warlock": {
-    "0": [
+  warlock: {
+    0: [
       "Compendium.dnd5e.spells.vrN18tbTw7io5MWd",
       "Compendium.dnd5e.spells.Z9p1vezIn95jw1Yw",
       "Compendium.dnd5e.spells.Utk1OQRwYkMkFRD3",
       "Compendium.dnd5e.spells.oIzA2MEHwxhtQneU",
       "Compendium.dnd5e.spells.g2u9PYfqWQAyg9OI",
       "Compendium.dnd5e.spells.udsLtG0BugXHR2JQ",
-      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG"
+      "Compendium.dnd5e.spells.mGGlcLdggHwcL7MG",
     ],
-    "1": [
+    1: [
       "Compendium.dnd5e.spells.eS7XnnApoxRxYXPs",
       "Compendium.dnd5e.spells.4dSvfvTy2ZIJ3K4k",
       "Compendium.dnd5e.spells.zPGohqJRir6MyQ3U",
       "Compendium.dnd5e.spells.22dPoeXfaaAv4K3h",
       "Compendium.dnd5e.spells.82jM6qD9axLJsTrH",
       "Compendium.dnd5e.spells.xmDBqZhRVrtLP8h2",
-      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv"
+      "Compendium.dnd5e.spells.ccduLIvutyNqvkgv",
     ],
-    "2": [
+    2: [
       "Compendium.dnd5e.spells.S7VbUetIfVT7B6Eq",
       "Compendium.dnd5e.spells.30ZgXtijJVCxQk5N",
       "Compendium.dnd5e.spells.3Lo9boi7P2ro6QV4",
@@ -935,9 +932,9 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.ODhLKBxLnvvLOnw1",
       "Compendium.dnd5e.spells.wJKpSvSTbSkTjqyb",
       "Compendium.dnd5e.spells.KJRVzeMQXPj8Gtyx",
-      "Compendium.dnd5e.spells.zMAWdyc8UVb37BK4"
+      "Compendium.dnd5e.spells.zMAWdyc8UVb37BK4",
     ],
-    "3": [
+    3: [
       "Compendium.dnd5e.spells.Ek45cBpVXvJdv1Qy",
       "Compendium.dnd5e.spells.15Fa6q1nH27XfbR8",
       "Compendium.dnd5e.spells.XXUDGFELgoskdOD0",
@@ -948,50 +945,50 @@ const ClassSpells = {
       "Compendium.dnd5e.spells.nslx2nT3p4lNkmdp",
       "Compendium.dnd5e.spells.XZhdgVK3cLoxNCQl",
       "Compendium.dnd5e.spells.gopnZvS0c2jD5FP8",
-      "Compendium.dnd5e.spells.UfHQhA54M4323gVO"
+      "Compendium.dnd5e.spells.UfHQhA54M4323gVO",
     ],
-    "4": [
+    4: [
       "Compendium.dnd5e.spells.pxpb2eOB6bv4phAf",
       "Compendium.dnd5e.spells.pybg5MNc3lkerH4Y",
       "Compendium.dnd5e.spells.A4RsPuSvB9wFtz1j",
-      "Compendium.dnd5e.spells.sTIkQK7KuQNOyY0C"
+      "Compendium.dnd5e.spells.sTIkQK7KuQNOyY0C",
     ],
-    "5": [
+    5: [
       "Compendium.dnd5e.spells.dSTu1MaPhBqPITwM",
       "Compendium.dnd5e.spells.kSPRpeIx3w3nihrF",
       "Compendium.dnd5e.spells.l9Ju5KE7bbn3WpTm",
-      "Compendium.dnd5e.spells.fVbCxFRaORalHB20"
+      "Compendium.dnd5e.spells.fVbCxFRaORalHB20",
     ],
-    "6": [
+    6: [
       "Compendium.dnd5e.spells.KeunEkg1JYbOCOhV",
       "Compendium.dnd5e.spells.yN3XZZujhR4aVvPa",
       "Compendium.dnd5e.spells.E4NXux0RHvME1XgP",
       "Compendium.dnd5e.spells.ZRqu3Xh9FmlBCZGy",
       "Compendium.dnd5e.spells.kozNy29b0X6exFhY",
       "Compendium.dnd5e.spells.5OGFdJw35QXp6mh6",
-      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD"
+      "Compendium.dnd5e.spells.XzkJpE6XpZfKjODD",
     ],
-    "7": [
+    7: [
       "Compendium.dnd5e.spells.PQuEgKyCdovOvhqN",
       "Compendium.dnd5e.spells.HPvZm8YJO91k6Qdg",
       "Compendium.dnd5e.spells.Y7uWUO4yqUN0JKl0",
-      "Compendium.dnd5e.spells.J6Jpw5XzB5aTeqnz"
+      "Compendium.dnd5e.spells.J6Jpw5XzB5aTeqnz",
     ],
-    "8": [
+    8: [
       "Compendium.dnd5e.spells.xNM9CzQQr2CieM4B",
       "Compendium.dnd5e.spells.eEpy1ONlXumKS1mp",
       "Compendium.dnd5e.spells.hYCrN82dMJFuJODB",
       "Compendium.dnd5e.spells.1RzxKZzkQOoioxPj",
-      "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj"
+      "Compendium.dnd5e.spells.35j2QIMmIk6aEdxj",
     ],
-    "9": [
+    9: [
       "Compendium.dnd5e.spells.TIoadMIsUKD4edXi",
       "Compendium.dnd5e.spells.6HEEhLdJz32TL4Js",
       "Compendium.dnd5e.spells.ZVnL9L8v1KC9TBF4",
       "Compendium.dnd5e.spells.dmvaMLFWFtv0qx0S",
-      "Compendium.dnd5e.spells.QbQZKoXOgHWN06aa"
-    ]
-  }
-}
+      "Compendium.dnd5e.spells.QbQZKoXOgHWN06aa",
+    ],
+  },
+};
 
 export default ClassSpells;

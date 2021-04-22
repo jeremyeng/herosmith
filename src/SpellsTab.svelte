@@ -15,13 +15,9 @@
   let numOwnedCantrips = 0;
   let numOwnedSlotSpells = 0;
 
-  $: numOwnedCantrips = ownedSpells.filter(
-    (spell) => spell.data.data.level === 0
-  ).length;
+  $: numOwnedCantrips = ownedSpells.filter((spell) => spell.data.data.level === 0).length;
 
-  $: numOwnedSlotSpells = ownedSpells.filter(
-    (spell) => spell.data.data.level > 0
-  ).length;
+  $: numOwnedSlotSpells = ownedSpells.filter((spell) => spell.data.data.level > 0).length;
 
   $: {
     switch (true) {
@@ -37,8 +33,7 @@
         break;
     }
   }
-  $: numSelectableCantrips =
-    numCantripsAtLevel - numOwnedCantrips - selectedCantrips.length;
+  $: numSelectableCantrips = numCantripsAtLevel - numOwnedCantrips - selectedCantrips.length;
 
   $: {
     switch (true) {
@@ -80,8 +75,7 @@
                 type="checkbox"
                 value={spell}
                 bind:group={selectedCantrips}
-                disabled={selectedCantrips.indexOf(spell) < 0 &&
-                  numSelectableCantrips <= 0}
+                disabled={selectedCantrips.indexOf(spell) < 0 && numSelectableCantrips <= 0}
               />
             {/if}
           </Item>
@@ -108,8 +102,7 @@
                 type="checkbox"
                 value={spell}
                 bind:group={selectedSlotSpells}
-                disabled={selectedSlotSpells.indexOf(spell) < 0 &&
-                  numSelectableSlotSpells <= 0}
+                disabled={selectedSlotSpells.indexOf(spell) < 0 && numSelectableSlotSpells <= 0}
               />
             {/if}
           </Item>

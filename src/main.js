@@ -1,4 +1,4 @@
-import LevelUp from './LevelUp.svelte';
+import LevelUp from "./LevelUp.svelte";
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {
@@ -14,7 +14,7 @@ class LevelUpWindow extends Application {
       template: `modules/herosmith/templates/level-up-window.html`,
       tabs: [{ navSelector: ".tabs", contentSelector: "form", initial: "features" }],
       width: 600,
-      height: 600
+      height: 600,
     });
   }
 
@@ -24,21 +24,19 @@ class LevelUpWindow extends Application {
       props: {
         actor: this.actor,
         klass: this.class,
-        closeWindow: this.close.bind(this)
+        closeWindow: this.close.bind(this),
       },
     });
   }
 }
 
-Hooks.on("ready", async function () {
-
-});
+Hooks.on("ready", async function () {});
 
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {
   const actor = game.actors.get(sheet.actor.id);
-  const classes = actor.data.items.filter(item => item.type === 'class')
-  const firstClass = classes[0]
-  const classId = firstClass._id
+  const classes = actor.data.items.filter((item) => item.type === "class");
+  const firstClass = classes[0];
+  const classId = firstClass._id;
   const classItem = $("li[data-item-id='" + classId + "']");
   try {
     const edit = $(".item-control.item-edit", classItem);
@@ -50,10 +48,8 @@ Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, characte
     icon.dataset.actorId = actor.id;
     icon.addEventListener("click", onLevelUp);
 
-    if (edit[0])
-      edit[0].before(icon);
-  }
-  catch (e) {
+    if (edit[0]) edit[0].before(icon);
+  } catch (e) {
     console.error("Character Builder 5e | Failed to inject onto item: ", actor.id);
   }
 });
