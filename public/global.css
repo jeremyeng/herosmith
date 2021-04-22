@@ -1,3 +1,8 @@
 .dnd5e.sheet.actor .features .inventory-list .item-controls {
-	flex: 0 0 66px;
+  flex: 0 0 66px;
+}
+
+.level-up-window h2 {
+  font-family: "Modesto Condensed", "Palatino Linotype", serif;
+  font-size: 36px;
 }
