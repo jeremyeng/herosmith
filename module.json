@@ -19,7 +19,8 @@
     "public/build/bundle.js"
   ],
   "styles": [
-    "public/build/bundle.css"
+    "public/build/bundle.css",
+    "public/global.css"
   ],
   "languages": [
     {
