@@ -1,5 +1,6 @@
 <script>
 	import Item from './Item.svelte';
+	import SpellsTab from './SpellsTab.svelte';
 	import ClassSpellsLists from './classSpells';
 	import ClassSpellProgression from './classSpellProgression';
 
@@ -15,10 +16,13 @@
 	let chosenSubclassName;
 	let classFeatures;
 	let classSpells;
+	let selectedCantrips = [];
+	let selectedSlotSpells = [];
+	let numCantripsToLearn;
+	let numSlotSpellsToLearn;
 	let eligibleSubclasses = [];
 	let tabs = ["Features", "Spells", "Review"];
 	let currentTab = "Features";
-	let updates = [];
 
 	$: {
 		className = klass.name;
@@ -26,12 +30,8 @@
 		priorLevel = klass.data.data.levels;
 		level = priorLevel + 1;
 		spellcasterType = klass.data.data.spellcasting;
-		updates = [{
-			type: "updateClass",
-			data: {
-				"data.levels": level 
-			}
-		}];
+	  numCantripsToLearn = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
+		numSlotSpellsToLearn = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
 	}
 	$: eligibleSubclasses = getEligibleSubclasses(className);
 	$: chosenSubclassName = subclassName;
@@ -112,50 +112,18 @@
     return spells;
   }
 
-	function handleChooseSubclass(event) {
-		chosenSubclassName = event.target.value
-		updates = [...updates, { 
-			type: "updateClass",
-			data: { 
-				"data.subclass": chosenSubclassName 
-			}
-		}];
-	}
-
-	function handleItemSelected(event) {
-		if (updates.some(update => update.data._id === event.detail.data._id)) {
-			// Remove if already selected
-			updates = updates.filter(update => update.data._id !== event.detail.data._id);
-		} else {
-			// Else add it to updates
-			updates = [...updates, event.detail];
-		}
-	}
-
 	async function handleApplyUpdates(event) {
 		event.preventDefault();
 
 		let actorUpdates = {};
-		let classUpdates = {};
-		let itemCreations = [];
+		let classUpdates = {
+			"data.subclass": chosenSubclassName,
+			"data.levels": level
+		};
+		let itemCreations = selectedCantrips.concat(selectedSlotSpells).map(spell => spell.data);
 
-		for (const {type, data} of updates) {
-			switch (type) {
-				case "updateActor":
-					actorUpdates = { ...actorUpdates, ...data }
-					break;
-				case "updateClass":
-					classUpdates = { ...classUpdates, ...data }
-					break;
-				case "createItem":
-					itemCreations = [...itemCreations, data];
-					break;
-				default:
-					break;
-			}
-		}
-		
 		Promise.all([
+			actor.update(actorUpdates),
 			klass.update(classUpdates),
 			actor.createEmbeddedEntity("OwnedItem", itemCreations),
 		]).then(() => 
@@ -180,7 +148,7 @@
 			{#if subclassName === "" && eligibleSubclasses.length > 0}
 				<label>Choose a Subclass: 
 					<!-- svelte-ignore a11y-no-onchange -->
-					<select bind:value={chosenSubclassName} on:change={handleChooseSubclass}>
+					<select bind:value={chosenSubclassName} >
 							<option value=""></option>
 							{#each eligibleSubclasses as subclass}
 								<option value={subclass}>{subclass}</option>
@@ -204,26 +172,14 @@
 		{#if currentTab === "Spells"}
 			<div>
 				{#await classSpells then spells}
-					{#each spells as spellsForLevel, i}
-						{#if i === 0}
-							<h2>{`Cantrips`}</h2>
-						{:else}
-							<h2>{`Level ${i} Spells`}</h2>
-						{/if}
-							<ol>
-								{#each spellsForLevel as spell}
-									<li>
-										<Item item={spell} 
-													selectable={true} 
-													selected={updates.some(update => update.data._id === spell._id)}
-													owned={actor.items.getName(spell.name) && actor.items.getName(spell.name).type === 'spell'}
-													on:selected={handleItemSelected}
-										/>
-									</li>
-								{/each}
-							</ol>
-						{/each}
-					{/await}
+					<SpellsTab {spells}
+										 {numCantripsToLearn}
+										 {numSlotSpellsToLearn}
+										 ownedSpells={actor.itemTypes['spell']}
+										 bind:selectedCantrips={selectedCantrips}
+										 bind:selectedSlotSpells={selectedSlotSpells}
+					/>
+				{/await}
 			</div>
 		{/if}
 

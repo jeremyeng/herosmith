@@ -1,34 +1,17 @@
 <script>
   import { slide } from 'svelte/transition';
   import { sineOut } from 'svelte/easing';
-  import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
 
   export let item;
-  export let selectable = false;
-  export let owned = false;
-  export let selected = false;
   $: itemChatData = item.getChatData();
 
   let expanded = false;
-
-  function handleSelect(event) {
-    const data = duplicate(item.data);
-    setProperty(data, "flags.core.sourceId", item.uuid);
-    dispatch('selected', {
-      type: "createItem",
-      data: data
-    });
-  }
 </script>
 
 <div class="item">
-  {#if selectable}
-    <input type="checkbox" disabled={owned} checked={owned || selected} on:click={handleSelect}>
-  {/if}
+  <slot></slot>
   <div class="row" on:click="{() => expanded = !expanded}">
-    <img class="image" src={item.img} alt={item.id}>
+    <img class="image" src={item.img} alt={`${item.name} icon`}>
     <h4 class="name">{item.name}</h4>
   </div>
   {#if expanded}
@@ -49,7 +32,7 @@
     margin-bottom: 10px;
   }
 
-  input {
+  slot {
     grid-column: 1;
   }
 
