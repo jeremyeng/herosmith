@@ -16,11 +16,11 @@
   let chosenSubclassName;
   let classFeatures;
   let classSpells;
-  let selectedCantrips = [];
-  let selectedSlotSpells = [];
   let cantripsAtLevel;
   let slotSpellsAtLevel;
   let eligibleSubclasses = [];
+  let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
+  let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let tabs = ["Features", "Spells", "Review"];
   let currentTab = "Features";
 
@@ -46,6 +46,11 @@
     priorLevel,
     spellcasterType,
   });
+  $: {
+    for (const spell of actor.itemTypes["spell"]) {
+      ownedSpells[spell.data.data.level] = [spell.data.data.level, spell];
+    }
+  }
   $: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
 
   function getEligibleSubclasses(className) {
@@ -119,7 +124,7 @@
       "data.subclass": chosenSubclassName,
       "data.levels": level,
     };
-    let itemCreations = selectedCantrips.concat(selectedSlotSpells).map((spell) => spell.data);
+    let itemCreations = selectedSpells.flat().map((spell) => spell.data);
 
     Promise.all([
       actor.update(actorUpdates),
@@ -128,6 +133,8 @@
     ]).then(() => closeWindow());
   }
 </script>
+
+{@debug ownedSpells}
 
 <form>
   <nav>
@@ -174,9 +181,8 @@
             {spells}
             {cantripsAtLevel}
             {slotSpellsAtLevel}
-            ownedSpells={actor.itemTypes["spell"]}
-            bind:selectedCantrips
-            bind:selectedSlotSpells
+            {ownedSpells}
+            bind:selectedSpells
           />
         {/await}
       </div>

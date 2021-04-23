@@ -1,13 +1,14 @@
 <script>
-  import Item from "./Item.svelte";
+  import SpellSection from "./SpellSection.svelte";
 
   export let spells = [];
   export let ownedSpells = [];
-  export let selectedCantrips = [];
-  export let selectedSlotSpells = [];
+  export let selectedSpells = [[], [], [], [], [], [], [], [], [], []];
   export let cantripsAtLevel = "";
   export let slotSpellsAtLevel = "";
 
+  let numSelectedCantrips = 0;
+  let numSelectedSlotSpells = 0;
   let numCantripsAtLevel = 0;
   let numSlotSpellsAtLevel = 0;
   let numSelectableCantrips = 0;
@@ -15,9 +16,11 @@
   let numOwnedCantrips = 0;
   let numOwnedSlotSpells = 0;
 
-  $: numOwnedCantrips = ownedSpells.filter((spell) => spell.data.data.level === 0).length;
+  $: numOwnedCantrips = ownedSpells[0].length;
+  $: numOwnedSlotSpells = ownedSpells.slice(1, ownedSpells.length).flat().length;
 
-  $: numOwnedSlotSpells = ownedSpells.filter((spell) => spell.data.data.level > 0).length;
+  $: numSelectedCantrips = selectedSpells[0].length;
+  $: numSelectedSlotSpells = selectedSpells.slice(1, ownedSpells.length).flat().length;
 
   $: {
     switch (true) {
@@ -30,10 +33,12 @@
         numCantripsAtLevel = parseInt(cantripsAtLevel) + numOwnedCantrips;
         break;
       default:
+        numCantripsAtLevel = -1; // -1 means class knows every cantrip spell at this level
         break;
     }
   }
-  $: numSelectableCantrips = numCantripsAtLevel - numOwnedCantrips - selectedCantrips.length;
+
+  $: numSelectableCantrips = numCantripsAtLevel - numOwnedCantrips - numSelectedCantrips;
 
   $: {
     switch (true) {
@@ -41,76 +46,26 @@
       case /^(\d+)$/.test(slotSpellsAtLevel):
         numSlotSpellsAtLevel = parseInt(slotSpellsAtLevel);
         break;
-      // Hard cap on number of slot spells known
+      // Gain a number of slot spells at each level
       case /^\+(\d+)$/.test(slotSpellsAtLevel):
         numSlotSpellsAtLevel = parseInt(slotSpellsAtLevel) + numOwnedSlotSpells;
         break;
       default:
+        numSlotSpellsAtLevel = -1; // -1 means class knows every slot spell at this level
         break;
     }
   }
-  $: numSelectableSlotSpells =
-    numSlotSpellsAtLevel - numOwnedSlotSpells - selectedSlotSpells.length;
+  $: numSelectableSlotSpells = numSlotSpellsAtLevel - numOwnedSlotSpells - numSelectedSlotSpells;
 </script>
 
 {#each spells as spellsForLevel, i}
   {#if spellsForLevel.length}
-    {#if i === 0}
-      <h2>{`Cantrips`}</h2>
-
-      {#if cantripsAtLevel === "all"}
-        <!-- Just show all spells for classes that know all their cantrips (None in SRD) -->
-        <p>You know all your cantrips</p>
-        {#each spellsForLevel as spell}
-          <Item item={spell} />
-        {/each}
-      {:else}
-        <!-- Allow selection for classes that know a set number of cantrips at each level -->
-        {#each spellsForLevel as spell}
-          <Item item={spell}>
-            {#if ownedSpells.some((ownedSpell) => ownedSpell.name === spell.name)}
-              <input type="checkbox" disabled checked />
-            {:else}
-              <input
-                type="checkbox"
-                value={spell}
-                bind:group={selectedCantrips}
-                disabled={selectedCantrips.indexOf(spell) < 0 && numSelectableCantrips <= 0}
-              />
-            {/if}
-          </Item>
-        {/each}
-      {/if}
-    {:else}
-      <h2>{`Level ${i} Spells`}</h2>
-      {#if slotSpellsAtLevel === "all"}
-        <!-- Just show all spells for classes that know all their slot spells -->
-        <p>
-          {`You know all your Level ${i} Spells. You must prepare a spell in order to cast it.`}
-        </p>
-        {#each spellsForLevel as spell}
-          <Item item={spell} />
-        {/each}
-      {:else}
-        <!-- Allow selection for classes that know a set number of slot spells at each level -->
-        {#each spellsForLevel as spell}
-          <Item item={spell}>
-            {#if ownedSpells.some((ownedSpell) => ownedSpell.name === spell.name)}
-              <input type="checkbox" disabled checked />
-            {:else}
-              <input
-                type="checkbox"
-                value={spell}
-                bind:group={selectedSlotSpells}
-                disabled={selectedSlotSpells.indexOf(spell) < 0 && numSelectableSlotSpells <= 0}
-              />
-            {/if}
-          </Item>
-        {/each}
-      {/if}
-    {/if}
+    <SpellSection
+      spells={spellsForLevel}
+      spellLevel={i}
+      ownedSpells={ownedSpells[i]}
+      numSelectable={i === 0 ? numSelectableCantrips : numSelectableSlotSpells}
+      bind:selected={selectedSpells[i]}
+    />
   {/if}
 {/each}
-
-<style>
-</style>
