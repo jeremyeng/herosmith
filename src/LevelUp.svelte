@@ -134,8 +134,6 @@
   }
 </script>
 
-{@debug ownedSpells}
-
 <form>
   <nav>
     {#each tabs as tab}
