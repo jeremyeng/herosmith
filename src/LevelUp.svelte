@@ -3,6 +3,7 @@
   import SpellsTab from "./SpellsTab.svelte";
   import ClassSpellsLists from "./classSpells";
   import ClassSpellProgression from "./classSpellProgression";
+  import AbilityScoreIncrease from "./AbilityScoreIncrease.svelte";
 
   export let actor;
   export let klass;
@@ -21,7 +22,7 @@
   let eligibleSubclasses = [];
   let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
-  let tabs = ["Features", "Spells", "Review"];
+  let tabs = ["Abilities", "Features", "Spells", "Review"];
   let currentTab = "Features";
 
   $: {
@@ -147,6 +148,14 @@
   </nav>
 
   <div>
+    {#if currentTab === "Abilities"}
+      <AbilityScoreIncrease
+        abilities={Object.fromEntries(
+          Object.entries(actor.data.data.abilities).map(([k, v]) => [k, v.value])
+        )}
+      />
+    {/if}
+
     <!-- Features -->
     {#if currentTab === "Features"}
       {#if subclassName === "" && eligibleSubclasses.length > 0}
