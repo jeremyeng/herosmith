@@ -43,7 +43,7 @@
         </Item>
       {/each}
     {:else}
-      <p>{subheaderText}</p>
+      <p class="subheader">{subheaderText}</p>
       {#each spells as spell}
         <Item item={spell} />
       {/each}
@@ -58,6 +58,10 @@
 
   .section-header:hover i {
     text-shadow: 0 0 10px red;
+  }
+
+  .subheader {
+    margin-top: 0;
   }
 
   i {

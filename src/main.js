@@ -13,8 +13,8 @@ class LevelUpWindow extends Application {
     return mergeObject(super.defaultOptions, {
       template: `modules/herosmith/templates/level-up-window.html`,
       tabs: [{ navSelector: ".tabs", contentSelector: "form", initial: "features" }],
-      width: 600,
-      height: 600,
+      width: 720,
+      height: 650,
     });
   }
 
