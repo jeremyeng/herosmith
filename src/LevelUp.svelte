@@ -29,13 +29,13 @@
     subclassName = klass.data.data.subclass;
     priorLevel = klass.data.data.levels;
     level = priorLevel + 1;
-    spellcasterType = klass.data.data.spellcasting;
+    spellcasterType = klass.data.data.spellcasting.progression;
     cantripsAtLevel = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
     slotSpellsAtLevel = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
   }
   $: eligibleSubclasses = getEligibleSubclasses(className);
   $: chosenSubclassName = subclassName;
-  $: classFeatures = game.dnd5e.entities.Actor5e.getClassFeatures({
+  $: classFeatures = game.dnd5e.entities.Actor5e.loadClassFeatures({
     className,
     subclassName: chosenSubclassName,
     level,
@@ -48,7 +48,9 @@
   });
   $: {
     for (const spell of actor.itemTypes["spell"]) {
-      ownedSpells[spell.data.data.level] = [spell.data.data.level, spell];
+      console.log(spell.data.data.level);
+      const spellLevel = spell.data.data.level;
+      ownedSpells[spellLevel] = [...ownedSpells[spellLevel], spell];
     }
   }
   $: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
@@ -129,7 +131,7 @@
     Promise.all([
       actor.update(actorUpdates),
       klass.update(classUpdates),
-      actor.createEmbeddedEntity("OwnedItem", itemCreations),
+      actor.createEmbeddedDocuments("Item", itemCreations),
     ]).then(() => closeWindow());
   }
 </script>

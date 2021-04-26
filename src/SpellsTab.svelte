@@ -2,7 +2,7 @@
   import SpellSection from "./SpellSection.svelte";
 
   export let spells = [];
-  export let ownedSpells = [];
+  export let ownedSpells = [[], [], [], [], [], [], [], [], [], []];
   export let selectedSpells = [[], [], [], [], [], [], [], [], [], []];
   export let cantripsAtLevel = "";
   export let slotSpellsAtLevel = "";

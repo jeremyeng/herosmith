@@ -4,7 +4,7 @@ class LevelUpWindow extends Application {
   constructor(actorId, classId) {
     super();
     this.actor = game.actors.get(actorId);
-    this.class = this.actor.getOwnedItem(classId);
+    this.class = this.actor.items.get(classId);
 
     this.features = {};
   }
@@ -35,22 +35,22 @@ Hooks.on("ready", async function () {});
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {
   const actor = game.actors.get(sheet.actor.id);
   const classes = actor.data.items.filter((item) => item.type === "class");
-  const firstClass = classes[0];
-  const classId = firstClass._id;
-  const classItem = $("li[data-item-id='" + classId + "']");
-  try {
-    const edit = $(".item-control.item-edit", classItem);
-    const icon = $(`<a class="item-control level-up" title="Level Up Class">
-        <i class="fas fa-arrow-up"></i>
-    </a>`)[0];
+  for (let klass of classes) {
+    const classItem = $("li[data-item-id='" + klass.id + "']");
+    try {
+      const edit = $(".item-control.item-edit", classItem);
+      const icon = $(`<a class="item-control level-up" title="Level Up Class">
+          <i class="fas fa-arrow-up"></i>
+      </a>`)[0];
 
-    icon.dataset.classId = classId;
-    icon.dataset.actorId = actor.id;
-    icon.addEventListener("click", onLevelUp);
+      icon.dataset.classId = klass.id;
+      icon.dataset.actorId = actor.id;
+      icon.addEventListener("click", onLevelUp);
 
-    if (edit[0]) edit[0].before(icon);
-  } catch (e) {
-    console.error("Character Builder 5e | Failed to inject onto item: ", actor.id);
+      if (edit[0]) edit[0].before(icon);
+    } catch (e) {
+      console.error("Character Builder 5e | Failed to inject onto item: ", actor.id);
+    }
   }
 });
 
