@@ -4,6 +4,7 @@
   import ClassSpellsLists from "./classSpells";
   import ClassSpellProgression from "./classSpellProgression";
   import AbilityScoreIncrease from "./AbilityScoreIncrease.svelte";
+  import { onDestroy } from "svelte";
 
   export let actor;
   export let klass;
@@ -24,6 +25,8 @@
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let tabs = ["Abilities", "Features", "Spells", "Review"];
   let currentTab = "Features";
+
+  onDestroy(() => console.log("Herosmith | Level Up Window closed"));
 
   $: {
     className = klass.name;
@@ -49,7 +52,6 @@
   });
   $: {
     for (const spell of actor.itemTypes["spell"]) {
-      console.log(spell.data.data.level);
       const spellLevel = spell.data.data.level;
       ownedSpells[spellLevel] = [...ownedSpells[spellLevel], spell];
     }

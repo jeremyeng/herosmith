@@ -28,6 +28,11 @@ class LevelUpWindow extends Application {
       },
     });
   }
+
+  close() {
+    this.component.$destroy();
+    super.close();
+  }
 }
 
 Hooks.on("ready", async function () {});
