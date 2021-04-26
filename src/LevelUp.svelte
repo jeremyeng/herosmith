@@ -24,7 +24,7 @@
   let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let tabs = ["Abilities", "Features", "Spells", "Review"];
-  let currentTab = "Features";
+  let currentTab = "Abilities";
 
   onDestroy(() => console.log("Herosmith | Level Up Window closed"));
 
