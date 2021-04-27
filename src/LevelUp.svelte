@@ -141,7 +141,12 @@
   async function handleApplyUpdates(event) {
     event.preventDefault();
 
-    let actorUpdates = {};
+    let actorUpdates = Object.fromEntries(
+      Object.entries(abilities).map(([ability, value]) => [
+        `data.abilities.${ability}.value`,
+        value,
+      ])
+    );
     let classUpdates = {
       "data.subclass": chosenSubclassName,
       "data.levels": level,
