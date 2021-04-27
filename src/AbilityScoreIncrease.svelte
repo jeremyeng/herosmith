@@ -56,7 +56,7 @@
           >
           <div class="value">{value}</div>
           <button
-            disabled={numAbilityImprovementsAllowed === 0}
+            disabled={numAbilityImprovementsAllowed === 0 || value === 20}
             on:click={(event) => raiseAbilityScore(event, ability)}
             ><i class="fas fa-plus" /></button
           >
