@@ -37,6 +37,7 @@
 </script>
 
 <div class="ability-scores-tab">
+  <slot name="message" />
   <div class="ability-score-row">
     {#each Object.entries(abilities) as [ability, value]}
       <div
@@ -85,6 +86,11 @@
     border-radius: 2px;
     padding: 0.5rem 0;
     margin: 0;
+  }
+
+  slot {
+    color: green;
+    font-weight: 600;
   }
 
   .ability-description {

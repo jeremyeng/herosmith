@@ -23,6 +23,7 @@
   let abilities;
   let initialAbilities;
   let numAbilityImprovementsAllowed = 0;
+  let abilitiesMessage = "";
   let eligibleSubclasses = [];
   let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
@@ -48,6 +49,9 @@
 
   $: if ([4, 8, 12, 16, 19].includes(level)) {
     numAbilityImprovementsAllowed = 2;
+    abilitiesMessage = `You can increase one ability score of your choice by 2, or you can increase two ability
+          scores of your choice by 1. As normal, you can’t increase an ability score above 20 using
+          this feature.`;
   }
 
   $: eligibleSubclasses = getEligibleSubclasses(className);
@@ -164,7 +168,11 @@
 
   <div>
     {#if currentTab === "Abilities"}
-      <AbilityScoreIncrease {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed />
+      <AbilityScoreIncrease {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed>
+        <p slot="message" style="color: green; font-weight: 600;">
+          {abilitiesMessage}
+        </p>
+      </AbilityScoreIncrease>
     {/if}
 
     <!-- Features -->
