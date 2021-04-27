@@ -26,7 +26,7 @@
 </h2>
 
 {#if expanded}
-  <div transition:slide={{ duration: 200, easing: sineInOut }}>
+  <div transition:slide|local={{ duration: 200, easing: sineInOut }}>
     {#if numSelectable >= 0}
       {#each spells as spell}
         <Item item={spell}>

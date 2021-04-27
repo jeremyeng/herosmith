@@ -15,7 +15,7 @@
     <h4 class="name">{item.name}</h4>
   </div>
   {#if expanded}
-    <div class="summary" transition:slide={{ duration: 200, easing: sineOut }}>
+    <div class="summary" transition:slide|local={{ duration: 200, easing: sineOut }}>
       {@html itemChatData.description.value}
       {#each itemChatData.properties as property}
         <span class="tag">{@html property}</span>
