@@ -2,7 +2,31 @@
   flex: 0 0 66px;
 }
 
-.level-up-window h2 {
+.level-up-window h1,
+.level-up-window h2,
+.level-up-window h3,
+.level-up-window h4,
+.level-up-window h5,
+.level-up-window h6 {
   font-family: "Modesto Condensed", "Palatino Linotype", serif;
+  letter-spacing: 0.03rem;
+}
+
+.level-up-window h1 {
   font-size: 36px;
+}
+.level-up-window h2 {
+  font-size: 30px;
+}
+.level-up-window h3 {
+  font-size: 24px;
+}
+.level-up-window h4 {
+  font-size: 20px;
+}
+.level-up-window h5 {
+  font-size: 18px;
+}
+.level-up-window h6 {
+  font-size: 16px;
 }

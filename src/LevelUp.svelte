@@ -20,6 +20,9 @@
   let classSpells;
   let cantripsAtLevel;
   let slotSpellsAtLevel;
+  let abilities;
+  let initialAbilities;
+  let numAbilityImprovementsAllowed = 0;
   let eligibleSubclasses = [];
   let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
@@ -36,7 +39,17 @@
     spellcasterType = klass.data.data.spellcasting.progression;
     cantripsAtLevel = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
     slotSpellsAtLevel = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
+    initialAbilities = Object.fromEntries(
+      Object.entries(actor.data.data.abilities).map(([ability, data]) => [ability, data.value])
+    );
   }
+
+  $: abilities = abilities || initialAbilities;
+
+  $: if ([4, 8, 12, 16, 19].includes(level)) {
+    numAbilityImprovementsAllowed = 2;
+  }
+
   $: eligibleSubclasses = getEligibleSubclasses(className);
   $: chosenSubclassName = subclassName;
   $: classFeatures = game.dnd5e.entities.Actor5e.loadClassFeatures({
@@ -151,11 +164,7 @@
 
   <div>
     {#if currentTab === "Abilities"}
-      <AbilityScoreIncrease
-        abilities={Object.fromEntries(
-          Object.entries(actor.data.data.abilities).map(([k, v]) => [k, v.value])
-        )}
-      />
+      <AbilityScoreIncrease {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed />
     {/if}
 
     <!-- Features -->
