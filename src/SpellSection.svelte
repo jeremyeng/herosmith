@@ -7,13 +7,14 @@
   export let spells = [];
   export let ownedSpells = [];
   export let spellLevel;
+  export let knowsAllSpells = false;
   export let numSelectable;
 
   let expanded = false;
   let headerText;
 
   $: headerText = spellLevel === 0 ? "Cantrips" : `Level ${spellLevel} Spells`;
-  $: subheaderText = numSelectable < 0 ? "Your class has access to all spells of this level" : "";
+  $: subheaderText = knowsAllSpells ? "Your class has access to all spells of this level" : "";
 </script>
 
 <h2
@@ -27,7 +28,12 @@
 
 {#if expanded}
   <div transition:slide|local={{ duration: 200, easing: sineInOut }}>
-    {#if numSelectable >= 0}
+    {#if knowsAllSpells}
+      <p class="subheader">{subheaderText}</p>
+      {#each spells as spell}
+        <Item item={spell} />
+      {/each}
+    {:else}
       {#each spells as spell}
         <Item item={spell}>
           {#if ownedSpells.some((ownedSpell) => ownedSpell.name === spell.name)}
@@ -41,11 +47,6 @@
             />
           {/if}
         </Item>
-      {/each}
-    {:else}
-      <p class="subheader">{subheaderText}</p>
-      {#each spells as spell}
-        <Item item={spell} />
       {/each}
     {/if}
   </div>

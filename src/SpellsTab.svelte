@@ -33,12 +33,15 @@
         numCantripsAtLevel = parseInt(cantripsAtLevel) + numOwnedCantrips;
         break;
       default:
-        numCantripsAtLevel = -1; // -1 means class knows every cantrip spell at this level
+        numCantripsAtLevel = 0;
         break;
     }
   }
 
-  $: numSelectableCantrips = numCantripsAtLevel - numOwnedCantrips - numSelectedCantrips;
+  $: numSelectableCantrips = Math.max(
+    numCantripsAtLevel - numOwnedCantrips - numSelectedCantrips,
+    0
+  );
 
   $: {
     switch (true) {
@@ -51,11 +54,14 @@
         numSlotSpellsAtLevel = parseInt(slotSpellsAtLevel) + numOwnedSlotSpells;
         break;
       default:
-        numSlotSpellsAtLevel = -1; // -1 means class knows every slot spell at this level
+        numSlotSpellsAtLevel = 0;
         break;
     }
   }
-  $: numSelectableSlotSpells = numSlotSpellsAtLevel - numOwnedSlotSpells - numSelectedSlotSpells;
+  $: numSelectableSlotSpells = Math.max(
+    numSlotSpellsAtLevel - numOwnedSlotSpells - numSelectedSlotSpells,
+    0
+  );
 </script>
 
 {#each spells as spellsForLevel, i}
@@ -65,6 +71,7 @@
       spellLevel={i}
       ownedSpells={ownedSpells[i]}
       numSelectable={i === 0 ? numSelectableCantrips : numSelectableSlotSpells}
+      knowsAllSpells={i === 0 ? cantripsAtLevel === "all" : slotSpellsAtLevel === "all"}
       bind:selected={selectedSpells[i]}
     />
   {/if}
