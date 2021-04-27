@@ -3,7 +3,7 @@
   import SpellsTab from "./SpellsTab.svelte";
   import ClassSpellsLists from "./classSpells";
   import ClassSpellProgression from "./classSpellProgression";
-  import AbilityScoreIncrease from "./AbilityScoreIncrease.svelte";
+  import AbilitiesTab from "./AbilitiesTab.svelte";
   import { onDestroy } from "svelte";
 
   export let actor;
@@ -168,11 +168,11 @@
 
   <div>
     {#if currentTab === "Abilities"}
-      <AbilityScoreIncrease {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed>
+      <AbilitiesTab {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed>
         <p slot="message" style="color: green; font-weight: 600;">
           {abilitiesMessage}
         </p>
-      </AbilityScoreIncrease>
+      </AbilitiesTab>
     {/if}
 
     <!-- Features -->
