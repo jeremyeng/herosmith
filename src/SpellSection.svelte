@@ -23,7 +23,8 @@
     expanded = !expanded;
   }}
 >
-  {headerText}<i class="fas fa-chevron-down rotate" class:up={expanded} />
+  <p class="header-text">{headerText}</p>
+  <i class="fas fa-chevron-down rotate" class:up={expanded} />
 </h2>
 
 {#if expanded}
@@ -57,7 +58,7 @@
     cursor: pointer;
   }
 
-  .section-header:hover i {
+  .section-header:hover .header-text {
     text-shadow: 0 0 10px red;
   }
 
@@ -69,6 +70,10 @@
     display: inline-block;
     font-size: 26px;
     margin-left: 0.25em;
+  }
+
+  p {
+    display: inline;
   }
   .rotate {
     transition: all 0.2s ease-in-out;
