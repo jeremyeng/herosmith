@@ -92,4 +92,8 @@
   h2 {
     margin-top: 10px;
   }
+
+  footer {
+    margin-top: 10px;
+  }
 </style>
