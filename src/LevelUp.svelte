@@ -5,6 +5,7 @@
   import ClassSpellProgression from "./classSpellProgression";
   import AbilitiesTab from "./AbilitiesTab.svelte";
   import { onDestroy } from "svelte";
+  import ReviewTab from "./ReviewTab.svelte";
 
   export let actor;
   export let klass;
@@ -223,11 +224,15 @@
 
     <!-- Review Updates -->
     {#if currentTab === "Review"}
-      <footer>
-        <button type="submit" name="Apply Updates" on:click={handleApplyUpdates}
-          ><i class="far fa-save" />Apply Updates</button
-        >
-      </footer>
+      {#await classFeatures then features}
+        <ReviewTab
+          {handleApplyUpdates}
+          newSpells={selectedSpells.flat()}
+          newFeatures={features}
+          oldAbilityScores={initialAbilities}
+          newAbilityScores={abilities}
+        />
+      {/await}
     {/if}
   </div>
 </form>
