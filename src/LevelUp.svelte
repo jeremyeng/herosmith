@@ -6,6 +6,7 @@
   import AbilitiesTab from "./AbilitiesTab.svelte";
   import { onDestroy } from "svelte";
   import ReviewTab from "./ReviewTab.svelte";
+  import LevelsTab from "./LevelsTab.svelte";
 
   export let actor;
   export let klass;
@@ -21,6 +22,9 @@
   let classSpells;
   let cantripsAtLevel;
   let slotSpellsAtLevel;
+  let hitDice;
+  let initialHitPoints;
+  let newHitPoints;
   let abilities;
   let initialAbilities;
   let numAbilityImprovementsAllowed = 0;
@@ -28,8 +32,8 @@
   let eligibleSubclasses = [];
   let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
-  let tabs = ["Abilities", "Features", "Spells", "Review"];
-  let currentTab = "Abilities";
+  let tabs = ["Levels", "Abilities", "Features", "Spells", "Review"];
+  let currentTab = "Levels";
 
   onDestroy(() => console.log("Herosmith | Level Up Window closed"));
 
@@ -41,12 +45,15 @@
     spellcasterType = klass.data.data.spellcasting.progression;
     cantripsAtLevel = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
     slotSpellsAtLevel = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
+    hitDice = klass.data.data.hitDice;
+    initialHitPoints = actor.data.data.attributes.hp.value;
     initialAbilities = Object.fromEntries(
       Object.entries(actor.data.data.abilities).map(([ability, data]) => [ability, data.value])
     );
   }
 
   $: abilities = abilities || initialAbilities;
+  $: newHitPoints = newHitPoints || initialHitPoints;
 
   $: if ([4, 8, 12, 16, 19].includes(level)) {
     numAbilityImprovementsAllowed = 2;
@@ -173,6 +180,17 @@
   </nav>
 
   <div>
+    {#if currentTab === "Levels"}
+      <LevelsTab
+        {hitDice}
+        oldConScore={initialAbilities["con"]}
+        newConScore={abilities["con"]}
+        {initialHitPoints}
+        {newHitPoints}
+        {priorLevel}
+      />
+    {/if}
+
     {#if currentTab === "Abilities"}
       <AbilitiesTab {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed>
         <p slot="message" style="color: green; font-weight: 600;">
