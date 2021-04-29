@@ -3,33 +3,50 @@
   export let initialConScore;
   export let newConScore;
   export let hitDice;
-  export let initialHitPoints = 0;
-  export let newHitPoints = 0;
+  export let initialHitPoints;
+  export let newHitPoints;
+  export let hitDieRollValue;
 
-  let newConModifier = 0;
-  let diceRollValue = 0;
-  let retroactiveConBonus = 0;
+  let newConModifier;
+  let retroactiveConBonus;
+  let averageRollValue;
 
   $: oldConModifier = Math.floor((initialConScore - 10) / 2);
   $: newConModifier = Math.floor((newConScore - 10) / 2);
   $: switch (hitDice) {
     case "d6":
-      diceRollValue = 4;
+      averageRollValue = 4;
       break;
     case "d8":
-      diceRollValue = 5;
+      averageRollValue = 5;
       break;
     case "d10":
-      diceRollValue = 6;
+      averageRollValue = 6;
       break;
     case "d12":
-      diceRollValue = 7;
+      averageRollValue = 7;
       break;
     default:
       break;
   }
+  $: hitDieRollValue = hitDieRollValue || averageRollValue;
   $: retroactiveConBonus = (newConModifier - oldConModifier) * priorLevel;
-  $: newHitPoints = initialHitPoints + diceRollValue + newConModifier + retroactiveConBonus;
+  $: newHitPoints = initialHitPoints + hitDieRollValue + newConModifier + retroactiveConBonus;
+
+  async function rollHitDie(event) {
+    event.preventDefault();
+
+    hitDieRollValue = (await new Roll(`1${hitDice}`).toMessage({ flavor: "HP Roll" })).roll.total;
+  }
+
+  async function useAverageRollValue(event) {
+    event.preventDefault();
+
+    const r = await new Roll(`1${hitDice}`).evaluate();
+    r._total = averageRollValue;
+    r.toMessage({ flavor: "HP Average Roll" });
+    hitDieRollValue = r.total;
+  }
 </script>
 
 <h2>Hit Points</h2>
@@ -45,13 +62,16 @@
   from 17 to 18 when he reaches 8th level, thus increasing his Constitution modifier from +3 to +4.
   His hit point maximum then increases by 8.
 </p>
-<p><b>Your Hit Die is: {hitDice}</b></p>
+<div class="die-roll-buttons">
+  <button on:click={rollHitDie}>Roll Hit Die <b>(1{hitDice})</b></button>
+  <button on:click={useAverageRollValue}>Use Average Roll <b>({averageRollValue})</b></button>
+</div>
 <div class="calculation">
   <p class="label initial-hit-points"><b>(Initial Hit Points)</b></p>
   <p class="number initial-hit-points">{initialHitPoints}</p>
 
   <p class="label dice-roll"><b>(Hit Die Roll)</b></p>
-  <p class="number dice-roll">+ {diceRollValue}</p>
+  <p class="number dice-roll">+ {hitDieRollValue}</p>
 
   <p class="label con-mod"><b>(Constitution Modifier)</b></p>
   <p class="number con-mod">+ {newConModifier}</p>
@@ -72,6 +92,15 @@
     font-size: 16px;
   }
 
+  .die-roll-buttons {
+    display: flex;
+    margin: 10px 0;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
   .calculation {
     display: grid;
     grid-template-columns: max-content max-content;
@@ -89,6 +118,7 @@
 
   .number {
     grid-column: 1;
+    margin: 5px;
     font-size: 20px;
     justify-self: right;
   }

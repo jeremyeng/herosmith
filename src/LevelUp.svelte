@@ -23,6 +23,7 @@
   let cantripsAtLevel;
   let slotSpellsAtLevel;
   let hitDice;
+  let hitDieRollValue;
   let initialHitPoints;
   let newHitPoints;
   let abilities;
@@ -188,6 +189,7 @@
         {initialHitPoints}
         {newHitPoints}
         {priorLevel}
+        bind:hitDieRollValue
       />
     {/if}
 
