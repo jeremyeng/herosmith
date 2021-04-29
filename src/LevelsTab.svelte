@@ -1,6 +1,6 @@
 <script>
   export let priorLevel;
-  export let oldConScore;
+  export let initialConScore;
   export let newConScore;
   export let hitDice;
   export let initialHitPoints = 0;
@@ -10,7 +10,7 @@
   let diceRollValue = 0;
   let retroactiveConBonus = 0;
 
-  $: oldConModifier = Math.floor((oldConScore - 10) / 2);
+  $: oldConModifier = Math.floor((initialConScore - 10) / 2);
   $: newConModifier = Math.floor((newConScore - 10) / 2);
   $: switch (hitDice) {
     case "d6":

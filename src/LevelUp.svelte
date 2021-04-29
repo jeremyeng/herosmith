@@ -183,7 +183,7 @@
     {#if currentTab === "Levels"}
       <LevelsTab
         {hitDice}
-        oldConScore={initialAbilities["con"]}
+        initialConScore={initialAbilities["con"]}
         newConScore={abilities["con"]}
         {initialHitPoints}
         {newHitPoints}
