@@ -156,6 +156,7 @@
         value,
       ])
     );
+    actorUpdates["data.attributes.hp.max"] = newHitPoints;
     let classUpdates = {
       "data.subclass": chosenSubclassName,
       "data.levels": level,
@@ -187,7 +188,7 @@
         initialConScore={initialAbilities["con"]}
         newConScore={abilities["con"]}
         {initialHitPoints}
-        {newHitPoints}
+        bind:newHitPoints
         {priorLevel}
         bind:hitDieRollValue
       />
@@ -251,6 +252,8 @@
           newFeatures={features}
           oldAbilityScores={initialAbilities}
           newAbilityScores={abilities}
+          {initialHitPoints}
+          {newHitPoints}
         />
       {/await}
     {/if}

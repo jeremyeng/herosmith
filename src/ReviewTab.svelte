@@ -2,6 +2,8 @@
   import Item from "./Item.svelte";
 
   export let handleApplyUpdates;
+  export let initialHitPoints;
+  export let newHitPoints;
   export let oldAbilityScores = {};
   export let newAbilityScores = {};
   export let newSpells = [];
@@ -9,6 +11,13 @@
 </script>
 
 <div class="review-tab">
+  <h2>Hit Points</h2>
+  <div class="hit-points-row">
+    <div class="initial-hit-points">{initialHitPoints}</div>
+    <div><i class="fas fa-arrow-right arrow" /></div>
+    <div class="new-hit-points changed">{newHitPoints}</div>
+  </div>
+
   <h2>Ability Scores</h2>
   <div class="ability-row">
     {#each Object.keys(oldAbilityScores) as ability}
@@ -61,6 +70,17 @@
 </div>
 
 <style>
+  .hit-points-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .initial-hit-points,
+  .new-hit-points {
+    font-size: 24px;
+    font-family: "Modesto Condensed", "Palatino Linotype", serif;
+    margin: 5px;
+  }
   .ability-row {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
