@@ -2,11 +2,13 @@ import LevelUp from "./LevelUp.svelte";
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {
-    super();
-    this.actor = game.actors.get(actorId);
-    this.class = this.actor.items.get(classId);
+    const actor = game.actors.get(actorId);
+    const klass = actor.items.get(classId);
 
-    this.features = {};
+    super({ title: `${klass.name} Level-Up` });
+
+    this.actor = actor;
+    this.class = klass;
   }
 
   static get defaultOptions() {
