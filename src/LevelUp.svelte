@@ -165,7 +165,7 @@
     const features = await classFeatures;
 
     await actor.addEmbeddedItems(features, (prompt = false));
-    await actor.createEmbeddedDocuments("Item", itemCreations);
+    await actor.addEmbeddedItems(itemCreations, (prompt = false));
     await klass.update(classUpdates);
     await actor.update(actorUpdates);
     closeWindow();
