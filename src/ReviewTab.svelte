@@ -22,12 +22,17 @@
           <div>
             <i class="fas fa-arrow-right arrow" />
           </div>
-          <div
-            class="new-ability-score"
-            class:changed={oldAbilityScores[ability] != newAbilityScores[ability]}
-          >
-            <div>{`${newAbilityScores[ability]}`}</div>
-            <div class="modifier">{`(+ ${Math.floor((newAbilityScores[ability] - 10) / 2)})`}</div>
+          <div class="new-ability-score">
+            <div class:changed={oldAbilityScores[ability] != newAbilityScores[ability]}>
+              {`${newAbilityScores[ability]}`}
+            </div>
+            <div
+              class="modifier"
+              class:changed={Math.floor((oldAbilityScores[ability] - 10) / 2) !=
+                Math.floor((newAbilityScores[ability] - 10) / 2)}
+            >
+              {`(+ ${Math.floor((newAbilityScores[ability] - 10) / 2)})`}
+            </div>
           </div>
         </div>
       </div>

@@ -112,7 +112,7 @@
 
   .bar {
     border-top: 2px solid #000;
-    grid-column: 1;
+    grid-column: 1 / 3;
     grid-row: 5;
   }
 
