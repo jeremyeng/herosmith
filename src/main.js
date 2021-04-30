@@ -1,5 +1,4 @@
 import LevelUp from "./LevelUp.svelte";
-import { libWrapper } from "./shim.js";
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {
