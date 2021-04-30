@@ -38,17 +38,7 @@ class LevelUpWindow extends Application {
   }
 }
 
-Hooks.once("ready", async function () {
-  const MODULE_ID = "herosmith";
-
-  // Prevent auto-creating features when updating class
-  libWrapper.register(
-    MODULE_ID,
-    "game.dnd5e.entities.Item5e.prototype._preUpdate",
-    async function () {},
-    "OVERRIDE"
-  );
-});
+Hooks.once("ready", async function () {});
 
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {
   const actor = game.actors.get(sheet.actor.id);

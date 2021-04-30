@@ -47,7 +47,7 @@
     cantripsAtLevel = ClassSpellProgression[className.toLowerCase()]["cantrips"][priorLevel];
     slotSpellsAtLevel = ClassSpellProgression[className.toLowerCase()]["slottedSpells"][priorLevel];
     hitDice = klass.data.data.hitDice;
-    initialHitPoints = actor.data.data.attributes.hp.value;
+    initialHitPoints = actor.data.data.attributes.hp.max;
     initialAbilities = Object.fromEntries(
       Object.entries(actor.data.data.abilities).map(([ability, data]) => [ability, data.value])
     );
@@ -162,12 +162,13 @@
     };
     let itemCreations = selectedSpells.flat().map((spell) => spell.data);
 
-    Promise.all([
-      actor.update(actorUpdates),
-      actor.addEmbeddedItems(await classFeatures, (prompt = false)),
-      klass.update(classUpdates),
-      actor.createEmbeddedDocuments("Item", itemCreations),
-    ]).then(() => closeWindow());
+    const features = await classFeatures;
+
+    await actor.addEmbeddedItems(features, (prompt = false));
+    await actor.createEmbeddedDocuments("Item", itemCreations);
+    await klass.update(classUpdates);
+    await actor.update(actorUpdates);
+    closeWindow();
   }
 </script>
 
