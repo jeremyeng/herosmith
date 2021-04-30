@@ -1,4 +1,5 @@
 import LevelUp from "./LevelUp.svelte";
+import { libWrapper } from "./shim.js";
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {
@@ -37,7 +38,17 @@ class LevelUpWindow extends Application {
   }
 }
 
-Hooks.on("ready", async function () {});
+Hooks.once("ready", async function () {
+  const MODULE_ID = "herosmith";
+
+  // Prevent auto-creating features when updating class
+  libWrapper.register(
+    MODULE_ID,
+    "game.dnd5e.entities.Item5e.prototype._preUpdate",
+    async function () {},
+    "OVERRIDE"
+  );
+});
 
 Hooks.on("renderActorSheet5eCharacter", async function (sheet, element, character) {
   const actor = game.actors.get(sheet.actor.id);

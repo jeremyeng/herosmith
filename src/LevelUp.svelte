@@ -65,11 +65,10 @@
 
   $: eligibleSubclasses = getEligibleSubclasses(className);
   $: chosenSubclassName = subclassName;
-  $: classFeatures = game.dnd5e.entities.Actor5e.loadClassFeatures({
+  $: classFeatures = actor.getClassFeatures({
     className,
     subclassName: chosenSubclassName,
     level,
-    priorLevel,
   });
   $: classSpells = getClassSpells({
     className,
@@ -165,6 +164,7 @@
 
     Promise.all([
       actor.update(actorUpdates),
+      actor.addEmbeddedItems(await classFeatures, (prompt = false)),
       klass.update(classUpdates),
       actor.createEmbeddedDocuments("Item", itemCreations),
     ]).then(() => closeWindow());
