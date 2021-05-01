@@ -65,14 +65,16 @@
 </script>
 
 {#each spells as spellsForLevel, i}
-  {#if spellsForLevel.length}
-    <SpellSection
-      spells={spellsForLevel}
-      spellLevel={i}
-      ownedSpells={ownedSpells[i]}
-      numSelectable={i === 0 ? numSelectableCantrips : numSelectableSlotSpells}
-      knowsAllSpells={i === 0 ? cantripsAtLevel === "all" : slotSpellsAtLevel === "all"}
-      bind:selected={selectedSpells[i]}
-    />
-  {/if}
+  <div>
+    {#if spellsForLevel.length}
+      <SpellSection
+        spells={spellsForLevel}
+        spellLevel={i}
+        ownedSpells={ownedSpells[i]}
+        numSelectable={i === 0 ? numSelectableCantrips : numSelectableSlotSpells}
+        knowsAllSpells={i === 0 ? cantripsAtLevel === "all" : slotSpellsAtLevel === "all"}
+        bind:selected={selectedSpells[i]}
+      />
+    {/if}
+  </div>
 {/each}

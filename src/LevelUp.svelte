@@ -237,17 +237,15 @@
 
     <!-- Spells -->
     {#if currentTab === "Spells"}
-      <div>
-        {#await classSpells then spells}
-          <SpellsTab
-            {spells}
-            {cantripsAtLevel}
-            {slotSpellsAtLevel}
-            {ownedSpells}
-            bind:selectedSpells
-          />
-        {/await}
-      </div>
+      {#await classSpells then spells}
+        <SpellsTab
+          {spells}
+          {cantripsAtLevel}
+          {slotSpellsAtLevel}
+          {ownedSpells}
+          bind:selectedSpells
+        />
+      {/await}
     {/if}
 
     <!-- Review Updates -->
