@@ -189,6 +189,7 @@
   </nav>
 
   <div>
+    <!-- Levels / Hit Points -->
     {#if currentTab === "Levels"}
       <LevelsTab
         {hitDice}
@@ -201,6 +202,7 @@
       />
     {/if}
 
+    <!-- Abilities -->
     {#if currentTab === "Abilities"}
       <AbilitiesTab {abilities} {initialAbilities} bind:numAbilityImprovementsAllowed>
         <p slot="message" style="color: green; font-weight: 600;">
