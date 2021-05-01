@@ -12,27 +12,33 @@
   export let klass;
   export let closeWindow;
 
+  // Initial derived properties
   let className;
   let subclassName;
   let priorLevel;
   let level;
   let spellcasterType;
-  let chosenSubclassName;
   let classFeatures;
   let classSpells;
   let cantripsAtLevel;
   let slotSpellsAtLevel;
   let hitDice;
-  let hitDieRollValue;
   let initialHitPoints;
+  let initialAbilities;
+  let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
+  let eligibleSubclasses = [];
+
+  // New properties to update from
+  let chosenSubclassName;
+  let hitDieRollValue;
   let newHitPoints;
   let abilities;
-  let initialAbilities;
-  let numAbilityImprovementsAllowed = 0;
-  let abilitiesMessage = "";
-  let eligibleSubclasses = [];
-  let ownedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
   let selectedSpells = [[], [], [], [], [], [], [], [], [], []]; // sorted by spell level
+  let numAbilityImprovementsAllowed = 0;
+
+  let abilitiesMessage = "";
+
+  // Navigation
   let tabs = ["Levels", "Abilities", "Features", "Spells", "Review"];
   let currentTab = "Levels";
 
