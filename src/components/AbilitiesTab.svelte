@@ -1,5 +1,5 @@
 <script>
-  import AbilityAbbreviations from "./abilityAbbreviations";
+  import AbilityAbbreviations from "data/abilityAbbreviations.js";
 
   export let abilities = {};
   export let initialAbilities = {};

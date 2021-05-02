@@ -1,14 +1,18 @@
 <script>
-  import Item from "./Item.svelte";
-  import SpellsTab from "./SpellsTab.svelte";
-  import ClassSpellsLists from "./classSpells";
-  import ClassSpellProgression from "./classSpellProgression";
-  import SpellSlotsTable from "./spellSlotsTable";
-  import ClassFeatures from "./classFeatures";
-  import AbilitiesTab from "./AbilitiesTab.svelte";
+  // Components
+  import Item from "components/Item.svelte";
+  import SpellsTab from "components/SpellsTab.svelte";
+  import AbilitiesTab from "components/AbilitiesTab.svelte";
+  import ReviewTab from "components/ReviewTab.svelte";
+  import LevelsTab from "components/LevelsTab.svelte";
+
+  // Data
+  import ClassFeatures from "data/classFeatures.js";
+  import ClassSpellsLists from "data/classSpells.js";
+  import ClassSpellProgression from "data/classSpellProgression.js";
+  import SpellSlotsTable from "data/spellSlotsTable.js";
+
   import { onDestroy } from "svelte";
-  import ReviewTab from "./ReviewTab.svelte";
-  import LevelsTab from "./LevelsTab.svelte";
 
   export let actor;
   export let klass;

@@ -1,5 +1,5 @@
 <script>
-  import Item from "./Item.svelte";
+  import Item from "components/Item.svelte";
 
   export let handleApplyUpdates;
   export let initialHitPoints;

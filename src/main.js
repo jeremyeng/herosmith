@@ -1,4 +1,4 @@
-import LevelUp from "./LevelUp.svelte";
+import LevelUp from "components/LevelUp.svelte";
 
 class LevelUpWindow extends Application {
   constructor(actorId, classId) {

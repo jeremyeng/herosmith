@@ -4,6 +4,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
+import alias from "@rollup/plugin-alias";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -46,6 +47,16 @@ export default {
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: "bundle.css" }),
+
+    // Aliases for path resolution
+    alias({
+      resolve: [".svelte", ".js"], //optional, by default this will just look for .js files or folders
+      entries: [
+        { find: "components", replacement: "src/components" },
+        { find: "data", replacement: "src/data" },
+        { find: "utils", replacement: "src/utils" },
+      ],
+    }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In

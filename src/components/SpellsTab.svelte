@@ -1,5 +1,5 @@
 <script>
-  import SpellSection from "./SpellSection.svelte";
+  import SpellSection from "components/SpellSection.svelte";
 
   export let spells = [];
   export let ownedSpells = [[], [], [], [], [], [], [], [], [], []];

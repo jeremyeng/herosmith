@@ -1,7 +1,7 @@
 <script>
   import { slide } from "svelte/transition";
   import { sineInOut } from "svelte/easing";
-  import Item from "./Item.svelte";
+  import Item from "components/Item.svelte";
 
   export let selected = [];
   export let spells = [];
