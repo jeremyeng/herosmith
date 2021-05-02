@@ -3,6 +3,8 @@
   import SpellsTab from "./SpellsTab.svelte";
   import ClassSpellsLists from "./classSpells";
   import ClassSpellProgression from "./classSpellProgression";
+  import SpellSlotsTable from "./spellSlotsTable";
+  import ClassFeatures from "./classFeatures";
   import AbilitiesTab from "./AbilitiesTab.svelte";
   import { onDestroy } from "svelte";
   import ReviewTab from "./ReviewTab.svelte";
@@ -90,7 +92,7 @@
   $: console.log(`Herosmith | Current Tab changed to ${currentTab}`);
 
   function getEligibleSubclasses(className) {
-    const subclassData = CONFIG.DND5E.classFeatures[className.toLowerCase()]["subclasses"];
+    const subclassData = ClassFeatures[className.toLowerCase()]["subclasses"];
     let subclasses = [];
     for (const subclass in subclassData) {
       const subclassFeatures = subclassData[subclass]["features"];
@@ -114,13 +116,13 @@
 
     switch (spellcasterType) {
       case "full":
-        spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[priorLevel].length;
+        spellcastingLevel = SpellSlotsTable[priorLevel].length;
         break;
       case "half":
-        spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 2.0)].length;
+        spellcastingLevel = SpellSlotsTable[Math.ceil(priorLevel / 2.0)].length;
         break;
       case "third":
-        spellcastingLevel = CONFIG.DND5E.SPELL_SLOT_TABLE[Math.ceil(priorLevel / 3.0)].length;
+        spellcastingLevel = SpellSlotsTable[Math.ceil(priorLevel / 3.0)].length;
         break;
       case "pact":
         break;

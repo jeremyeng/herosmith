@@ -1,15 +1,16 @@
 <script>
+  import AbilityAbbreviations from "./abilityAbbreviations";
+
   export let abilities = {};
   export let initialAbilities = {};
   export let numAbilityImprovementsAllowed = 0;
 
-  let abbrToLabelMap = CONFIG.DND5E.abilities;
   let abilityDescriptionMap;
   let currentAbility;
   let description;
 
   $: abilityDescriptionMap = Object.fromEntries(
-    Object.entries(abbrToLabelMap).map(([abbr, label]) => [
+    Object.entries(AbilityAbbreviations).map(([abbr, label]) => [
       abbr,
       fetch(
         `modules/herosmith/templates/ability-descriptions/${label.toLowerCase()}.html`
@@ -47,7 +48,7 @@
           currentAbility = ability;
         }}
       >
-        <div class="label">{abbrToLabelMap[ability]}</div>
+        <div class="label">{AbilityAbbreviations[ability]}</div>
         <div class="value-bar">
           <button
             disabled={initialAbilities[ability] === value}
