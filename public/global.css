@@ -31,6 +31,35 @@
   font-size: 16px;
 }
 
+.character-creation-window h1,
+.character-creation-window h2,
+.character-creation-window h3,
+.character-creation-window h4,
+.character-creation-window h5,
+.character-creation-window h6 {
+  font-family: "Modesto Condensed", "Palatino Linotype", serif;
+  letter-spacing: 0.03rem;
+}
+
+.character-creation-window h1 {
+  font-size: 36px;
+}
+.character-creation-window h2 {
+  font-size: 30px;
+}
+.character-creation-window h3 {
+  font-size: 24px;
+}
+.character-creation-window h4 {
+  font-size: 20px;
+}
+.character-creation-window h5 {
+  font-size: 18px;
+}
+.character-creation-window h6 {
+  font-size: 16px;
+}
+
 .header-herosmith-button {
   margin: 4px;
 }

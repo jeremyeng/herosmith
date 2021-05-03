@@ -44,7 +44,7 @@ class CharacterCreationWindow extends Application {
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      template: `modules/herosmith/templates/level-up-window.html`,
+      template: `modules/herosmith/templates/character-creation-window.html`,
       tabs: [{ navSelector: ".tabs", contentSelector: "form", initial: "features" }],
       width: 720,
       height: 650,

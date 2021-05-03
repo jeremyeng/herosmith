@@ -3,6 +3,7 @@
   import { sineOut } from "svelte/easing";
 
   export let item;
+  export let highlightText = false;
   $: itemChatData = item.getChatData();
 
   let expanded = false;
@@ -13,10 +14,14 @@
   <div class="row" on:click={() => (expanded = !expanded)}>
     <img class="image" src={item.img} alt={`${item.name} icon`} />
     <h4 class="name">{item.name}</h4>
+    <slot name="label" />
   </div>
   {#if expanded}
     <div class="summary" transition:slide|local={{ duration: 200, easing: sineOut }}>
-      {@html itemChatData.description.value}
+      <div class:highlight-text={highlightText}>
+        {@html itemChatData.description.value}
+      </div>
+      <slot name="additional-text" />
       {#each itemChatData.properties as property}
         <span class="tag">{@html property}</span>
       {/each}
@@ -73,5 +78,9 @@
     border: 1px solid #999;
     border-radius: 3px;
     background: rgba(0, 0, 0, 0.05);
+  }
+
+  .highlight-text {
+    color: green;
   }
 </style>
