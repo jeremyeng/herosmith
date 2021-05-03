@@ -7,12 +7,12 @@
 
 <div>
   <h2>Races</h2>
-  {#each Object.entries(RACES) as [raceUuid, raceData]}
-    {#await fromUuid(raceUuid) then race}
+  {#each Object.values(RACES) as raceData}
+    {#await fromUuid(raceData.uuid) then race}
       <h3>{race.name}</h3>
-      {#if raceData["subraces"].length}
-        {#each raceData["subraces"] as subraceUuid}
-          {#await fromUuid(subraceUuid) then subrace}
+      {#if Object.values(raceData.subraces).length}
+        {#each Object.values(raceData.subraces) as subraceData}
+          {#await fromUuid(subraceData.uuid) then subrace}
             <Item item={subrace} highlightText={true}>
               <input slot="input" type="radio" value={subrace.name} bind:group={selected} />
               <div slot="additional-text">
