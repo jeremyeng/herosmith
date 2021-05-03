@@ -9,7 +9,7 @@
 </script>
 
 <div class="item">
-  <slot />
+  <slot name="input" />
   <div class="row" on:click={() => (expanded = !expanded)}>
     <img class="image" src={item.img} alt={`${item.name} icon`} />
     <h4 class="name">{item.name}</h4>

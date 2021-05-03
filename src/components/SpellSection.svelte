@@ -37,16 +37,18 @@
     {:else}
       {#each spells as spell}
         <Item item={spell}>
-          {#if ownedSpells.some((ownedSpell) => ownedSpell.name === spell.name)}
-            <input type="checkbox" disabled checked />
-          {:else}
-            <input
-              type="checkbox"
-              value={spell}
-              bind:group={selected}
-              disabled={selected.indexOf(spell) < 0 && numSelectable === 0}
-            />
-          {/if}
+          <div slot="input">
+            {#if ownedSpells.some((ownedSpell) => ownedSpell.name === spell.name)}
+              <input type="checkbox" disabled checked />
+            {:else}
+              <input
+                type="checkbox"
+                value={spell}
+                bind:group={selected}
+                disabled={selected.indexOf(spell) < 0 && numSelectable === 0}
+              />
+            {/if}
+          </div>
         </Item>
       {/each}
     {/if}
