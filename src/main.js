@@ -69,9 +69,9 @@ class CharacterCreationWindow extends Application {
 Hooks.once("ready", async function () {});
 
 // This hooks onto the rendering of the Actor Directory to show the button
-Hooks.on("renderActorDirectory", () => {
+Hooks.on("renderActorDirectory", async function () {
   console.log(`Herosmith | Adding actors directory button`);
-  $(".directory-header").first().prepend(
+  $("section[id='actors'] .directory-header").first().prepend(
     `<div class="flexrow">
       <button class='header-herosmith-button'><i class='fas fa-hammer'></i>Create Character</button>
      </div>`
