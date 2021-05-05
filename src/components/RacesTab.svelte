@@ -1,7 +1,7 @@
 <script>
   import RACES from "data/races.js";
   import Item from "components/Item.svelte";
-  import { merge } from "lodash";
+  import { mergeWith, isArray } from "lodash";
 
   export let selectedRaceData = {};
 
@@ -9,13 +9,21 @@
   let selectedSubraceUuid = "";
 
   $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
-  $: if (selectedRaceUuid.length) selectedRaceData = merge({}, RACES[selectedRaceUuid].data);
+  $: if (selectedRaceUuid.length)
+    selectedRaceData = mergeWith({}, RACES[selectedRaceUuid].data, customizer);
   $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
-    selectedRaceData = merge(
+    selectedRaceData = mergeWith(
       {},
       RACES[selectedRaceUuid].data,
-      RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data
+      RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data,
+      customizer
     );
+
+  function customizer(objValue, srcValue) {
+    if (isArray(objValue)) {
+      return objValue.concat(srcValue);
+    }
+  }
 </script>
 
 <div>
