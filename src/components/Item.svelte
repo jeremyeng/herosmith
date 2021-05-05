@@ -4,9 +4,9 @@
 
   export let item;
   export let highlightText = false;
-  $: itemChatData = item.getChatData();
+  export let expanded = false;
 
-  let expanded = false;
+  $: itemChatData = item.getChatData();
 </script>
 
 <div class="item">

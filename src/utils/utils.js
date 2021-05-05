@@ -1,3 +1,10 @@
+export function capitalize(text) {
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(" ");
+}
 function nameIntersection(arr1, arr2, arr3) {
   return arr1
     .filter((a) => arr2.some((b) => a.name === b.name))

@@ -1,38 +1,70 @@
 <script>
   import RACES from "data/races.js";
   import Item from "components/Item.svelte";
+  import { merge } from "lodash";
 
-  export let selected = "";
+  export let selectedRaceData = {};
+
+  let selectedRaceUuid = "";
+  let selectedSubraceUuid = "";
+
+  $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
+  $: if (selectedRaceUuid.length) selectedRaceData = merge({}, RACES[selectedRaceUuid].data);
+  $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
+    selectedRaceData = merge(
+      {},
+      RACES[selectedRaceUuid].data,
+      RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data
+    );
 </script>
 
 <div>
   <h2>Races</h2>
-  {#each Object.values(RACES) as raceData}
-    {#await fromUuid(raceData.uuid) then race}
-      <h3>{race.name}</h3>
-      {#if Object.values(raceData.subraces).length}
-        {#each Object.values(raceData.subraces) as subraceData}
-          {#await fromUuid(subraceData.uuid) then subrace}
-            <Item item={subrace} highlightText={true}>
-              <input slot="input" type="radio" value={subrace.name} bind:group={selected} />
-              <div slot="additional-text">
-                {@html race.getChatData().description.value}
-              </div>
-            </Item>
+  <label
+    >Select Race:
+    <select bind:value={selectedRaceUuid}>
+      <option value="" />
+      {#each Object.keys(RACES) as raceUuid}
+        {#await fromUuid(raceUuid) then raceItem}
+          <option value={raceUuid}>{raceItem.name}</option>
+        {/await}
+      {/each}
+    </select>
+  </label>
+
+  {#if selectedRaceUuid in RACES}
+    {#await fromUuid(selectedRaceUuid) then raceItem}
+      <div class="item">
+        <Item item={raceItem} />
+      </div>
+    {/await}
+  {/if}
+
+  {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
+    <h2>Subrace</h2>
+    <label>
+      Select Subrace:
+      <select bind:value={selectedSubraceUuid}>
+        <option value="" />
+        {#each Object.keys(RACES[selectedRaceUuid].subraces) as subraceUuid}
+          {#await fromUuid(subraceUuid) then subraceItem}
+            <option value={subraceUuid}>{subraceItem.name}</option>
           {/await}
         {/each}
-      {:else}
-        <Item item={race}>
-          <input slot="input" type="radio" value={race.name} bind:group={selected} />
-        </Item>
-      {/if}
-    {/await}
-  {/each}
+      </select>
+    </label>
+    {#if selectedSubraceUuid in RACES[selectedRaceUuid].subraces}
+      {#await fromUuid(selectedSubraceUuid) then subraceItem}
+        <div class="item">
+          <Item item={subraceItem} />
+        </div>
+      {/await}
+    {/if}
+  {/if}
 </div>
 
 <style>
-  input[type="radio"] {
-    transform: scale(1.5);
-    margin-right: 10px;
+  .item {
+    margin-top: 10px;
   }
 </style>
