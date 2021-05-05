@@ -121,8 +121,10 @@ const RACES = {
     subraces: {
       // Lightfoot Halfling
       "Compendium.dnd5e.races.ZgYBjYYfiUstQD6f": {
-        abilities: {
-          cha: 1,
+        data: {
+          abilities: {
+            cha: 1,
+          },
           name: "Lightfoot Halfling",
         },
       },
