@@ -191,6 +191,34 @@ const RACES = {
       speed: 30,
       name: "Half-Elf",
     },
+    choices: [
+      {
+        name: "Increase 2 Other Ability Scores by 1",
+        choose: 2,
+        options: [
+          {
+            name: "Strength",
+            data: { abilities: { str: 1 } },
+          },
+          {
+            name: "Dexterity",
+            data: { abilities: { dex: 1 } },
+          },
+          {
+            name: "Wisdom",
+            data: { abilities: { wis: 1 } },
+          },
+          {
+            name: "Constitution",
+            data: { abilities: { con: 1 } },
+          },
+          {
+            name: "Intelligence",
+            data: { abilities: { int: 1 } },
+          },
+        ],
+      },
+    ],
   },
 
   // Half-Orc

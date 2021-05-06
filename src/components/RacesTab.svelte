@@ -42,13 +42,12 @@
     subraceDecisions = subraceChoices.map(() => {
       return {};
     });
-  $: console.log(raceDecisions);
 </script>
 
 <div>
   <h2>Races</h2>
-  <label
-    >Select Race:
+  <label>
+    <b>Select Race:</b>
     <select bind:value={selectedRaceUuid}>
       <option value="" />
       {#each Object.keys(RACES) as raceUuid}
@@ -81,7 +80,7 @@
   {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
     <h2>Subrace</h2>
     <label>
-      Select Subrace:
+      <b>Select Subrace:</b>
       <select bind:value={selectedSubraceUuid}>
         <option value="" />
         {#each Object.keys(RACES[selectedRaceUuid].subraces) as subraceUuid}
