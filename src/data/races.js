@@ -37,6 +37,26 @@ const RACES = {
       languages: ["common", "dwarvish"],
       weapon_proficiences: ["battleaxe", "handaxe", "light hammer", "warhammer"],
     },
+    choices: [
+      {
+        name: "Tool Proficiency",
+        choose: 1,
+        options: [
+          {
+            name: "Smith's Tools",
+            data: { tool_proficiencies: ["smith"] },
+          },
+          {
+            name: "Brewer's Supplies",
+            data: { tool_proficiencies: ["brewer"] },
+          },
+          {
+            name: "Mason's Tools",
+            data: { tool_proficiencies: ["mason"] },
+          },
+        ],
+      },
+    ],
   },
 
   // Elf

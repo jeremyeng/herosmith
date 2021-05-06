@@ -1,3 +1,11 @@
+import { isArray } from "lodash";
+
+export function mergeCustomizer(objValue, srcValue) {
+  if (isArray(objValue)) {
+    return objValue.concat(srcValue);
+  }
+}
+
 export function capitalize(text) {
   return text
     .toLowerCase()

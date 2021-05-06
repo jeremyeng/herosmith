@@ -1,7 +1,9 @@
 <script>
   import RACES from "data/races.js";
   import Item from "components/Item.svelte";
-  import { mergeWith, isArray } from "lodash";
+  import Choice from "components/Choice.svelte";
+  import { mergeWith } from "lodash";
+  import { mergeCustomizer } from "utils/utils.js";
 
   export let selectedRaceData = {};
 
@@ -10,20 +12,14 @@
 
   $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
   $: if (selectedRaceUuid.length)
-    selectedRaceData = mergeWith({}, RACES[selectedRaceUuid].data, customizer);
+    selectedRaceData = mergeWith({}, RACES[selectedRaceUuid].data, mergeCustomizer);
   $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
     selectedRaceData = mergeWith(
       {},
       RACES[selectedRaceUuid].data,
       RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data,
-      customizer
+      mergeCustomizer
     );
-
-  function customizer(objValue, srcValue) {
-    if (isArray(objValue)) {
-      return objValue.concat(srcValue);
-    }
-  }
 </script>
 
 <div>
@@ -46,6 +42,12 @@
         <Item item={raceItem} />
       </div>
     {/await}
+  {/if}
+
+  {#if selectedRaceUuid.length && RACES[selectedRaceUuid].choices}
+    {#each RACES[selectedRaceUuid].choices as choice}
+      <Choice {choice} bind:data={selectedRaceData} />
+    {/each}
   {/if}
 
   {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
