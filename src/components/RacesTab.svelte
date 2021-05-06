@@ -9,17 +9,40 @@
 
   let selectedRaceUuid = "";
   let selectedSubraceUuid = "";
-
   $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
   $: if (selectedRaceUuid.length)
-    selectedRaceData = mergeWith({}, RACES[selectedRaceUuid].data, mergeCustomizer);
+    selectedRaceData = mergeWith(
+      {},
+      RACES[selectedRaceUuid].data,
+      ...raceDecisions,
+      mergeCustomizer
+    );
   $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
     selectedRaceData = mergeWith(
       {},
       RACES[selectedRaceUuid].data,
       RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data,
+      ...raceDecisions,
+      ...subraceDecisions,
       mergeCustomizer
     );
+
+  let raceChoices = [];
+  let subraceChoices = [];
+  $: raceChoices = RACES?.[selectedRaceUuid]?.choices;
+  $: subraceChoices = RACES?.[selectedRaceUuid]?.subraces?.[selectedSubraceUuid]?.choices;
+
+  let raceDecisions = [];
+  let subraceDecisions = [];
+  $: if (raceChoices)
+    raceDecisions = raceChoices.map(() => {
+      return {};
+    });
+  $: if (subraceChoices)
+    subraceDecisions = subraceChoices.map(() => {
+      return {};
+    });
+  $: console.log(raceDecisions);
 </script>
 
 <div>
@@ -44,9 +67,14 @@
     {/await}
   {/if}
 
-  {#if selectedRaceUuid.length && RACES[selectedRaceUuid].choices}
-    {#each RACES[selectedRaceUuid].choices as choice}
-      <Choice {choice} bind:data={selectedRaceData} />
+  {#if raceChoices}
+    {#each raceChoices as choice, i}
+      <Choice
+        {choice}
+        on:decision={(event) => {
+          raceDecisions[i] = event.detail.data;
+        }}
+      />
     {/each}
   {/if}
 
@@ -72,6 +100,17 @@
     {/if}
   {/if}
 </div>
+
+{#if subraceChoices}
+  {#each subraceChoices as choice, i}
+    <Choice
+      {choice}
+      on:decision={(event) => {
+        subraceDecisions[i] = event.detail.data;
+      }}
+    />
+  {/each}
+{/if}
 
 <style>
   .item {

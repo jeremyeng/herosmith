@@ -70,6 +70,78 @@ const RACES = {
           weapon_proficiences: ["longsword", "shortsword", "shortbow", "longbow"],
           name: "High Elf",
         },
+        choices: [
+          {
+            name: "Extra Language",
+            choose: 1,
+            options: [
+              {
+                name: "Common",
+                data: { languages: ["common"] },
+              },
+              {
+                name: "Dwarvish",
+                data: { languages: ["dwarvish"] },
+              },
+              {
+                name: "Elvish",
+                data: { languages: ["elvish"] },
+              },
+              {
+                name: "Giant",
+                data: { languages: ["giant"] },
+              },
+              {
+                name: "Gnomish",
+                data: { languages: ["gnomish"] },
+              },
+              {
+                name: "Goblin",
+                data: { languages: ["goblin"] },
+              },
+              {
+                name: "Halfling",
+                data: { languages: ["halfling"] },
+              },
+              {
+                name: "Orc",
+                data: { languages: ["orc"] },
+              },
+              {
+                name: "Abyssal",
+                data: { languages: ["abyssal"] },
+              },
+              {
+                name: "Celestial",
+                data: { languages: ["celestial"] },
+              },
+              {
+                name: "Draconic",
+                data: { languages: ["draconic"] },
+              },
+              {
+                name: "Deep Speech",
+                data: { languages: ["deep"] },
+              },
+              {
+                name: "Infernal",
+                data: { languages: ["infernal"] },
+              },
+              {
+                name: "Primordial",
+                data: { languages: ["primordial"] },
+              },
+              {
+                name: "Sylvan",
+                data: { languages: ["sylvan"] },
+              },
+              {
+                name: "Undercommon",
+                data: { languages: ["undercommon"] },
+              },
+            ],
+          },
+        ],
       },
     },
     data: {

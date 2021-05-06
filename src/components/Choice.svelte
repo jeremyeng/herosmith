@@ -1,15 +1,23 @@
 <script>
-  export let data;
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let choice;
-  import { merge } from "lodash";
+
+  function makeDecision() {
+    dispatch("decision", {
+      data: optionData,
+    });
+  }
 
   let optionData = {};
-  $: data = merge({}, data, optionData);
 </script>
 
 <label>
   {choice.name}:
-  <select bind:value={optionData}>
+  <!-- svelte-ignore a11y-no-onchange -->
+  <select bind:value={optionData} on:change={makeDecision}>
     <option value="" />
     {#each choice.options as option}
       <option value={option.data}>{option.name}</option>
