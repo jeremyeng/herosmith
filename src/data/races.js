@@ -76,16 +76,8 @@ const RACES = {
             choose: 1,
             options: [
               {
-                name: "Common",
-                data: { languages: ["common"] },
-              },
-              {
                 name: "Dwarvish",
                 data: { languages: ["dwarvish"] },
-              },
-              {
-                name: "Elvish",
-                data: { languages: ["elvish"] },
               },
               {
                 name: "Giant",
