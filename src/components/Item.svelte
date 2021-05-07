@@ -46,7 +46,7 @@
     align-items: center;
     grid-column: 2;
     font-size: 16px;
-    margin: 0 0.5em;
+    margin: 0 0.5em 0 0;
   }
 
   .row:hover {
