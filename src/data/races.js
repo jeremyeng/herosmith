@@ -133,6 +133,53 @@ const RACES = {
               },
             ],
           },
+          {
+            name: "Cantrip",
+            choose: 1,
+            options: [
+              {
+                name: "Acid Splash",
+                data: { items: ["Compendium.dnd5e.spells.JLTQyqXEaJDrTXyW"] },
+              },
+              {
+                name: "Chill Touch",
+                data: { items: ["Compendium.dnd5e.spells.vrN18tbTw7io5MWd"] },
+              },
+              {
+                name: "Dancing Lights",
+                data: { items: ["Compendium.dnd5e.spells.CAxSzHWizrafT033"] },
+              },
+              { name: "Fire Bolt", data: { items: ["Compendium.dnd5e.spells.EOmsUcFQJTfG2oio"] } },
+              { name: "Light", data: { items: ["Compendium.dnd5e.spells.Bnn9Nzajixvow9xi"] } },
+              { name: "Mage Hand", data: { items: ["Compendium.dnd5e.spells.Utk1OQRwYkMkFRD3"] } },
+              { name: "Mending", data: { items: ["Compendium.dnd5e.spells.kjmjY0zlE6IEiQVL"] } },
+              { name: "Message", data: { items: ["Compendium.dnd5e.spells.icZokbgV1jIMpNCv"] } },
+              {
+                name: "Minor Illusion",
+                data: { items: ["Compendium.dnd5e.spells.oIzA2MEHwxhtQneU"] },
+              },
+              {
+                name: "Poison Spray",
+                data: { items: ["Compendium.dnd5e.spells.g2u9PYfqWQAyg9OI"] },
+              },
+              {
+                name: "Prestidigitation",
+                data: { items: ["Compendium.dnd5e.spells.udsLtG0BugXHR2JQ"] },
+              },
+              {
+                name: "Ray of Frost",
+                data: { items: ["Compendium.dnd5e.spells.ctW81uiX56xZR2c5"] },
+              },
+              {
+                name: "Shocking Grasp",
+                data: { items: ["Compendium.dnd5e.spells.XvbiNhNqXXIFisIy"] },
+              },
+              {
+                name: "True Strike",
+                data: { items: ["Compendium.dnd5e.spells.mGGlcLdggHwcL7MG"] },
+              },
+            ],
+          },
         ],
       },
     },
