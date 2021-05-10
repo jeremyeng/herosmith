@@ -21,24 +21,27 @@
 </script>
 
 {#if choice.choose === 1}
-  <label>
-    <b>{choice.name}:</b>
+  <div class="choice">
+    <label for={choice.name}>
+      <h3>{choice.name}</h3>
+    </label>
     <!-- svelte-ignore a11y-no-onchange -->
-    <select bind:value={optionData} on:change={makeDecision}>
+    <select id={choice.name} bind:value={optionData} on:change={makeDecision}>
       <option value="" />
       {#each choice.options as option}
         <option value={option.data}>{option.name}</option>
       {/each}
     </select>
-  </label>
+  </div>
 {:else if choice.choose > 1}
   <!-- svelte-ignore a11y-label-has-associated-control -->
   <!-- svelte-ignore a11y-no-onchange -->
-  <div class="checkboxes">
-    <span><b>{choice.name}:</b></span>
+  <div class="choice">
+    <h3>{choice.name}</h3>
     {#each choice.options as option}
-      <label class="option">
+      <div class="checkbox-option">
         <input
+          id={option.name}
           type="checkbox"
           value={option.data}
           disabled={selectedOptions.length >= choice.choose &&
@@ -46,19 +49,14 @@
           bind:group={selectedOptions}
           on:change={makeDecision}
         />
-        {option.name}
-      </label>
+        <label for={option.name}>{option.name}</label>
+      </div>
     {/each}
   </div>
 {/if}
 
 <style>
-  .checkboxes {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .option {
+  .checkbox-option {
     display: flex;
     align-items: center;
     margin-top: 5px;

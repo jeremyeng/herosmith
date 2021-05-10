@@ -45,10 +45,10 @@
 </script>
 
 <div>
-  <h2>Races</h2>
-  <label>
-    <b>Select Race:</b>
-    <select bind:value={selectedRaceUuid}>
+  <h2>Race</h2>
+  <section>
+    <label for="race"><h3>Select Race</h3></label>
+    <select id="race" bind:value={selectedRaceUuid}>
       <option value="" />
       {#each Object.keys(RACES) as raceUuid}
         {#await fromUuid(raceUuid) then raceItem}
@@ -56,32 +56,32 @@
         {/await}
       {/each}
     </select>
-  </label>
 
-  {#if selectedRaceUuid in RACES}
-    {#await fromUuid(selectedRaceUuid) then raceItem}
-      <div class="item">
-        <Item item={raceItem} />
-      </div>
-    {/await}
-  {/if}
+    {#if selectedRaceUuid in RACES}
+      {#await fromUuid(selectedRaceUuid) then raceItem}
+        <div class="item">
+          <Item item={raceItem} />
+        </div>
+      {/await}
+    {/if}
 
-  {#if raceChoices}
-    {#each raceChoices as choice, i}
-      <Choice
-        {choice}
-        on:decision={(event) => {
-          raceDecisions[i] = event.detail.data;
-        }}
-      />
-    {/each}
-  {/if}
+    {#if raceChoices}
+      {#each raceChoices as choice, i}
+        <Choice
+          {choice}
+          on:decision={(event) => {
+            raceDecisions[i] = event.detail.data;
+          }}
+        />
+      {/each}
+    {/if}
+  </section>
 
   {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
-    <h2>Subrace</h2>
-    <label>
-      <b>Select Subrace:</b>
-      <select bind:value={selectedSubraceUuid}>
+    <h2 class="subrace-header">Subrace</h2>
+    <section>
+      <label for="subrace"><h3>Select Subrace</h3></label>
+      <select id="subrace" bind:value={selectedSubraceUuid}>
         <option value="" />
         {#each Object.keys(RACES[selectedRaceUuid].subraces) as subraceUuid}
           {#await fromUuid(subraceUuid) then subraceItem}
@@ -89,30 +89,52 @@
           {/await}
         {/each}
       </select>
-    </label>
-    {#if selectedSubraceUuid in RACES[selectedRaceUuid].subraces}
-      {#await fromUuid(selectedSubraceUuid) then subraceItem}
-        <div class="item">
-          <Item item={subraceItem} />
+
+      {#if selectedSubraceUuid in RACES[selectedRaceUuid].subraces}
+        {#await fromUuid(selectedSubraceUuid) then subraceItem}
+          <div class="item">
+            <Item item={subraceItem} />
+          </div>
+        {/await}
+      {/if}
+
+      {#if subraceChoices}
+        <div class="choices">
+          {#each subraceChoices as choice, i}
+            <Choice
+              {choice}
+              on:decision={(event) => {
+                subraceDecisions[i] = event.detail.data;
+              }}
+            />
+            {#if "items" in subraceDecisions[i]}
+              {#each subraceDecisions[i].items as itemId}
+                {#await fromUuid(itemId) then item}
+                  <Item {item} />
+                {/await}
+              {/each}
+            {/if}
+          {/each}
         </div>
-      {/await}
-    {/if}
+      {/if}
+    </section>
   {/if}
 </div>
 
-{#if subraceChoices}
-  {#each subraceChoices as choice, i}
-    <Choice
-      {choice}
-      on:decision={(event) => {
-        subraceDecisions[i] = event.detail.data;
-      }}
-    />
-  {/each}
-{/if}
-
 <style>
+  section {
+    margin: 0 10px;
+  }
   .item {
     margin-top: 10px;
+  }
+  .choices {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-gap: 10px;
+  }
+
+  .subrace-header {
+    margin-top: 15px;
   }
 </style>
