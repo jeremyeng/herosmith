@@ -42,7 +42,7 @@
     grid-template-columns: min-content;
     align-items: center;
     margin-bottom: 10px;
-    width: 100%;
+    max-width: 360px;
     border: 2px solid transparent;
     border-radius: 5px;
     padding: 6px;
