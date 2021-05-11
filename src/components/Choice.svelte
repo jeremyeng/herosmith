@@ -34,8 +34,6 @@
     </select>
   </div>
 {:else if choice.choose > 1}
-  <!-- svelte-ignore a11y-label-has-associated-control -->
-  <!-- svelte-ignore a11y-no-onchange -->
   <div class="choice">
     <h3>{choice.name}</h3>
     {#each choice.options as option}
@@ -56,6 +54,9 @@
 {/if}
 
 <style>
+  .choice {
+    margin: 10px 0;
+  }
   .checkbox-option {
     display: flex;
     align-items: center;
