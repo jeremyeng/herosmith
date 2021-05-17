@@ -29,7 +29,7 @@
   .item {
     text-align: center;
     margin-bottom: 10px;
-    max-width: 12em;
+    width: 100%;
     border: 2px solid #c9c7b8;
     border-radius: 5px;
     padding: 6px;
