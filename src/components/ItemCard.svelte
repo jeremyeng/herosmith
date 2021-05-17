@@ -47,12 +47,13 @@
     border-radius: 5px;
     padding: 6px;
     box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
+    transition: transform 0.1s ease-in-out;
     transition: box-shadow 0.1s ease-in-out;
   }
 
   .item:not(.disabled):hover {
     cursor: pointer;
-    border: 2px solid #782e22;
+    transform: scale(1.025);
     box-shadow: 4px 4px 4px hsl(0deg 0% 0% / 60%);
   }
 
