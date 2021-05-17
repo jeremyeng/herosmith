@@ -1,5 +1,6 @@
 <script>
   import TextCard from "components/TextCard.svelte";
+  import ItemCard from "components/ItemCard.svelte";
   import { isEqual } from "lodash";
 
   export let data;
@@ -18,19 +19,36 @@
   </label>
   <div class="choice-grid">
     {#each choice.options as option}
-      <TextCard
-        text={option.name}
-        data={option.data}
-        selected={isOptionSelected(data, option.data)}
-        disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
-        on:selected={() => {
-          if (isOptionSelected(data, option.data)) {
-            data = data.filter((val) => !isEqual(val, option.data));
-          } else {
-            data = [...data, option.data];
-          }
-        }}
-      />
+      {#if option?.data?.items?.length === 1}
+        {#await fromUuid(option?.data?.items[0]) then item}
+          <ItemCard
+            {item}
+            selected={isOptionSelected(data, option.data)}
+            disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+            on:selected={() => {
+              if (isOptionSelected(data, option.data)) {
+                data = data.filter((val) => !isEqual(val, option.data));
+              } else {
+                data = [...data, option.data];
+              }
+            }}
+          />
+        {/await}
+      {:else}
+        <TextCard
+          text={option.name}
+          data={option.data}
+          selected={isOptionSelected(data, option.data)}
+          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          on:selected={() => {
+            if (isOptionSelected(data, option.data)) {
+              data = data.filter((val) => !isEqual(val, option.data));
+            } else {
+              data = [...data, option.data];
+            }
+          }}
+        />
+      {/if}
     {/each}
   </div>
 </div>
@@ -46,7 +64,7 @@
 
   .choice-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
   }
 </style>
