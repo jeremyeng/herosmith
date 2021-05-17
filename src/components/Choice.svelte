@@ -1,23 +1,16 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import { merge } from "lodash";
-
-  const dispatch = createEventDispatcher();
-
+  export let data;
   export let choice;
 
-  function makeDecision() {
-    const decisionData = merge({}, optionData, ...selectedOptions);
-    dispatch("decision", {
-      data: decisionData,
-    });
+  function defaultData() {
+    if (choice.choose > 1) {
+      return [];
+    } else {
+      return {};
+    }
   }
 
-  // For single selections
-  let optionData = {};
-
-  // For multiple selections
-  let selectedOptions = [];
+  $: data = data || defaultData();
 </script>
 
 {#if choice.choose === 1}
@@ -25,13 +18,16 @@
     <label for={choice.name}>
       <h3>{choice.name}</h3>
     </label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id={choice.name} bind:value={optionData} on:change={makeDecision}>
-      <option value="" />
+    <div class="radio">
       {#each choice.options as option}
-        <option value={option.data}>{option.name}</option>
+        <div class="radio-option">
+          <label for="">
+            <input type="radio" bind:group={data} value={option.data} />
+            {option.name}
+          </label>
+        </div>
       {/each}
-    </select>
+    </div>
   </div>
 {:else if choice.choose > 1}
   <div class="choice">
@@ -42,10 +38,8 @@
           id={option.name}
           type="checkbox"
           value={option.data}
-          disabled={selectedOptions.length >= choice.choose &&
-            selectedOptions.indexOf(option.data) < 0}
-          bind:group={selectedOptions}
-          on:change={makeDecision}
+          disabled={data.length >= choice.choose && data.indexOf(option.data) < 0}
+          bind:group={data}
         />
         <label for={option.name}>{option.name}</label>
       </div>
@@ -56,6 +50,15 @@
 <style>
   .choice {
     margin: 10px 0;
+  }
+
+  .radio {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .radio-option {
+    margin-top: 8px;
   }
   .checkbox-option {
     display: flex;

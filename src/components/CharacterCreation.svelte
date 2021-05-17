@@ -2,10 +2,22 @@
   import RacesTab from "components/RacesTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import { capitalize } from "utils/utils.js";
+  import { merge } from "lodash";
 
   export let closeWindow;
 
-  let selectedRaceData = {};
+  let data = {
+    race: {
+      uuid: "",
+      data: {},
+      decisionData: {},
+    },
+    subrace: {
+      uuid: "",
+      data: {},
+      decisionData: {},
+    },
+  };
 
   let tabs = ["Races", "Review"];
   let currentTab = "Races";
@@ -25,6 +37,14 @@
     });
 
     let actorData = {};
+    const selectedRaceData = merge(
+      {},
+      data.race.data,
+      data.subrace.data,
+      ...Object.values(data.race.decisionData).flat(),
+      ...Object.values(data.subrace.decisionData).flat()
+    );
+
     if (selectedRaceData.abilities) {
       for (const [ability, increase] of Object.entries(selectedRaceData.abilities)) {
         actorData[`data.abilities.${ability}.value`] =
@@ -32,19 +52,15 @@
       }
     }
 
-    if (selectedRaceData.speed) {
-      actorData["data.attributes.movement.walk"] = selectedRaceData.speed;
-    }
+    if (selectedRaceData.speed) actorData["data.attributes.movement.walk"] = selectedRaceData.speed;
 
-    if (selectedRaceData.size) {
-      actorData["data.traits.size"] = selectedRaceData.size;
-    }
-    if (selectedRaceData.name) {
-      actorData["data.details.race"] = selectedRaceData.name;
-    }
-    if (selectedRaceData.languages) {
+    if (selectedRaceData.size) actorData["data.traits.size"] = selectedRaceData.size;
+
+    if (selectedRaceData.name) actorData["data.details.race"] = selectedRaceData.name;
+
+    if (selectedRaceData.languages)
       actorData["data.traits.languages.value"] = selectedRaceData.languages;
-    }
+
     if (selectedRaceData.weapon_proficiences) {
       actorData[
         "data.traits.weaponProf.custom"
@@ -100,7 +116,7 @@
   </nav>
 
   {#if currentTab === "Races"}
-    <RacesTab bind:selectedRaceData />
+    <RacesTab bind:data />
   {/if}
 
   {#if currentTab === "Review"}

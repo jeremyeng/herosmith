@@ -5,43 +5,20 @@
   import { mergeWith } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
 
-  export let selectedRaceData = {};
+  export let data = {};
 
-  let selectedRaceUuid = "";
-  let selectedSubraceUuid = "";
-  $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
-  $: if (selectedRaceUuid.length)
-    selectedRaceData = mergeWith(
+  $: if (data.race.uuid.length && data.subrace.uuid in RACES[data.race.uuid].subraces) {
+    data.race.data = mergeWith(
       {},
-      RACES[selectedRaceUuid].data,
-      ...raceDecisions,
+      RACES[data.race.uuid].data,
+      RACES[data.race.uuid].subraces[data.subrace.uuid].data,
       mergeCustomizer
     );
-  $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
-    selectedRaceData = mergeWith(
-      {},
-      RACES[selectedRaceUuid].data,
-      RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data,
-      ...raceDecisions,
-      ...subraceDecisions,
-      mergeCustomizer
-    );
-
-  let raceChoices = [];
-  let subraceChoices = [];
-  $: raceChoices = RACES?.[selectedRaceUuid]?.choices;
-  $: subraceChoices = RACES?.[selectedRaceUuid]?.subraces?.[selectedSubraceUuid]?.choices;
-
-  let raceDecisions = [];
-  let subraceDecisions = [];
-  $: if (raceChoices)
-    raceDecisions = raceChoices.map(() => {
-      return {};
-    });
-  $: if (subraceChoices)
-    subraceDecisions = subraceChoices.map(() => {
-      return {};
-    });
+  } else if (data.race.uuid.length) {
+    data.race.data = mergeWith({}, RACES[data.race.uuid].data, mergeCustomizer);
+  } else {
+    data.subrace.uuid = "";
+  }
 </script>
 
 <div>
@@ -51,12 +28,17 @@
       {#await fromUuid(raceUuid) then raceItem}
         <ItemCard
           item={raceItem}
-          disabled={selectedRaceUuid.length && raceUuid !== selectedRaceUuid}
+          disabled={raceUuid !== data.race.uuid && data.race.uuid.length}
+          selected={raceUuid === data.race.uuid}
           on:selected={() => {
-            if (selectedRaceUuid === raceUuid) {
-              selectedRaceUuid = "";
+            if (data.race.uuid === raceUuid) {
+              data.race = {
+                uuid: "",
+                data: {},
+                decisionData: {},
+              };
             } else {
-              selectedRaceUuid = raceUuid;
+              data.race.uuid = raceUuid;
             }
           }}
         />
@@ -64,30 +46,30 @@
     {/each}
   </div>
 
-  {#if raceChoices}
-    {#each raceChoices as choice, i}
-      <Choice
-        {choice}
-        on:decision={(event) => {
-          raceDecisions[i] = event.detail.data;
-        }}
-      />
+  {#if RACES?.[data.race.uuid]?.choices}
+    {#each RACES?.[data.race.uuid]?.choices as choice, i}
+      <Choice {choice} bind:data={data.race.decisionData[i]} />
     {/each}
   {/if}
 
-  {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
+  {#if data.race.uuid.length && Object.keys(RACES[data.race.uuid].subraces).length}
     <h2 class="subrace-header">Subrace</h2>
     <div class="races">
-      {#each Object.keys(RACES[selectedRaceUuid].subraces) as subraceUuid}
+      {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
         {#await fromUuid(subraceUuid) then subraceItem}
           <ItemCard
             item={subraceItem}
-            disabled={selectedSubraceUuid.length && subraceUuid !== selectedSubraceUuid}
+            disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
+            selected={subraceUuid === data.subrace.uuid}
             on:selected={() => {
-              if (selectedSubraceUuid === subraceUuid) {
-                selectedSubraceUuid = "";
+              if (data.subrace.uuid === subraceUuid) {
+                data.subrace = {
+                  uuid: "",
+                  data: {},
+                  decisionData: {},
+                };
               } else {
-                selectedSubraceUuid = subraceUuid;
+                data.subrace.uuid = subraceUuid;
               }
             }}
           />
@@ -96,22 +78,10 @@
     </div>
   {/if}
 
-  {#if subraceChoices}
+  {#if RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices}
     <div class="choices">
-      {#each subraceChoices as choice, i}
-        <Choice
-          {choice}
-          on:decision={(event) => {
-            subraceDecisions[i] = event.detail.data;
-          }}
-        />
-        {#if "items" in subraceDecisions[i]}
-          {#each subraceDecisions[i].items as itemId}
-            {#await fromUuid(itemId) then item}
-              <ItemCard {item} />
-            {/await}
-          {/each}
-        {/if}
+      {#each RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices as choice, i}
+        <Choice {choice} bind:data={data.subrace.decisionData[i]} />
       {/each}
     </div>
   {/if}
