@@ -15,6 +15,7 @@
   export let selected = false;
   export let text = "";
   export let data = {};
+  $: console.log(disabled);
 </script>
 
 <div class="item" class:disabled class:selected on:click={select}>
@@ -34,8 +35,8 @@
     border-radius: 5px;
     padding: 6px;
     box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
-    transition: transform 0.1s ease-in-out;
-    transition: box-shadow 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    backface-visibility: hidden;
   }
 
   .item:not(.disabled):hover {

@@ -4,7 +4,8 @@
   import Choice from "components/Choice.svelte";
   import { mergeWith } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
-
+  import { fade } from "svelte/transition";
+  import { sineOut } from "svelte/easing";
   export let data = {};
 
   $: if (data.race.uuid.length && data.subrace.uuid in RACES[data.race.uuid].subraces) {
@@ -52,39 +53,43 @@
   </div>
 
   {#if RACES?.[data.race.uuid]?.choices}
-    {#each RACES?.[data.race.uuid]?.choices as choice, i}
-      <Choice {choice} bind:data={data.race.decisionData[i]} />
-    {/each}
-  {/if}
-
-  {#if data.race.uuid.length && Object.keys(RACES[data.race.uuid].subraces).length}
-    <h2 class="subrace-header">Subrace</h2>
-    <div class="races">
-      {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
-        {#await fromUuid(subraceUuid) then subraceItem}
-          <ItemCard
-            item={subraceItem}
-            disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
-            selected={subraceUuid === data.subrace.uuid}
-            on:selected={() => {
-              if (data.subrace.uuid === subraceUuid) {
-                data.subrace = {
-                  uuid: "",
-                  data: {},
-                  decisionData: {},
-                };
-              } else {
-                data.subrace.uuid = subraceUuid;
-              }
-            }}
-          />
-        {/await}
+    <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
+      {#each RACES?.[data.race.uuid]?.choices as choice, i}
+        <Choice {choice} bind:data={data.race.decisionData[i]} />
       {/each}
     </div>
   {/if}
 
+  {#if data.race.uuid.length && Object.keys(RACES[data.race.uuid].subraces).length}
+    <div class="subrace" transition:fade|local={{ duration: 200, easing: sineOut }}>
+      <h2 class="subrace-header">Subrace</h2>
+      <div class="races">
+        {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
+          {#await fromUuid(subraceUuid) then subraceItem}
+            <ItemCard
+              item={subraceItem}
+              disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
+              selected={subraceUuid === data.subrace.uuid}
+              on:selected={() => {
+                if (data.subrace.uuid === subraceUuid) {
+                  data.subrace = {
+                    uuid: "",
+                    data: {},
+                    decisionData: {},
+                  };
+                } else {
+                  data.subrace.uuid = subraceUuid;
+                }
+              }}
+            />
+          {/await}
+        {/each}
+      </div>
+    </div>
+  {/if}
+
   {#if RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices}
-    <div class="choices">
+    <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
       {#each RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices as choice, i}
         <Choice {choice} bind:data={data.subrace.decisionData[i]} />
       {/each}
