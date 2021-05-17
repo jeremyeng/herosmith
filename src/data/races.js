@@ -72,7 +72,7 @@ const RACES = {
         },
         choices: [
           {
-            name: "Extra Language",
+            name: "Extra Language Proficiency",
             choose: 1,
             options: [
               {
@@ -232,7 +232,7 @@ const RACES = {
     },
     choices: [
       {
-        name: "Increase 2 Other Ability Scores by 1",
+        name: "Ability Score Increase",
         choose: 2,
         options: [
           {
