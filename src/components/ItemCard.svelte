@@ -40,12 +40,10 @@
   .item {
     display: grid;
     grid-template-columns: min-content;
-    background: rgba(0, 0, 0, 0.05);
     border: 2px solid rgba(181, 179, 164, 0.4);
     align-items: center;
     margin-bottom: 10px;
     max-width: 360px;
-    border: 2px solid transparent;
     border-radius: 5px;
     padding: 6px;
     box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
