@@ -1,69 +1,52 @@
 <script>
+  import TextCard from "components/TextCard.svelte";
+  import { isEqual } from "lodash";
+
   export let data;
   export let choice;
 
-  function defaultData() {
-    if (choice.choose > 1) {
-      return [];
-    } else {
-      return {};
-    }
+  function isOptionSelected(selectedData, optData) {
+    return selectedData.some((val) => isEqual(val, optData));
   }
 
-  $: data = data || defaultData();
+  $: data = data || [];
 </script>
 
-{#if choice.choose === 1}
-  <div class="choice">
-    <label for={choice.name}>
-      <h3>{choice.name}</h3>
-    </label>
-    <div class="radio">
-      {#each choice.options as option}
-        <div class="radio-option">
-          <label for="">
-            <input type="radio" bind:group={data} value={option.data} />
-            {option.name}
-          </label>
-        </div>
-      {/each}
-    </div>
-  </div>
-{:else if choice.choose > 1}
-  <div class="choice">
+<div class="choice">
+  <label for={choice.name}>
     <h3>{choice.name}</h3>
+  </label>
+  <div class="choice-grid">
     {#each choice.options as option}
-      <div class="checkbox-option">
-        <input
-          id={option.name}
-          type="checkbox"
-          value={option.data}
-          disabled={data.length >= choice.choose && data.indexOf(option.data) < 0}
-          bind:group={data}
-        />
-        <label for={option.name}>{option.name}</label>
-      </div>
+      <TextCard
+        text={option.name}
+        data={option.data}
+        selected={isOptionSelected(data, option.data)}
+        disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+        on:selected={() => {
+          if (isOptionSelected(data, option.data)) {
+            data = data.filter((val) => !isEqual(val, option.data));
+          } else {
+            data = [...data, option.data];
+          }
+        }}
+      />
     {/each}
   </div>
-{/if}
+</div>
 
 <style>
   .choice {
-    margin: 10px 0;
+    margin: 2em 0;
   }
 
-  .radio {
-    display: flex;
-    flex-direction: column;
+  h3 {
+    font-weight: 600;
   }
 
-  .radio-option {
-    margin-top: 8px;
-  }
-  .checkbox-option {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    cursor: pointer;
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
   }
 </style>
