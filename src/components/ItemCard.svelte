@@ -40,6 +40,8 @@
   .item {
     display: grid;
     grid-template-columns: min-content;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(181, 179, 164, 0.4);
     align-items: center;
     margin-bottom: 10px;
     max-width: 360px;
