@@ -76,6 +76,22 @@ const RACES = {
             choose: 1,
             options: [
               {
+                name: "Abyssal",
+                data: { languages: ["abyssal"] },
+              },
+              {
+                name: "Celestial",
+                data: { languages: ["celestial"] },
+              },
+              {
+                name: "Deep Speech",
+                data: { languages: ["deep"] },
+              },
+              {
+                name: "Draconic",
+                data: { languages: ["draconic"] },
+              },
+              {
                 name: "Dwarvish",
                 data: { languages: ["dwarvish"] },
               },
@@ -96,28 +112,12 @@ const RACES = {
                 data: { languages: ["halfling"] },
               },
               {
-                name: "Orc",
-                data: { languages: ["orc"] },
-              },
-              {
-                name: "Abyssal",
-                data: { languages: ["abyssal"] },
-              },
-              {
-                name: "Celestial",
-                data: { languages: ["celestial"] },
-              },
-              {
-                name: "Draconic",
-                data: { languages: ["draconic"] },
-              },
-              {
-                name: "Deep Speech",
-                data: { languages: ["deep"] },
-              },
-              {
                 name: "Infernal",
                 data: { languages: ["infernal"] },
+              },
+              {
+                name: "Orc",
+                data: { languages: ["orc"] },
               },
               {
                 name: "Primordial",
