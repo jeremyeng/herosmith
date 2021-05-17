@@ -37,6 +37,11 @@
                 data: {},
                 decisionData: {},
               };
+              data.subrace = {
+                uuid: "",
+                data: {},
+                decisionData: {},
+              };
             } else {
               data.race.uuid = raceUuid;
             }
