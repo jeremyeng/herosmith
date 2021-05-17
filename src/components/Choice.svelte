@@ -15,7 +15,7 @@
 
 <div class="choice">
   <label for={choice.name}>
-    <h3>{choice.name}</h3>
+    <h3>{choice.name} (Pick {choice.choose})</h3>
   </label>
   <div class="choice-grid">
     {#each choice.options as option}
