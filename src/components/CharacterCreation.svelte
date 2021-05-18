@@ -2,7 +2,8 @@
   import RacesTab from "components/RacesTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import { capitalize } from "utils/utils.js";
-  import { merge } from "lodash";
+  import { mergeWith } from "lodash";
+  import { mergeCustomizer } from "utils/utils.js";
 
   export let closeWindow;
 
@@ -37,12 +38,13 @@
     });
 
     let actorData = {};
-    const selectedRaceData = merge(
+    const selectedRaceData = mergeWith(
       {},
       data.race.data,
       data.subrace.data,
       ...Object.values(data.race.decisionData).flat(),
-      ...Object.values(data.subrace.decisionData).flat()
+      ...Object.values(data.subrace.decisionData).flat(),
+      mergeCustomizer
     );
 
     if (selectedRaceData.abilities) {
@@ -57,6 +59,9 @@
     if (selectedRaceData.size) actorData["data.traits.size"] = selectedRaceData.size;
 
     if (selectedRaceData.name) actorData["data.details.race"] = selectedRaceData.name;
+
+    if (selectedRaceData?.token?.dimSight)
+      actorData["token.dimSight"] = selectedRaceData.token.dimSight;
 
     if (selectedRaceData.languages)
       actorData["data.traits.languages.value"] = selectedRaceData.languages;
@@ -95,6 +100,12 @@
       actorData["data.traits.toolProf.custom"] = custom
         .map((toolProf) => capitalize(toolProf))
         .join(";");
+    }
+
+    if (selectedRaceData.skill_proficiencies) {
+      for (const skill of selectedRaceData.skill_proficiencies) {
+        actorData[`data.skills.${skill}.value`] = 1;
+      }
     }
 
     await actor.update(actorData);

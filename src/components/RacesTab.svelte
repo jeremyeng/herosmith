@@ -2,24 +2,10 @@
   import RACES from "data/races.js";
   import ItemCard from "components/ItemCard.svelte";
   import Choice from "components/Choice.svelte";
-  import { mergeWith } from "lodash";
-  import { mergeCustomizer } from "utils/utils.js";
   import { fade } from "svelte/transition";
   import { sineOut } from "svelte/easing";
-  export let data = {};
 
-  $: if (data.race.uuid.length && data.subrace.uuid in RACES[data.race.uuid].subraces) {
-    data.race.data = mergeWith(
-      {},
-      RACES[data.race.uuid].data,
-      RACES[data.race.uuid].subraces[data.subrace.uuid].data,
-      mergeCustomizer
-    );
-  } else if (data.race.uuid.length) {
-    data.race.data = mergeWith({}, RACES[data.race.uuid].data, mergeCustomizer);
-  } else {
-    data.subrace.uuid = "";
-  }
+  export let data = {};
 </script>
 
 <div>
@@ -43,14 +29,18 @@
               decisionData: {},
             };
           } else {
-            data.race.uuid = raceUuid;
+            data.race = {
+              uuid: raceUuid,
+              data: RACES[raceUuid].data,
+              decisionData: {},
+            };
           }
         }}
       />
     {/each}
   </div>
 
-  {#if RACES?.[data.race.uuid]?.choices}
+  {#if RACES[data.race.uuid]?.choices}
     <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
       {#each RACES?.[data.race.uuid]?.choices as choice, i}
         <Choice {choice} bind:data={data.race.decisionData[i]} />
@@ -58,7 +48,7 @@
     </div>
   {/if}
 
-  {#if data.race.uuid.length && Object.keys(RACES[data.race.uuid].subraces).length}
+  {#if RACES[data.race.uuid]?.subraces}
     <div class="subrace" transition:fade|local={{ duration: 200, easing: sineOut }}>
       <h2 class="subrace-header">Subrace</h2>
       <div class="races">
@@ -75,7 +65,11 @@
                   decisionData: {},
                 };
               } else {
-                data.subrace.uuid = subraceUuid;
+                data.subrace = {
+                  uuid: subraceUuid,
+                  data: RACES[data.race.uuid].subraces[subraceUuid].data,
+                  decisionData: {},
+                };
               }
             }}
           />
@@ -84,7 +78,7 @@
     </div>
   {/if}
 
-  {#if RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices}
+  {#if RACES[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices}
     <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
       {#each RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices as choice, i}
         <Choice {choice} bind:data={data.subrace.decisionData[i]} />
