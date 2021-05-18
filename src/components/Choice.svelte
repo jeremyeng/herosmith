@@ -20,20 +20,18 @@
   <div class="choice-grid">
     {#each choice.options as option}
       {#if option?.data?.items?.length === 1}
-        {#await fromUuid(option?.data?.items[0]) then item}
-          <ItemCard
-            {item}
-            selected={isOptionSelected(data, option.data)}
-            disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
-            on:selected={() => {
-              if (isOptionSelected(data, option.data)) {
-                data = data.filter((val) => !isEqual(val, option.data));
-              } else {
-                data = [...data, option.data];
-              }
-            }}
-          />
-        {/await}
+        <ItemCard
+          uuid={option?.data?.items[0]}
+          selected={isOptionSelected(data, option.data)}
+          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          on:selected={() => {
+            if (isOptionSelected(data, option.data)) {
+              data = data.filter((val) => !isEqual(val, option.data));
+            } else {
+              data = [...data, option.data];
+            }
+          }}
+        />
       {:else}
         <TextCard
           text={option.name}

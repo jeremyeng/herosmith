@@ -26,29 +26,27 @@
   <h2>Race</h2>
   <div class="races">
     {#each Object.keys(RACES) as raceUuid}
-      {#await fromUuid(raceUuid) then raceItem}
-        <ItemCard
-          item={raceItem}
-          disabled={raceUuid !== data.race.uuid && data.race.uuid.length}
-          selected={raceUuid === data.race.uuid}
-          on:selected={() => {
-            if (data.race.uuid === raceUuid) {
-              data.race = {
-                uuid: "",
-                data: {},
-                decisionData: {},
-              };
-              data.subrace = {
-                uuid: "",
-                data: {},
-                decisionData: {},
-              };
-            } else {
-              data.race.uuid = raceUuid;
-            }
-          }}
-        />
-      {/await}
+      <ItemCard
+        uuid={raceUuid}
+        disabled={raceUuid !== data.race.uuid && data.race.uuid.length}
+        selected={raceUuid === data.race.uuid}
+        on:selected={() => {
+          if (data.race.uuid === raceUuid) {
+            data.race = {
+              uuid: "",
+              data: {},
+              decisionData: {},
+            };
+            data.subrace = {
+              uuid: "",
+              data: {},
+              decisionData: {},
+            };
+          } else {
+            data.race.uuid = raceUuid;
+          }
+        }}
+      />
     {/each}
   </div>
 
@@ -65,24 +63,22 @@
       <h2 class="subrace-header">Subrace</h2>
       <div class="races">
         {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
-          {#await fromUuid(subraceUuid) then subraceItem}
-            <ItemCard
-              item={subraceItem}
-              disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
-              selected={subraceUuid === data.subrace.uuid}
-              on:selected={() => {
-                if (data.subrace.uuid === subraceUuid) {
-                  data.subrace = {
-                    uuid: "",
-                    data: {},
-                    decisionData: {},
-                  };
-                } else {
-                  data.subrace.uuid = subraceUuid;
-                }
-              }}
-            />
-          {/await}
+          <ItemCard
+            uuid={subraceUuid}
+            disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
+            selected={subraceUuid === data.subrace.uuid}
+            on:selected={() => {
+              if (data.subrace.uuid === subraceUuid) {
+                data.subrace = {
+                  uuid: "",
+                  data: {},
+                  decisionData: {},
+                };
+              } else {
+                data.subrace.uuid = subraceUuid;
+              }
+            }}
+          />
         {/each}
       </div>
     </div>

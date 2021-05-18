@@ -7,29 +7,31 @@
     if (!disabled && !event.target.className.includes("fa-info-circle")) {
       selected = !selected;
       dispatch("selected", {
-        item,
+        uuid,
       });
     }
   }
   export let disabled = false;
   export let selected = false;
-  export let item;
+  export let uuid;
 </script>
 
 <div class="item" class:disabled class:selected on:click={select}>
-  <div class="row">
-    <div class="select-area">
-      <img class="image" src={item.img} alt={`${item.name} icon`} />
-      <h4 class="name">{item.name}</h4>
+  {#await fromUuid(uuid) then item}
+    <div class="row">
+      <div class="select-area">
+        <img class="image" src={item.img} alt={`${item.name} icon`} />
+        <h4 class="name">{item.name}</h4>
+      </div>
+      <i
+        class:more-info={!disabled}
+        on:click={() => {
+          if (!disabled) new game.dnd5e.applications.ItemSheet5e(item).render(true);
+        }}
+        class="fas fa-info-circle"
+      />
     </div>
-    <i
-      class:more-info={!disabled}
-      on:click={() => {
-        if (!disabled) new game.dnd5e.applications.ItemSheet5e(item).render(true);
-      }}
-      class="fas fa-info-circle"
-    />
-  </div>
+  {/await}
 </div>
 
 <style>
