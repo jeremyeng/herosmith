@@ -49,7 +49,8 @@
     border-radius: 5px;
     padding: 6px;
     box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
-    transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.1s ease-in-out,
+      box-shadow 0.1s ease-in-out;
     backface-visibility: hidden;
   }
 
