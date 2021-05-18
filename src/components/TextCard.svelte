@@ -15,7 +15,6 @@
   export let selected = false;
   export let text = "";
   export let data = {};
-  $: console.log(disabled);
 </script>
 
 <div class="item" class:disabled class:selected on:click={select}>
