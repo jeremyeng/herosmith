@@ -1,65 +1,68 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import { merge } from "lodash";
+  import TextCard from "components/TextCard.svelte";
+  import ItemCard from "components/ItemCard.svelte";
+  import { isEqual } from "lodash";
 
-  const dispatch = createEventDispatcher();
-
+  export let data;
   export let choice;
 
-  function makeDecision() {
-    const decisionData = merge({}, optionData, ...selectedOptions);
-    dispatch("decision", {
-      data: decisionData,
-    });
+  function isOptionSelected(selectedData, optData) {
+    return selectedData.some((val) => isEqual(val, optData));
   }
 
-  // For single selections
-  let optionData = {};
-
-  // For multiple selections
-  let selectedOptions = [];
+  $: data = data || [];
 </script>
 
-{#if choice.choose === 1}
-  <div class="choice">
-    <label for={choice.name}>
-      <h3>{choice.name}</h3>
-    </label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id={choice.name} bind:value={optionData} on:change={makeDecision}>
-      <option value="" />
-      {#each choice.options as option}
-        <option value={option.data}>{option.name}</option>
-      {/each}
-    </select>
-  </div>
-{:else if choice.choose > 1}
-  <!-- svelte-ignore a11y-label-has-associated-control -->
-  <!-- svelte-ignore a11y-no-onchange -->
-  <div class="choice">
-    <h3>{choice.name}</h3>
+<div class="choice">
+  <label for={choice.name}>
+    <h3>{choice.name} (Pick {choice.choose})</h3>
+  </label>
+  <div class="choice-grid">
     {#each choice.options as option}
-      <div class="checkbox-option">
-        <input
-          id={option.name}
-          type="checkbox"
-          value={option.data}
-          disabled={selectedOptions.length >= choice.choose &&
-            selectedOptions.indexOf(option.data) < 0}
-          bind:group={selectedOptions}
-          on:change={makeDecision}
+      {#if option?.data?.items?.length === 1}
+        <ItemCard
+          uuid={option?.data?.items[0]}
+          selected={isOptionSelected(data, option.data)}
+          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          on:selected={() => {
+            if (isOptionSelected(data, option.data)) {
+              data = data.filter((val) => !isEqual(val, option.data));
+            } else {
+              data = [...data, option.data];
+            }
+          }}
         />
-        <label for={option.name}>{option.name}</label>
-      </div>
+      {:else}
+        <TextCard
+          text={option.name}
+          data={option.data}
+          selected={isOptionSelected(data, option.data)}
+          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          on:selected={() => {
+            if (isOptionSelected(data, option.data)) {
+              data = data.filter((val) => !isEqual(val, option.data));
+            } else {
+              data = [...data, option.data];
+            }
+          }}
+        />
+      {/if}
     {/each}
   </div>
-{/if}
+</div>
 
 <style>
-  .checkbox-option {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    cursor: pointer;
+  .choice {
+    margin: 2em 0;
+  }
+
+  h3 {
+    font-weight: 600;
+  }
+
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
   }
 </style>

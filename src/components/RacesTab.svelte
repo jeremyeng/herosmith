@@ -1,140 +1,100 @@
 <script>
   import RACES from "data/races.js";
-  import Item from "components/Item.svelte";
+  import ItemCard from "components/ItemCard.svelte";
   import Choice from "components/Choice.svelte";
-  import { mergeWith } from "lodash";
-  import { mergeCustomizer } from "utils/utils.js";
+  import { fade } from "svelte/transition";
+  import { sineOut } from "svelte/easing";
 
-  export let selectedRaceData = {};
-
-  let selectedRaceUuid = "";
-  let selectedSubraceUuid = "";
-  $: if (selectedRaceUuid === "") selectedSubraceUuid = "";
-  $: if (selectedRaceUuid.length)
-    selectedRaceData = mergeWith(
-      {},
-      RACES[selectedRaceUuid].data,
-      ...raceDecisions,
-      mergeCustomizer
-    );
-  $: if (selectedRaceUuid.length && selectedSubraceUuid in RACES[selectedRaceUuid].subraces)
-    selectedRaceData = mergeWith(
-      {},
-      RACES[selectedRaceUuid].data,
-      RACES[selectedRaceUuid].subraces[selectedSubraceUuid].data,
-      ...raceDecisions,
-      ...subraceDecisions,
-      mergeCustomizer
-    );
-
-  let raceChoices = [];
-  let subraceChoices = [];
-  $: raceChoices = RACES?.[selectedRaceUuid]?.choices;
-  $: subraceChoices = RACES?.[selectedRaceUuid]?.subraces?.[selectedSubraceUuid]?.choices;
-
-  let raceDecisions = [];
-  let subraceDecisions = [];
-  $: if (raceChoices)
-    raceDecisions = raceChoices.map(() => {
-      return {};
-    });
-  $: if (subraceChoices)
-    subraceDecisions = subraceChoices.map(() => {
-      return {};
-    });
+  export let data = {};
 </script>
 
 <div>
   <h2>Race</h2>
-  <section>
-    <label for="race"><h3>Select Race</h3></label>
-    <select id="race" bind:value={selectedRaceUuid}>
-      <option value="" />
-      {#each Object.keys(RACES) as raceUuid}
-        {#await fromUuid(raceUuid) then raceItem}
-          <option value={raceUuid}>{raceItem.name}</option>
-        {/await}
+  <div class="races">
+    {#each Object.keys(RACES) as raceUuid}
+      <ItemCard
+        uuid={raceUuid}
+        disabled={raceUuid !== data.race.uuid && data.race.uuid.length}
+        selected={raceUuid === data.race.uuid}
+        on:selected={() => {
+          if (data.race.uuid === raceUuid) {
+            data.race = {
+              uuid: "",
+              data: {},
+              decisionData: {},
+            };
+            data.subrace = {
+              uuid: "",
+              data: {},
+              decisionData: {},
+            };
+          } else {
+            data.race = {
+              uuid: raceUuid,
+              data: RACES[raceUuid].data,
+              decisionData: {},
+            };
+          }
+        }}
+      />
+    {/each}
+  </div>
+
+  {#if RACES[data.race.uuid]?.choices}
+    <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
+      {#each RACES?.[data.race.uuid]?.choices as choice, i}
+        <Choice {choice} bind:data={data.race.decisionData[i]} />
       {/each}
-    </select>
+    </div>
+  {/if}
 
-    {#if selectedRaceUuid in RACES}
-      {#await fromUuid(selectedRaceUuid) then raceItem}
-        <div class="item">
-          <Item item={raceItem} />
-        </div>
-      {/await}
-    {/if}
-
-    {#if raceChoices}
-      {#each raceChoices as choice, i}
-        <Choice
-          {choice}
-          on:decision={(event) => {
-            raceDecisions[i] = event.detail.data;
-          }}
-        />
-      {/each}
-    {/if}
-  </section>
-
-  {#if selectedRaceUuid.length && Object.keys(RACES[selectedRaceUuid].subraces).length}
-    <h2 class="subrace-header">Subrace</h2>
-    <section>
-      <label for="subrace"><h3>Select Subrace</h3></label>
-      <select id="subrace" bind:value={selectedSubraceUuid}>
-        <option value="" />
-        {#each Object.keys(RACES[selectedRaceUuid].subraces) as subraceUuid}
-          {#await fromUuid(subraceUuid) then subraceItem}
-            <option value={subraceUuid}>{subraceItem.name}</option>
-          {/await}
+  {#if RACES[data.race.uuid]?.subraces}
+    <div class="subrace" transition:fade|local={{ duration: 200, easing: sineOut }}>
+      <h2 class="subrace-header">Subrace</h2>
+      <div class="races">
+        {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
+          <ItemCard
+            uuid={subraceUuid}
+            disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
+            selected={subraceUuid === data.subrace.uuid}
+            on:selected={() => {
+              if (data.subrace.uuid === subraceUuid) {
+                data.subrace = {
+                  uuid: "",
+                  data: {},
+                  decisionData: {},
+                };
+              } else {
+                data.subrace = {
+                  uuid: subraceUuid,
+                  data: RACES[data.race.uuid].subraces[subraceUuid].data,
+                  decisionData: {},
+                };
+              }
+            }}
+          />
         {/each}
-      </select>
+      </div>
+    </div>
+  {/if}
 
-      {#if selectedSubraceUuid in RACES[selectedRaceUuid].subraces}
-        {#await fromUuid(selectedSubraceUuid) then subraceItem}
-          <div class="item">
-            <Item item={subraceItem} />
-          </div>
-        {/await}
-      {/if}
-
-      {#if subraceChoices}
-        <div class="choices">
-          {#each subraceChoices as choice, i}
-            <Choice
-              {choice}
-              on:decision={(event) => {
-                subraceDecisions[i] = event.detail.data;
-              }}
-            />
-            {#if "items" in subraceDecisions[i]}
-              {#each subraceDecisions[i].items as itemId}
-                {#await fromUuid(itemId) then item}
-                  <Item {item} />
-                {/await}
-              {/each}
-            {/if}
-          {/each}
-        </div>
-      {/if}
-    </section>
+  {#if RACES[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices}
+    <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
+      {#each RACES?.[data.race.uuid]?.subraces?.[data.subrace.uuid]?.choices as choice, i}
+        <Choice {choice} bind:data={data.subrace.decisionData[i]} />
+      {/each}
+    </div>
   {/if}
 </div>
 
 <style>
-  section {
-    margin: 0 10px;
-  }
-  .item {
-    margin-top: 10px;
-  }
-  .choices {
-    display: grid;
-    grid-template-columns: max-content;
-    grid-gap: 10px;
-  }
-
   .subrace-header {
     margin-top: 15px;
+  }
+
+  .races {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
   }
 </style>

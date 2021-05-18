@@ -2,10 +2,23 @@
   import RacesTab from "components/RacesTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import { capitalize } from "utils/utils.js";
+  import { mergeWith } from "lodash";
+  import { mergeCustomizer } from "utils/utils.js";
 
   export let closeWindow;
 
-  let selectedRaceData = {};
+  let data = {
+    race: {
+      uuid: "",
+      data: {},
+      decisionData: {},
+    },
+    subrace: {
+      uuid: "",
+      data: {},
+      decisionData: {},
+    },
+  };
 
   let tabs = ["Races", "Review"];
   let currentTab = "Races";
@@ -25,6 +38,15 @@
     });
 
     let actorData = {};
+    const selectedRaceData = mergeWith(
+      {},
+      data.race.data,
+      data.subrace.data,
+      ...Object.values(data.race.decisionData).flat(),
+      ...Object.values(data.subrace.decisionData).flat(),
+      mergeCustomizer
+    );
+
     if (selectedRaceData.abilities) {
       for (const [ability, increase] of Object.entries(selectedRaceData.abilities)) {
         actorData[`data.abilities.${ability}.value`] =
@@ -32,23 +54,20 @@
       }
     }
 
-    if (selectedRaceData.speed) {
-      actorData["data.attributes.movement.walk"] = selectedRaceData.speed;
-    }
+    if (selectedRaceData.speed) actorData["data.attributes.movement.walk"] = selectedRaceData.speed;
 
-    if (selectedRaceData.size) {
-      actorData["data.traits.size"] = selectedRaceData.size;
-    }
-    if (selectedRaceData.name) {
-      actorData["data.details.race"] = selectedRaceData.name;
-    }
-    if (selectedRaceData.languages) {
+    if (selectedRaceData.size) actorData["data.traits.size"] = selectedRaceData.size;
+
+    if (selectedRaceData.name) actorData["data.details.race"] = selectedRaceData.name;
+
+    if (selectedRaceData?.token?.dimSight)
+      actorData["token.dimSight"] = selectedRaceData.token.dimSight;
+
+    if (selectedRaceData.languages)
       actorData["data.traits.languages.value"] = selectedRaceData.languages;
-    }
+
     if (selectedRaceData.weapon_proficiences) {
-      actorData[
-        "data.traits.weaponProf.custom"
-      ] = selectedRaceData.weapon_proficiences
+      actorData["data.traits.weaponProf.custom"] = selectedRaceData.weapon_proficiences
         .map((weaponProf) => capitalize(weaponProf))
         .join(";");
     }
@@ -83,7 +102,17 @@
         .join(";");
     }
 
+    if (selectedRaceData.skill_proficiencies) {
+      for (const skill of selectedRaceData.skill_proficiencies) {
+        actorData[`data.skills.${skill}.value`] = 1;
+      }
+    }
+
     await actor.update(actorData);
+    if (selectedRaceData.items) {
+      const itemsToAdd = await Promise.all(selectedRaceData.items.map((uuid) => fromUuid(uuid)));
+      await actor.addEmbeddedItems(itemsToAdd, (prompt = false));
+    }
 
     closeWindow();
   }
@@ -100,7 +129,7 @@
   </nav>
 
   {#if currentTab === "Races"}
-    <RacesTab bind:selectedRaceData />
+    <RacesTab bind:data />
   {/if}
 
   {#if currentTab === "Review"}

@@ -1,12 +1,16 @@
 const RACES = {
   // Dragonborn
   "Compendium.dnd5e.races.K4DNDcR6vngbp0pf": {
-    subraces: {},
     data: {
       abilities: {
         str: 2,
         cha: 1,
       },
+      items: [
+        "Compendium.dnd5e.races.K4DNDcR6vngbp0pf",
+        "Compendium.dnd5e.races.XxCuhIk6hAu6rNB0",
+        "Compendium.dnd5e.races.KL7wx9Q8XNJQir0k",
+      ],
       languages: ["common", "draconic"],
       size: "med",
       speed: 30,
@@ -23,6 +27,7 @@ const RACES = {
           abilities: {
             wis: 1,
           },
+          items: ["Compendium.dnd5e.races.UQiRQUTBcsz8gZU1"],
           name: "Hill Dwarf",
         },
       },
@@ -31,11 +36,19 @@ const RACES = {
       abilities: {
         con: 2,
       },
+      items: [
+        "Compendium.dnd5e.races.6N31WSez2szqQcIQ",
+        "Compendium.dnd5e.races.ufysTkqet2Ctmtyi",
+        "Compendium.dnd5e.races.mQPZDRbUhgYTbXKa",
+      ],
       name: "Dwarf",
       speed: 25,
       size: "med",
       languages: ["common", "dwarvish"],
       weapon_proficiences: ["battleaxe", "handaxe", "light hammer", "warhammer"],
+      token: {
+        dimSight: 60,
+      },
     },
     choices: [
       {
@@ -67,14 +80,31 @@ const RACES = {
           abilities: {
             int: 1,
           },
+          items: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
           weapon_proficiences: ["longsword", "shortsword", "shortbow", "longbow"],
           name: "High Elf",
         },
         choices: [
           {
-            name: "Extra Language",
+            name: "Extra Language Proficiency",
             choose: 1,
             options: [
+              {
+                name: "Abyssal",
+                data: { languages: ["abyssal"] },
+              },
+              {
+                name: "Celestial",
+                data: { languages: ["celestial"] },
+              },
+              {
+                name: "Deep Speech",
+                data: { languages: ["deep"] },
+              },
+              {
+                name: "Draconic",
+                data: { languages: ["draconic"] },
+              },
               {
                 name: "Dwarvish",
                 data: { languages: ["dwarvish"] },
@@ -96,28 +126,12 @@ const RACES = {
                 data: { languages: ["halfling"] },
               },
               {
-                name: "Orc",
-                data: { languages: ["orc"] },
-              },
-              {
-                name: "Abyssal",
-                data: { languages: ["abyssal"] },
-              },
-              {
-                name: "Celestial",
-                data: { languages: ["celestial"] },
-              },
-              {
-                name: "Draconic",
-                data: { languages: ["draconic"] },
-              },
-              {
-                name: "Deep Speech",
-                data: { languages: ["deep"] },
-              },
-              {
                 name: "Infernal",
                 data: { languages: ["infernal"] },
+              },
+              {
+                name: "Orc",
+                data: { languages: ["orc"] },
               },
               {
                 name: "Primordial",
@@ -187,10 +201,15 @@ const RACES = {
       abilities: {
         dex: 2,
       },
+      items: ["Compendium.dnd5e.races.rAGnsfgw3ZqAme1v", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
       name: "Elf",
       speed: 30,
       size: "med",
       languages: ["common", "elvish"],
+      skill_proficiencies: ["per"],
+    },
+    token: {
+      dimSight: 60,
     },
   },
 
@@ -202,6 +221,11 @@ const RACES = {
           abilities: {
             con: 1,
           },
+          items: [
+            "Compendium.dnd5e.races.TZtarkKs6cgGD7z2",
+            "Compendium.dnd5e.races.OQA1sHxKnSJq01dL",
+            "Compendium.dnd5e.races.koRPOLtj8XAFMwnW",
+          ],
           tool_proficiencies: ["art"],
           name: "Rock Gnome",
         },
@@ -211,28 +235,35 @@ const RACES = {
       abilities: {
         int: 2,
       },
+      items: ["Compendium.dnd5e.races.kmRnMETG5hB9Bmwu", "Compendium.dnd5e.races.EHhr9umJ5kxJFCQH"],
       languages: ["common", "gnomish"],
       size: "sm",
       speed: 25,
       name: "Gnome",
+      token: {
+        dimSight: 60,
+      },
     },
   },
 
   // Half-Elf
   "Compendium.dnd5e.races.Hye5IZwPOSwV0qRR": {
-    subraces: {},
     data: {
       abilities: {
         cha: 2,
       },
+      items: ["Compendium.dnd5e.races.Hye5IZwPOSwV0qRR", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
       languages: ["common", "elvish"],
       size: "med",
       speed: 30,
       name: "Half-Elf",
+      token: {
+        dimSight: 60,
+      },
     },
     choices: [
       {
-        name: "Increase 2 Other Ability Scores by 1",
+        name: "Ability Score Increase",
         choose: 2,
         options: [
           {
@@ -257,21 +288,143 @@ const RACES = {
           },
         ],
       },
+      {
+        name: "Skill Proficiencies",
+        choose: 2,
+        options: [
+          {
+            name: "Acrobatics",
+            data: {
+              skill_proficiencies: ["acr"],
+            },
+          },
+          {
+            name: "Animal Handling",
+            data: {
+              skill_proficiencies: ["ani"],
+            },
+          },
+          {
+            name: "Arcana",
+            data: {
+              skill_proficiencies: ["arc"],
+            },
+          },
+          {
+            name: "Athletics",
+            data: {
+              skill_proficiencies: ["ath"],
+            },
+          },
+          {
+            name: "Deception",
+            data: {
+              skill_proficiencies: ["dec"],
+            },
+          },
+          {
+            name: "History",
+            data: {
+              skill_proficiencies: ["his"],
+            },
+          },
+          {
+            name: "Insight",
+            data: {
+              skill_proficiencies: ["ins"],
+            },
+          },
+          {
+            name: "Intimidation",
+            data: {
+              skill_proficiencies: ["itm"],
+            },
+          },
+          {
+            name: "Investigation",
+            data: {
+              skill_proficiencies: ["inv"],
+            },
+          },
+          {
+            name: "Medicine",
+            data: {
+              skill_proficiencies: ["med"],
+            },
+          },
+          {
+            name: "Nature",
+            data: {
+              skill_proficiencies: ["nat"],
+            },
+          },
+          {
+            name: "Perception",
+            data: {
+              skill_proficiencies: ["prc"],
+            },
+          },
+          {
+            name: "Performance",
+            data: {
+              skill_proficiencies: ["prf"],
+            },
+          },
+          {
+            name: "Persuasion",
+            data: {
+              skill_proficiencies: ["per"],
+            },
+          },
+          {
+            name: "Religion",
+            data: {
+              skill_proficiencies: ["rel"],
+            },
+          },
+          {
+            name: "Sleight of Hand",
+            data: {
+              skill_proficiencies: ["slt"],
+            },
+          },
+          {
+            name: "Stealth",
+            data: {
+              skill_proficiencies: ["ste"],
+            },
+          },
+          {
+            name: "Survival",
+            data: {
+              skill_proficiencies: ["sur"],
+            },
+          },
+        ],
+      },
     ],
   },
 
   // Half-Orc
   "Compendium.dnd5e.races.n5L000DkNBU6h2oJ": {
-    subraces: {},
     data: {
       abilities: {
         str: 2,
         con: 1,
       },
+      items: [
+        "Compendium.dnd5e.races.n5L000DkNBU6h2oJ",
+        "Compendium.dnd5e.races.97c8i9Z28thvZuA8",
+        "Compendium.dnd5e.races.0kUsT4sMUOr5FcoX",
+      ],
       languages: ["common", "orc"],
       size: "med",
       speed: 30,
       name: "Half-Orc",
+      skill_proficiencies: ["itm"],
+      token: {
+        dimSight: 60,
+      },
     },
   },
 
@@ -284,6 +437,10 @@ const RACES = {
           abilities: {
             cha: 1,
           },
+          items: [
+            "Compendium.dnd5e.races.ZgYBjYYfiUstQD6f",
+            "Compendium.dnd5e.races.GWPjKFeIthBBeCFJ",
+          ],
           name: "Lightfoot Halfling",
         },
       },
@@ -292,6 +449,12 @@ const RACES = {
       abilities: {
         dex: 2,
       },
+      items: [
+        "Compendium.dnd5e.races.GH2dNne2bt1NjcJk",
+        "Compendium.dnd5e.races.LOMdcNAGWh5xpfm4",
+        "Compendium.dnd5e.races.7Yoo9hG0hfPSmBoC",
+        "Compendium.dnd5e.races.PqxZgcJzp1VVgP8t",
+      ],
       languages: ["common", "elvish"],
       size: "sm",
       speed: 25,
@@ -301,7 +464,6 @@ const RACES = {
 
   // Human
   "Compendium.dnd5e.races.ydP3QzCmur55mtY2": {
-    subraces: {},
     data: {
       abilities: {
         str: 1,
@@ -311,6 +473,7 @@ const RACES = {
         int: 1,
         cha: 1,
       },
+      items: ["Compendium.dnd5e.races.ydP3QzCmur55mtY2"],
       languages: ["common"],
       size: "med",
       speed: 30,
@@ -320,16 +483,23 @@ const RACES = {
 
   // Tiefling
   "Compendium.dnd5e.races.aHTokZ151W0ASSmo": {
-    subraces: {},
     data: {
       abilities: {
         cha: 2,
         int: 1,
       },
-      languages: ["common", "Infernal"],
+      items: [
+        "Compendium.dnd5e.races.aHTokZ151W0ASSmo",
+        "Compendium.dnd5e.races.q71Pe1F8RRtEJt8Q",
+        "Compendium.dnd5e.spells.MUO1uYN7JR1hm4dR",
+      ],
+      languages: ["common", "infernal"],
       size: "med",
       speed: 30,
       name: "Tiefling",
+      token: {
+        dimSight: 60,
+      },
     },
   },
 };
