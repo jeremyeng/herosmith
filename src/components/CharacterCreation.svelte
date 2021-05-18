@@ -44,6 +44,7 @@
       ...Object.values(data.race.decisionData).flat(),
       ...Object.values(data.subrace.decisionData).flat()
     );
+    debugger;
 
     if (selectedRaceData.abilities) {
       for (const [ability, increase] of Object.entries(selectedRaceData.abilities)) {
@@ -62,9 +63,7 @@
       actorData["data.traits.languages.value"] = selectedRaceData.languages;
 
     if (selectedRaceData.weapon_proficiences) {
-      actorData[
-        "data.traits.weaponProf.custom"
-      ] = selectedRaceData.weapon_proficiences
+      actorData["data.traits.weaponProf.custom"] = selectedRaceData.weapon_proficiences
         .map((weaponProf) => capitalize(weaponProf))
         .join(";");
     }
