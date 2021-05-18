@@ -44,7 +44,6 @@
       ...Object.values(data.race.decisionData).flat(),
       ...Object.values(data.subrace.decisionData).flat()
     );
-    debugger;
 
     if (selectedRaceData.abilities) {
       for (const [ability, increase] of Object.entries(selectedRaceData.abilities)) {
@@ -99,6 +98,10 @@
     }
 
     await actor.update(actorData);
+    if (selectedRaceData.items) {
+      const itemsToAdd = await Promise.all(selectedRaceData.items.map((uuid) => fromUuid(uuid)));
+      await actor.addEmbeddedItems(itemsToAdd, (prompt = false));
+    }
 
     closeWindow();
   }
