@@ -101,6 +101,6 @@
   .races {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.5em;
+    grid-gap: 1em;
   }
 </style>

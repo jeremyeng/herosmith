@@ -28,7 +28,6 @@
 
   .item {
     text-align: center;
-    margin-bottom: 10px;
     width: 100%;
     border: 2px solid #c9c7b8;
     border-radius: 5px;

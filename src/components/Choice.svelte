@@ -63,6 +63,6 @@
   .choice-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 1em;
   }
 </style>
