@@ -1,7 +1,6 @@
 const RACES = {
   // Dragonborn
   "Compendium.dnd5e.races.K4DNDcR6vngbp0pf": {
-    subraces: {},
     data: {
       abilities: {
         str: 2,
@@ -249,7 +248,6 @@ const RACES = {
 
   // Half-Elf
   "Compendium.dnd5e.races.Hye5IZwPOSwV0qRR": {
-    subraces: {},
     data: {
       abilities: {
         cha: 2,
@@ -409,7 +407,6 @@ const RACES = {
 
   // Half-Orc
   "Compendium.dnd5e.races.n5L000DkNBU6h2oJ": {
-    subraces: {},
     data: {
       abilities: {
         str: 2,
@@ -467,7 +464,6 @@ const RACES = {
 
   // Human
   "Compendium.dnd5e.races.ydP3QzCmur55mtY2": {
-    subraces: {},
     data: {
       abilities: {
         str: 1,
@@ -487,7 +483,6 @@ const RACES = {
 
   // Tiefling
   "Compendium.dnd5e.races.aHTokZ151W0ASSmo": {
-    subraces: {},
     data: {
       abilities: {
         cha: 2,
