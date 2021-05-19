@@ -53,7 +53,7 @@
 
 <style>
   .choice {
-    margin: 2em 0;
+    margin: 3em 0;
   }
 
   h3 {
