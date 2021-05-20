@@ -1,3 +1,6 @@
+import skillOptions from "data/skillOptions.js";
+import toolOptions from "data/toolOptions.js";
+
 const CLASSES = {
   // Barbarian
   "Compendium.dnd5e.classes.pvEzGSv71zBhaolc": {
@@ -11,6 +14,22 @@ const CLASSES = {
           14: { features: ["Compendium.dnd5e.classfeatures.xzD9zlRP6dUxCtCl"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "animal handling",
+            "athletics",
+            "intimidation",
+            "nature",
+            "perception",
+            "survival",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -53,6 +72,31 @@ const CLASSES = {
           14: { features: ["Compendium.dnd5e.classfeatures.pquwueEMweRhiWaq"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 3,
+          options: skillOptions(),
+        },
+        {
+          name: "Musical Instrument Proficiency",
+          choose: 3,
+          options: toolOptions([
+            "bagpipes",
+            "drum",
+            "dulcimer",
+            "flute",
+            "lute",
+            "lyre",
+            "horn",
+            "panflute",
+            "shawm",
+            "viol",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -127,6 +171,15 @@ const CLASSES = {
         },
       },
     },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions(["history", "insight", "medicine", "persuasion", "religion"]),
+        },
+      ],
+    },
     data: {
       1: {
         features: [
@@ -141,7 +194,6 @@ const CLASSES = {
   },
 
   // Druid
-
   "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N": {
     subclasses: {
       "circle-of-the-land": {
@@ -160,6 +212,24 @@ const CLASSES = {
           14: { features: ["Compendium.dnd5e.classfeatures.EuX1kJNIw1F68yus"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "arcana",
+            "animal handling",
+            "insight",
+            "medicine",
+            "nature",
+            "perception",
+            "religion",
+            "survival",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -185,7 +255,6 @@ const CLASSES = {
   },
 
   // Fighter
-
   "Compendium.dnd5e.classes.ABEBgWyRhVlDUIfq": {
     subclasses: {
       champion: {
@@ -199,6 +268,24 @@ const CLASSES = {
           18: { features: ["Compendium.dnd5e.classfeatures.ipG5yx1tRNmeJfSH"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "acrobatics",
+            "animal handling",
+            "athletics",
+            "history",
+            "insight",
+            "intimidation",
+            "perception",
+            "survival",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -215,7 +302,6 @@ const CLASSES = {
   },
 
   // Monk
-
   "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq": {
     subclasses: {
       "way-of-the-open-hand": {
@@ -228,6 +314,22 @@ const CLASSES = {
           17: { features: ["Compendium.dnd5e.classfeatures.h1gM8SH3BNRtFevE"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "acrobatics",
+            "athletics",
+            "history",
+            "insight",
+            "religion",
+            "stealth",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -272,7 +374,6 @@ const CLASSES = {
   },
 
   // Paladin
-
   "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c": {
     subclasses: {
       "oath-of-devotion": {
@@ -312,6 +413,22 @@ const CLASSES = {
         },
       },
     },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "athletics",
+            "insight",
+            "intimidation",
+            "medicine",
+            "persuasion",
+            "religion",
+          ]),
+        },
+      ],
+    },
     data: {
       1: {
         features: [
@@ -341,7 +458,6 @@ const CLASSES = {
   },
 
   // Ranger
-
   "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS": {
     subclasses: {
       hunter: {
@@ -354,6 +470,24 @@ const CLASSES = {
           15: { features: ["Compendium.dnd5e.classfeatures.a0Sq88dgnREcIMfl"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 3,
+          options: skillOptions([
+            "animal handling",
+            "athletics",
+            "insight",
+            "investigation",
+            "nature",
+            "perception",
+            "stealth",
+            "survival",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -384,7 +518,6 @@ const CLASSES = {
   },
 
   // Rogue
-
   "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF": {
     subclasses: {
       thief: {
@@ -402,6 +535,27 @@ const CLASSES = {
           17: { features: ["Compendium.dnd5e.classfeatures.LhRm1EeUMvp2EWhV"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 4,
+          options: skillOptions([
+            "acrobatics",
+            "athletics",
+            "deception",
+            "insight",
+            "intimidation",
+            "investigation",
+            "perception",
+            "performance",
+            "persuasion",
+            "sleight of hand",
+            "stealth",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -424,7 +578,6 @@ const CLASSES = {
   },
 
   // Sorcerer
-
   "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU": {
     subclasses: {
       "draconic-bloodline": {
@@ -443,6 +596,22 @@ const CLASSES = {
         },
       },
     },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "arcana",
+            "deception",
+            "insight",
+            "intimidation",
+            "persuasion",
+            "religion",
+          ]),
+        },
+      ],
+    },
     data: {
       1: {
         features: [
@@ -457,7 +626,6 @@ const CLASSES = {
   },
 
   // Warlock
-
   "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa": {
     subclasses: {
       "the-fiend": {
@@ -470,6 +638,23 @@ const CLASSES = {
           14: { features: ["Compendium.dnd5e.classfeatures.aCUmlnHlUPHS0rdu"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "arcana",
+            "deception",
+            "history",
+            "intimidation",
+            "investigation",
+            "nature",
+            "religion",
+          ]),
+        },
+      ],
     },
     data: {
       1: {
@@ -489,7 +674,6 @@ const CLASSES = {
   },
 
   // Wizard
-
   "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3": {
     subclasses: {
       "school-of-evocation": {
@@ -507,6 +691,22 @@ const CLASSES = {
           14: { features: ["Compendium.dnd5e.classfeatures.VUtSLeCzFubGXmGx"] },
         },
       },
+    },
+    choices: {
+      1: [
+        {
+          name: "Skill Proficiencies",
+          choose: 2,
+          options: skillOptions([
+            "arcana",
+            "history",
+            "insight",
+            "investigation",
+            "medicine",
+            "religion",
+          ]),
+        },
+      ],
     },
     data: {
       1: {

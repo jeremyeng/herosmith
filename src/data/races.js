@@ -1,3 +1,7 @@
+import abilityOptions from "data/abilityOptions.js";
+import skillOptions from "data/skillOptions.js";
+import toolOptions from "data/toolOptions.js";
+import languageOptions from "data/languageOptions.js";
 const RACES = {
   // Dragonborn
   "Compendium.dnd5e.races.K4DNDcR6vngbp0pf": {
@@ -54,20 +58,7 @@ const RACES = {
       {
         name: "Tool Proficiency",
         choose: 1,
-        options: [
-          {
-            name: "Smith's Tools",
-            data: { tool_proficiencies: ["smith"] },
-          },
-          {
-            name: "Brewer's Supplies",
-            data: { tool_proficiencies: ["brewer"] },
-          },
-          {
-            name: "Mason's Tools",
-            data: { tool_proficiencies: ["mason"] },
-          },
-        ],
+        options: toolOptions(["smith", "brewer", "mason"]),
       },
     ],
   },
@@ -88,64 +79,31 @@ const RACES = {
           {
             name: "Extra Language Proficiency",
             choose: 1,
-            options: [
-              {
-                name: "Abyssal",
-                data: { languages: ["abyssal"] },
-              },
-              {
-                name: "Celestial",
-                data: { languages: ["celestial"] },
-              },
-              {
-                name: "Deep Speech",
-                data: { languages: ["deep"] },
-              },
-              {
-                name: "Draconic",
-                data: { languages: ["draconic"] },
-              },
-              {
-                name: "Dwarvish",
-                data: { languages: ["dwarvish"] },
-              },
-              {
-                name: "Giant",
-                data: { languages: ["giant"] },
-              },
-              {
-                name: "Gnomish",
-                data: { languages: ["gnomish"] },
-              },
-              {
-                name: "Goblin",
-                data: { languages: ["goblin"] },
-              },
-              {
-                name: "Halfling",
-                data: { languages: ["halfling"] },
-              },
-              {
-                name: "Infernal",
-                data: { languages: ["infernal"] },
-              },
-              {
-                name: "Orc",
-                data: { languages: ["orc"] },
-              },
-              {
-                name: "Primordial",
-                data: { languages: ["primordial"] },
-              },
-              {
-                name: "Sylvan",
-                data: { languages: ["sylvan"] },
-              },
-              {
-                name: "Undercommon",
-                data: { languages: ["undercommon"] },
-              },
-            ],
+            options: languageOptions([
+              "aarakocra",
+              "abyssal",
+              "aquan",
+              "auran",
+              "celestial",
+              "deep",
+              "draconic",
+              "druidic",
+              "dwarvish",
+              "giant",
+              "gith",
+              "gnoll",
+              "gnomish",
+              "goblin",
+              "halfling",
+              "ignan",
+              "infernal",
+              "orc",
+              "primordial",
+              "sylvan",
+              "terran",
+              "cant",
+              "undercommon",
+            ]),
           },
           {
             name: "Cantrip",
@@ -265,142 +223,18 @@ const RACES = {
       {
         name: "Ability Score Increase",
         choose: 2,
-        options: [
-          {
-            name: "Strength",
-            data: { abilities: { str: 1 } },
-          },
-          {
-            name: "Dexterity",
-            data: { abilities: { dex: 1 } },
-          },
-          {
-            name: "Wisdom",
-            data: { abilities: { wis: 1 } },
-          },
-          {
-            name: "Constitution",
-            data: { abilities: { con: 1 } },
-          },
-          {
-            name: "Intelligence",
-            data: { abilities: { int: 1 } },
-          },
-        ],
+        options: abilityOptions([
+          "strength",
+          "constitution",
+          "dexterity",
+          "wisdom",
+          "intelligence",
+        ]),
       },
       {
         name: "Skill Proficiencies",
         choose: 2,
-        options: [
-          {
-            name: "Acrobatics",
-            data: {
-              skill_proficiencies: ["acr"],
-            },
-          },
-          {
-            name: "Animal Handling",
-            data: {
-              skill_proficiencies: ["ani"],
-            },
-          },
-          {
-            name: "Arcana",
-            data: {
-              skill_proficiencies: ["arc"],
-            },
-          },
-          {
-            name: "Athletics",
-            data: {
-              skill_proficiencies: ["ath"],
-            },
-          },
-          {
-            name: "Deception",
-            data: {
-              skill_proficiencies: ["dec"],
-            },
-          },
-          {
-            name: "History",
-            data: {
-              skill_proficiencies: ["his"],
-            },
-          },
-          {
-            name: "Insight",
-            data: {
-              skill_proficiencies: ["ins"],
-            },
-          },
-          {
-            name: "Intimidation",
-            data: {
-              skill_proficiencies: ["itm"],
-            },
-          },
-          {
-            name: "Investigation",
-            data: {
-              skill_proficiencies: ["inv"],
-            },
-          },
-          {
-            name: "Medicine",
-            data: {
-              skill_proficiencies: ["med"],
-            },
-          },
-          {
-            name: "Nature",
-            data: {
-              skill_proficiencies: ["nat"],
-            },
-          },
-          {
-            name: "Perception",
-            data: {
-              skill_proficiencies: ["prc"],
-            },
-          },
-          {
-            name: "Performance",
-            data: {
-              skill_proficiencies: ["prf"],
-            },
-          },
-          {
-            name: "Persuasion",
-            data: {
-              skill_proficiencies: ["per"],
-            },
-          },
-          {
-            name: "Religion",
-            data: {
-              skill_proficiencies: ["rel"],
-            },
-          },
-          {
-            name: "Sleight of Hand",
-            data: {
-              skill_proficiencies: ["slt"],
-            },
-          },
-          {
-            name: "Stealth",
-            data: {
-              skill_proficiencies: ["ste"],
-            },
-          },
-          {
-            name: "Survival",
-            data: {
-              skill_proficiencies: ["sur"],
-            },
-          },
-        ],
+        options: skillOptions(),
       },
     ],
   },
