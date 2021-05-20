@@ -1,5 +1,6 @@
 <script>
   import RacesTab from "components/RacesTab.svelte";
+  import ClassTab from "components/ClassTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import { capitalize } from "utils/utils.js";
   import { mergeWith } from "lodash";
@@ -18,9 +19,14 @@
       data: {},
       decisionData: {},
     },
+    class: {
+      uuid: "",
+      data: {},
+      decisionData: {},
+    },
   };
 
-  let tabs = ["Races", "Review"];
+  let tabs = ["Races", "Class", "Review"];
   let currentTab = "Races";
 
   async function createCharacter(event) {
@@ -130,6 +136,10 @@
 
   {#if currentTab === "Races"}
     <RacesTab bind:data />
+  {/if}
+
+  {#if currentTab === "Class"}
+    <ClassTab bind:data />
   {/if}
 
   {#if currentTab === "Review"}
