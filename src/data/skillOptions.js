@@ -2,109 +2,109 @@ const skills = {
   acrobatics: {
     name: "Acrobatics",
     data: {
-      skill_proficiencies: ["Acrobatics"],
+      skill_proficiencies: ["acr"],
     },
   },
   "animal handling": {
     name: "Animal Handling",
     data: {
-      skill_proficiencies: ["Animal Handling"],
+      skill_proficiencies: ["ani"],
     },
   },
   arcana: {
     name: "Arcana",
     data: {
-      skill_proficiencies: ["Arcana"],
+      skill_proficiencies: ["arc"],
     },
   },
   athletics: {
     name: "Athletics",
     data: {
-      skill_proficiencies: ["Athletics"],
+      skill_proficiencies: ["ath"],
     },
   },
   deception: {
     name: "Deception",
     data: {
-      skill_proficiencies: ["Deception"],
+      skill_proficiencies: ["dec"],
     },
   },
   history: {
     name: "History",
     data: {
-      skill_proficiencies: ["History"],
+      skill_proficiencies: ["his"],
     },
   },
   insight: {
     name: "Insight",
     data: {
-      skill_proficiencies: ["Insight"],
+      skill_proficiencies: ["ins"],
     },
   },
   intimidation: {
     name: "Intimidation",
     data: {
-      skill_proficiencies: ["Intimidation"],
+      skill_proficiencies: ["itm"],
     },
   },
   investigation: {
     name: "Investigation",
     data: {
-      skill_proficiencies: ["Investigation"],
+      skill_proficiencies: ["inv"],
     },
   },
   medicine: {
     name: "Medicine",
     data: {
-      skill_proficiencies: ["Medicine"],
+      skill_proficiencies: ["med"],
     },
   },
   nature: {
     name: "Nature",
     data: {
-      skill_proficiencies: ["Nature"],
+      skill_proficiencies: ["nat"],
     },
   },
   perception: {
     name: "Perception",
     data: {
-      skill_proficiencies: ["Perception"],
+      skill_proficiencies: ["prc"],
     },
   },
   performance: {
     name: "Performance",
     data: {
-      skill_proficiencies: ["Performance"],
+      skill_proficiencies: ["prf"],
     },
   },
   persuasion: {
     name: "Persuasion",
     data: {
-      skill_proficiencies: ["Persuasion"],
+      skill_proficiencies: ["per"],
     },
   },
   religion: {
     name: "Religion",
     data: {
-      skill_proficiencies: ["Religion"],
+      skill_proficiencies: ["rel"],
     },
   },
   "sleight of hand": {
-    name: "Sleight of Hand",
+    name: "Sleight Of Hand",
     data: {
-      skill_proficiencies: ["Sleight of Hand"],
+      skill_proficiencies: ["slt"],
     },
   },
   stealth: {
     name: "Stealth",
     data: {
-      skill_proficiencies: ["Stealth"],
+      skill_proficiencies: ["ste"],
     },
   },
   survival: {
     name: "Survival",
     data: {
-      skill_proficiencies: ["Survival"],
+      skill_proficiencies: ["sur"],
     },
   },
 };
