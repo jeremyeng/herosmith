@@ -1,8 +1,12 @@
 import { isArray } from "lodash";
 
-export function mergeCustomizer(objValue, srcValue) {
+export function mergeCustomizer(objValue, srcValue, key) {
   if (isArray(objValue)) {
     return objValue.concat(srcValue);
+  }
+
+  if (["str", "dex", "con", "int", "wis", "cha"].includes(key)) {
+    return (objValue || 0) + (srcValue || 0);
   }
 }
 
