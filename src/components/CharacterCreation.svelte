@@ -44,41 +44,41 @@
     });
 
     let actorData = {};
-    const selectedRaceData = mergeWith(
+    const mergeData = mergeWith(
       {},
       data.race.data,
       data.subrace.data,
+      data.class.data,
       ...Object.values(data.race.decisionData).flat(),
       ...Object.values(data.subrace.decisionData).flat(),
+      ...Object.values(data.class.decisionData).flat(),
       mergeCustomizer
     );
 
-    if (selectedRaceData.abilities) {
-      for (const [ability, increase] of Object.entries(selectedRaceData.abilities)) {
+    if (mergeData.abilities) {
+      for (const [ability, increase] of Object.entries(mergeData.abilities)) {
         actorData[`data.abilities.${ability}.value`] =
           actor.data.data.abilities[ability].value + increase;
       }
     }
 
-    if (selectedRaceData.speed) actorData["data.attributes.movement.walk"] = selectedRaceData.speed;
+    if (mergeData.speed) actorData["data.attributes.movement.walk"] = mergeData.speed;
 
-    if (selectedRaceData.size) actorData["data.traits.size"] = selectedRaceData.size;
+    if (mergeData.size) actorData["data.traits.size"] = mergeData.size;
 
-    if (selectedRaceData.name) actorData["data.details.race"] = selectedRaceData.name;
+    if (mergeData.name) actorData["data.details.race"] = mergeData.name;
 
-    if (selectedRaceData?.token?.dimSight)
-      actorData["token.dimSight"] = selectedRaceData.token.dimSight;
+    if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
 
-    if (selectedRaceData.languages)
-      actorData["data.traits.languages.value"] = selectedRaceData.languages;
+    if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
 
-    if (selectedRaceData.weapon_proficiences) {
-      actorData["data.traits.weaponProf.custom"] = selectedRaceData.weapon_proficiences
+    if (mergeData.weapon_proficiences) {
+      actorData["data.traits.weaponProf.custom"] = mergeData.weapon_proficiences
         .map((weaponProf) => capitalize(weaponProf))
         .join(";");
     }
 
-    if (selectedRaceData.tool_proficiencies) {
+    if (mergeData.tool_proficiencies) {
       const toolCategories = [
         "art",
         "disg",
@@ -95,7 +95,7 @@
       let value = [];
       let custom = [];
 
-      for (const toolProf of selectedRaceData.tool_proficiencies) {
+      for (const toolProf of mergeData.tool_proficiencies) {
         if (toolCategories.indexOf(toolProf) > -1) {
           value.push(toolProf);
         } else {
@@ -108,15 +108,16 @@
         .join(";");
     }
 
-    if (selectedRaceData.skill_proficiencies) {
-      for (const skill of selectedRaceData.skill_proficiencies) {
+    if (mergeData.skill_proficiencies) {
+      for (const skill of mergeData.skill_proficiencies) {
         actorData[`data.skills.${skill}.value`] = 1;
       }
     }
 
     await actor.update(actorData);
-    if (selectedRaceData.items) {
-      const itemsToAdd = await Promise.all(selectedRaceData.items.map((uuid) => fromUuid(uuid)));
+    if (mergeData.items) {
+      const itemUuids = mergeData.items.concat(mergeData.features);
+      const itemsToAdd = await Promise.all(itemUuids.map((uuid) => fromUuid(uuid)));
       await actor.addEmbeddedItems(itemsToAdd, (prompt = false));
     }
 

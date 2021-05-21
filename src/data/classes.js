@@ -34,6 +34,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.pvEzGSv71zBhaolc",
           "Compendium.dnd5e.classfeatures.VoR0SUrNX5EJVPIO",
           "Compendium.dnd5e.classfeatures.SZbsNbaxFFGwBpNK",
         ],
@@ -101,6 +102,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt",
           "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA",
           "Compendium.dnd5e.classfeatures.u4NLajXETJhJU31v",
         ],
@@ -125,7 +127,6 @@ const CLASSES = {
   },
 
   // Cleric
-
   "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub": {
     subclasses: {
       "life-domain": {
@@ -183,6 +184,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub",
           "Compendium.dnd5e.classfeatures.x637K2Icp2ZFM1TB",
           "Compendium.dnd5e.classfeatures.v4gKwLhAq9vuqza7",
         ],
@@ -234,6 +236,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N",
           "Compendium.dnd5e.classfeatures.LzJ5ayHt0OlSVGxi",
           "Compendium.dnd5e.classfeatures.i6tPm3FNK13Ftc9v",
         ],
@@ -290,6 +293,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.ABEBgWyRhVlDUIfq",
           "Compendium.dnd5e.classfeatures.fbExzwNwEAl2kW9c",
           "Compendium.dnd5e.classfeatures.nTjmWbyHweXuIqwc",
         ],
@@ -334,6 +338,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq",
           "Compendium.dnd5e.classfeatures.UAvV7N7T4zJhxdfI",
           "Compendium.dnd5e.classfeatures.l50hjTxO2r0iecKw",
         ],
@@ -432,6 +437,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c",
           "Compendium.dnd5e.classfeatures.E8ozg8avUVOX9N7u",
           "Compendium.dnd5e.classfeatures.OdrvL3afwLOPeuYZ",
         ],
@@ -492,6 +498,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS",
           "Compendium.dnd5e.classfeatures.4Vpj9vCOB37GtXk6",
           "Compendium.dnd5e.classfeatures.8fbZt2Qh7ZttwIan",
         ],
@@ -560,6 +567,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF",
           "Compendium.dnd5e.classfeatures.3sYPftQKnbbVnHrh",
           "Compendium.dnd5e.classfeatures.DPN2Gfk8yi1Z5wp7",
           "Compendium.dnd5e.classfeatures.ohwfuwnvuoBWlSQr",
@@ -615,6 +623,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU",
           "Compendium.dnd5e.classfeatures.cmRCL9T9UgRYOj1c",
           "Compendium.dnd5e.classfeatures.oygRF3ZjTv2T7z0Y",
         ],
@@ -659,6 +668,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa",
           "Compendium.dnd5e.classfeatures.jTXHaK0vvT5DV3uO",
           "Compendium.dnd5e.classfeatures.x6IJZwr6f0SGral7",
         ],
@@ -711,6 +721,7 @@ const CLASSES = {
     data: {
       1: {
         features: [
+          "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3",
           "Compendium.dnd5e.classfeatures.gbNo5eVPaqr8IVKL",
           "Compendium.dnd5e.classfeatures.e0uTcFPpgxjIyUW9",
         ],
