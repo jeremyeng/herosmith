@@ -1,6 +1,6 @@
 const tools = {
   alchemist: {
-    name: "Alchemist",
+    name: "Alchemist's Supplies",
     data: {
       tool_proficiencies: ["alchemist"],
     },
@@ -12,55 +12,55 @@ const tools = {
     },
   },
   brewer: {
-    name: "Brewer",
+    name: "Brewer's Supplies",
     data: {
       tool_proficiencies: ["brewer"],
     },
   },
   calligrapher: {
-    name: "Calligrapher",
+    name: "Calligrapher's Supplies",
     data: {
       tool_proficiencies: ["calligrapher"],
     },
   },
   card: {
-    name: "Card",
+    name: "Playing Cards",
     data: {
       tool_proficiencies: ["card"],
     },
   },
   carpenter: {
-    name: "Carpenter",
+    name: "Carpenter's Tools",
     data: {
       tool_proficiencies: ["carpenter"],
     },
   },
   cartographer: {
-    name: "Cartographer",
+    name: "Cartographer's Tools",
     data: {
       tool_proficiencies: ["cartographer"],
     },
   },
   cobbler: {
-    name: "Cobbler",
+    name: "Cobbler's Tools",
     data: {
       tool_proficiencies: ["cobbler"],
     },
   },
   cook: {
-    name: "Cook",
+    name: "Cook's Utensils",
     data: {
       tool_proficiencies: ["cook"],
     },
   },
   dice: {
-    name: "Dice",
+    name: "Dice Set",
     data: {
       tool_proficiencies: ["dice"],
     },
   },
-  disg: {
-    name: "Disg",
+  disguise: {
+    name: "Disguise Kit",
     data: {
       tool_proficiencies: ["disg"],
     },
@@ -83,20 +83,20 @@ const tools = {
       tool_proficiencies: ["flute"],
     },
   },
-  forg: {
-    name: "Forg",
+  forgery: {
+    name: "Forgery Kit",
     data: {
       tool_proficiencies: ["forg"],
     },
   },
   glassblower: {
-    name: "Glassblower",
+    name: "Glassblower's Tools",
     data: {
       tool_proficiencies: ["glassblower"],
     },
   },
   herb: {
-    name: "Herb",
+    name: "Herbalism Kit",
     data: {
       tool_proficiencies: ["herb"],
     },
@@ -108,13 +108,13 @@ const tools = {
     },
   },
   jeweler: {
-    name: "Jeweler",
+    name: "Jeweler's Tools",
     data: {
       tool_proficiencies: ["jeweler"],
     },
   },
   leatherworker: {
-    name: "Leatherworker",
+    name: "Leatherworker's Tools",
     data: {
       tool_proficiencies: ["leatherworker"],
     },
@@ -132,19 +132,19 @@ const tools = {
     },
   },
   mason: {
-    name: "Mason",
+    name: "Mason's Tools",
     data: {
       tool_proficiencies: ["mason"],
     },
   },
-  navg: {
-    name: "Navg",
+  navigator: {
+    name: "Navigator's Tools",
     data: {
       tool_proficiencies: ["navg"],
     },
   },
   painter: {
-    name: "Painter",
+    name: "Painter's Supplies",
     data: {
       tool_proficiencies: ["painter"],
     },
@@ -155,14 +155,14 @@ const tools = {
       tool_proficiencies: ["panflute"],
     },
   },
-  pois: {
-    name: "Pois",
+  poison: {
+    name: "Poisoner's Kit",
     data: {
       tool_proficiencies: ["pois"],
     },
   },
   potter: {
-    name: "Potter",
+    name: "Potter's Tools",
     data: {
       tool_proficiencies: ["potter"],
     },
@@ -174,19 +174,19 @@ const tools = {
     },
   },
   smith: {
-    name: "Smith",
+    name: "Smith's Tools",
     data: {
       tool_proficiencies: ["smith"],
     },
   },
   thief: {
-    name: "Thief",
+    name: "Thieves' Tools",
     data: {
       tool_proficiencies: ["thief"],
     },
   },
   tinker: {
-    name: "Tinker",
+    name: "Tinker's Tools",
     data: {
       tool_proficiencies: ["tinker"],
     },
@@ -198,13 +198,13 @@ const tools = {
     },
   },
   weaver: {
-    name: "Weaver",
+    name: "Weaver's Tools",
     data: {
       tool_proficiencies: ["weaver"],
     },
   },
   woodcarver: {
-    name: "Woodcarver",
+    name: "Woodcarver's Tools",
     data: {
       tool_proficiencies: ["woodcarver"],
     },
