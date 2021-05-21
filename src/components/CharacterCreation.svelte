@@ -62,6 +62,12 @@
       }
     }
 
+    if (mergeData.save_proficiencies) {
+      for (const ability of mergeData.save_proficiencies) {
+        actorData[`data.abilities.${ability}.proficient`] = 1;
+      }
+    }
+
     if (mergeData.speed) actorData["data.attributes.movement.walk"] = mergeData.speed;
 
     if (mergeData.size) actorData["data.traits.size"] = mergeData.size;
@@ -72,9 +78,41 @@
 
     if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
 
-    if (mergeData.weapon_proficiences) {
-      actorData["data.traits.weaponProf.custom"] = mergeData.weapon_proficiences
+    if (mergeData.weapon_proficiencies) {
+      const weaponCategories = ["mar", "sim"];
+
+      let value = [];
+      let custom = [];
+
+      for (const weaponProf of mergeData.weapon_proficiencies) {
+        if (weaponCategories.indexOf(weaponProf) > -1) {
+          value.push(weaponProf);
+        } else {
+          custom.push(weaponProf);
+        }
+      }
+      actorData["data.traits.weaponProf.value"] = value;
+      actorData["data.traits.weaponProf.custom"] = custom
         .map((weaponProf) => capitalize(weaponProf))
+        .join(";");
+    }
+
+    if (mergeData.armor_proficiencies) {
+      const armorCategories = ["lgt", "med", "hvy", "shl"];
+
+      let value = [];
+      let custom = [];
+
+      for (const armorProf of mergeData.armor_proficiencies) {
+        if (armorCategories.indexOf(armorProf) > -1) {
+          value.push(armorProf);
+        } else {
+          custom.push(armorProf);
+        }
+      }
+      actorData["data.traits.armorProf.value"] = value;
+      actorData["data.traits.armorProf.custom"] = custom
+        .map((armorProf) => capitalize(armorProf))
         .join(";");
     }
 

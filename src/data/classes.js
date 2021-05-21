@@ -33,6 +33,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "shl"],
+        weapon_proficiencies: ["mar", "sim"],
+        save_proficiencies: ["str", "con"],
         features: [
           "Compendium.dnd5e.classes.pvEzGSv71zBhaolc",
           "Compendium.dnd5e.classfeatures.VoR0SUrNX5EJVPIO",
@@ -101,6 +104,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt"],
+        weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
+        save_proficiencies: ["dex", "cha"],
         features: [
           "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt",
           "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA",
@@ -183,6 +189,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "shl"],
+        weapon_proficiencies: ["sim"],
+        save_proficiencies: ["wis", "cha"],
         features: [
           "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub",
           "Compendium.dnd5e.classfeatures.x637K2Icp2ZFM1TB",
@@ -235,6 +244,21 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "shl"],
+        weapon_proficiencies: [
+          "club",
+          "dagger",
+          "dart",
+          "javelin",
+          "mace",
+          "quarterstaff",
+          "scimitar",
+          "sickle",
+          "sling",
+          "spear",
+        ],
+        save_proficiencies: ["int", "wis"],
+        tool_proficiencies: ["herb"],
         features: [
           "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N",
           "Compendium.dnd5e.classfeatures.LzJ5ayHt0OlSVGxi",
@@ -292,6 +316,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "hvy", "shl"],
+        weapon_proficiencies: ["mar", "sim"],
+        save_proficiencies: ["str", "con"],
         features: [
           "Compendium.dnd5e.classes.ABEBgWyRhVlDUIfq",
           "Compendium.dnd5e.classfeatures.fbExzwNwEAl2kW9c",
@@ -333,10 +360,47 @@ const CLASSES = {
             "stealth",
           ]),
         },
+        {
+          name: "Tool Proficiency",
+          choose: 1,
+          options: toolOptions([
+            "alchemist",
+            "brewer",
+            "calligrapher",
+            "carpenter",
+            "cartographer",
+            "cobbler",
+            "cook",
+            "glassblower",
+            "jeweler",
+            "leatherworker",
+            "mason",
+            "painter",
+            "potter",
+            "smith",
+            "tinker",
+            "weaver",
+            "woodcarver",
+            "disguise",
+            "forgery",
+            "bagpipes",
+            "drum",
+            "dulcimer",
+            "flute",
+            "lute",
+            "lyre",
+            "horn",
+            "panflute",
+            "shawm",
+            "viol",
+          ]),
+        },
       ],
     },
     data: {
       1: {
+        weapon_proficiencies: ["sim", "shortsword"],
+        save_proficiencies: ["str", "dex"],
         features: [
           "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq",
           "Compendium.dnd5e.classfeatures.UAvV7N7T4zJhxdfI",
@@ -436,6 +500,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "hvy", "shl"],
+        weapon_proficiencies: ["sim", "mar"],
+        save_proficiencies: ["wis", "cha"],
         features: [
           "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c",
           "Compendium.dnd5e.classfeatures.E8ozg8avUVOX9N7u",
@@ -497,6 +564,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt", "med", "shl"],
+        weapon_proficiencies: ["sim", "mar"],
+        save_proficiencies: ["str", "dex"],
         features: [
           "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS",
           "Compendium.dnd5e.classfeatures.4Vpj9vCOB37GtXk6",
@@ -566,6 +636,10 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt"],
+        weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
+        save_proficiencies: ["dex", "int"],
+        tool_proficiencies: ["thief"],
         features: [
           "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF",
           "Compendium.dnd5e.classfeatures.3sYPftQKnbbVnHrh",
@@ -622,6 +696,8 @@ const CLASSES = {
     },
     data: {
       1: {
+        weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
+        save_proficiencies: ["con", "cha"],
         features: [
           "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU",
           "Compendium.dnd5e.classfeatures.cmRCL9T9UgRYOj1c",
@@ -667,6 +743,9 @@ const CLASSES = {
     },
     data: {
       1: {
+        armor_proficiencies: ["lgt"],
+        weapon_proficiencies: ["sim"],
+        save_proficiencies: ["wis", "cha"],
         features: [
           "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa",
           "Compendium.dnd5e.classfeatures.jTXHaK0vvT5DV3uO",
@@ -720,6 +799,8 @@ const CLASSES = {
     },
     data: {
       1: {
+        weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
+        save_proficiencies: ["int", "wis"],
         features: [
           "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3",
           "Compendium.dnd5e.classfeatures.gbNo5eVPaqr8IVKL",
