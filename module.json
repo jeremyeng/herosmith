@@ -20,7 +20,14 @@
       "label": "Background Characteristics (SRD)",
       "path": "packs/background_characteristics.db",
       "entity": "RollTable",
-      "module": "Herosmith"
+      "module": "herosmith"
+    },
+    {
+      "name": "backgrounds",
+      "label": "Backgrounds (SRD)",
+      "path": "packs/backgrounds.db",
+      "entity": "Item",
+      "module": "herosmith"
     }
   ],
   "conflicts": [],
