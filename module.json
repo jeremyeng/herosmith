@@ -14,6 +14,15 @@
       "type": "system"
     }
   ],
+  "packs": [
+    {
+      "name": "background_characteristics",
+      "label": "Background Characteristics (SRD)",
+      "path": "packs/background_characteristics.db",
+      "entity": "RollTable",
+      "module": "Herosmith"
+    }
+  ],
   "conflicts": [],
   "esmodules": ["public/build/bundle.js"],
   "styles": ["public/build/bundle.css", "public/global.css"],
