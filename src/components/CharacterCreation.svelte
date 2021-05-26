@@ -29,6 +29,7 @@
       uuid: "",
       data: {},
       decisionData: {},
+      personality: [],
     },
   };
 
