@@ -12,6 +12,9 @@ const BACKGROUNDS = {
       },
     },
     personality: "Compendium.herosmith.background_characteristics.ZowmTS1xYNcd80lM",
+    ideal: "Compendium.herosmith.background_characteristics.AazWPNXF6fErex2i",
+    bond: "Compendium.herosmith.background_characteristics.YwKOMNt2IU6jxTys",
+    flaw: "Compendium.herosmith.background_characteristics.AA23CHQZ8FejV1Io",
   },
 };
 

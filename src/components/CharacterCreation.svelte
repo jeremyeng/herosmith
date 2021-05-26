@@ -30,6 +30,9 @@
       data: {},
       decisionData: {},
       personality: [],
+      ideal: [],
+      bond: [],
+      flaw: [],
     },
   };
 
