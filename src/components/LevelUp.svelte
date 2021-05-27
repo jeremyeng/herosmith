@@ -101,6 +101,10 @@
     for (const subclass in subclassData) {
       const subclassFeatures = subclassData[subclass]["features"];
 
+      if (!subclassFeatures) {
+        continue;
+      }
+
       if (Object.keys(subclassFeatures).length === 0) {
         continue;
       }
