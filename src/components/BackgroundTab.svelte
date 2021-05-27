@@ -15,16 +15,16 @@
 
     const textResult = r.results[0].data.text;
 
-    if (!data.background[attribute].includes(textResult)) {
-      data.background[attribute] = [...data.background[attribute], textResult];
+    if (!data.background.data[attribute].includes(textResult)) {
+      data.background.data[attribute] = [...data.background.data[attribute], textResult];
     }
   }
 
   function select(item, attribute) {
-    if (data.background[attribute].includes(item)) {
-      data.background[attribute] = data.background[attribute].filter((x) => x != item);
+    if (data.background.data[attribute].includes(item)) {
+      data.background.data[attribute] = data.background.data[attribute].filter((x) => x != item);
     } else {
-      data.background[attribute] = [...data.background[attribute], item];
+      data.background.data[attribute] = [...data.background.data[attribute], item];
     }
   }
 </script>
@@ -41,31 +41,25 @@
           if (data.background.uuid === bgUuid) {
             data.background = {
               uuid: "",
-              data: {},
+              data: {
+                personality: [],
+                ideal: [],
+                bond: [],
+                flaw: [],
+              },
               decisionData: {},
-              personality: [],
-              ideal: [],
-              bond: [],
-              flaw: [],
-            };
-            data.subrace = {
-              uuid: "",
-              data: {},
-              decisionData: {},
-              personality: [],
-              ideal: [],
-              bond: [],
-              flaw: [],
             };
           } else {
             data.background = {
               uuid: bgUuid,
-              data: BACKGROUNDS[bgUuid]["data"][level],
+              data: {
+                personality: [],
+                ideal: [],
+                bond: [],
+                flaw: [],
+                ...BACKGROUNDS[bgUuid]["data"][level],
+              },
               decisionData: {},
-              personality: [],
-              ideal: [],
-              bond: [],
-              flaw: [],
             };
           }
         }}
@@ -94,7 +88,7 @@
             {#each Array.from(table.results) as result, i}
               <tr>
                 <td>{i + 1}</td>
-                <td class:chosen={data.background[characteristic].includes(result.data.text)}
+                <td class:chosen={data.background.data[characteristic].includes(result.data.text)}
                   >{result.data.text}</td
                 >
                 <td
