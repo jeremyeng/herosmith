@@ -1,6 +1,7 @@
 <script>
   import RacesTab from "components/RacesTab.svelte";
   import ClassTab from "components/ClassTab.svelte";
+  import BackgroundTab from "components/BackgroundTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import { capitalize } from "utils/utils.js";
   import { mergeWith } from "lodash";
@@ -24,9 +25,19 @@
       data: {},
       decisionData: {},
     },
+    background: {
+      uuid: "",
+      data: {
+        personality: [],
+        ideal: [],
+        bond: [],
+        flaw: [],
+      },
+      decisionData: {},
+    },
   };
 
-  let tabs = ["Races", "Class", "Review"];
+  let tabs = ["Races", "Class", "Background", "Review"];
   let currentTab = "Races";
 
   async function createCharacter(event) {
@@ -44,16 +55,18 @@
     });
 
     let actorData = {};
-    const mergeData = mergeWith(
-      {},
-      data.race.data,
-      data.subrace.data,
-      data.class.data,
-      ...Object.values(data.race.decisionData).flat(),
-      ...Object.values(data.subrace.decisionData).flat(),
-      ...Object.values(data.class.decisionData).flat(),
-      mergeCustomizer
-    );
+
+    function dataReducer(acc, cur) {
+      console.log(cur);
+      return mergeWith(
+        {},
+        acc,
+        data[cur].data,
+        ...Object.values(data[cur].decisionData).flat(),
+        mergeCustomizer
+      );
+    }
+    const mergeData = Object.keys(data).reduce(dataReducer, {});
 
     if (mergeData.abilities) {
       for (const [ability, increase] of Object.entries(mergeData.abilities)) {
@@ -77,6 +90,14 @@
     if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
 
     if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
+
+    if (mergeData.personality) actorData["data.details.trait"] = mergeData.personality.join("\n");
+
+    if (mergeData.ideal) actorData["data.details.ideal"] = mergeData.ideal.join("\n");
+
+    if (mergeData.bond) actorData["data.details.bond"] = mergeData.bond.join("\n");
+
+    if (mergeData.flaw) actorData["data.details.flaw"] = mergeData.flaw.join("\n");
 
     if (mergeData.weapon_proficiencies) {
       const weaponCategories = ["mar", "sim"];
@@ -179,6 +200,10 @@
 
   {#if currentTab === "Class"}
     <ClassTab bind:data />
+  {/if}
+
+  {#if currentTab === "Background"}
+    <BackgroundTab bind:data />
   {/if}
 
   {#if currentTab === "Review"}

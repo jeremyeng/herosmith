@@ -24,11 +24,6 @@
               data: {},
               decisionData: {},
             };
-            data.subrace = {
-              uuid: "",
-              data: {},
-              decisionData: {},
-            };
           } else {
             data.class = {
               uuid: classUuid,
