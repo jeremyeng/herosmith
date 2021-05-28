@@ -3,6 +3,7 @@
   import ClassTab from "components/ClassTab.svelte";
   import BackgroundTab from "components/BackgroundTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
+  import AbilityScoreTab from "components/AbilityScoreTab.svelte";
   import { capitalize } from "utils/utils.js";
   import { mergeWith } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
@@ -10,6 +11,18 @@
   export let closeWindow;
 
   let data = {
+    abilities: {
+      data: {
+        str: 8,
+        con: 8,
+        dex: 8,
+        int: 8,
+        wis: 8,
+        cha: 8,
+      },
+      mode: "pointbuy",
+      pointBuyBudget: 27,
+    },
     race: {
       uuid: "",
       data: {},
@@ -37,7 +50,7 @@
     },
   };
 
-  let tabs = ["Races", "Class", "Background", "Review"];
+  let tabs = ["Races", "Class", "Abilities", "Background", "Review"];
   let currentTab = "Races";
 
   async function createCharacter(event) {
@@ -200,6 +213,10 @@
 
   {#if currentTab === "Class"}
     <ClassTab bind:data />
+  {/if}
+
+  {#if currentTab === "Abilities"}
+    <AbilityScoreTab bind:data />
   {/if}
 
   {#if currentTab === "Background"}
