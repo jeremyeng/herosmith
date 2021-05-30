@@ -22,6 +22,8 @@
       },
       mode: "pointbuy",
       pointBuyBudget: 27,
+      rolledScores: [],
+      availableScores: [],
     },
     race: {
       uuid: "",
@@ -49,6 +51,8 @@
       decisionData: {},
     },
   };
+  $: console.log(data.abilities.rolledScores);
+  $: console.log(data.abilities.availableScores);
 
   let tabs = ["Races", "Class", "Abilities", "Background", "Review"];
   let currentTab = "Races";

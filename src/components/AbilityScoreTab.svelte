@@ -1,5 +1,6 @@
 <script>
   import AbilityAbbreviations from "data/abilityAbbreviations.js";
+  import rollStats from "utils/rollStats.js";
 
   export let data;
 
@@ -59,6 +60,8 @@
       on:click={() => {
         if (data.abilities.mode !== "standard") {
           data.abilities.mode = "standard";
+          data.abilities.rolledScores = standardScores;
+          data.abilities.availableScores = [...data.abilities.rolledScores];
           data.abilities.data = {
             str: undefined,
             con: undefined,
@@ -87,6 +90,24 @@
         }
       }}>Point Buy</button
     >
+    <button
+      type="button"
+      on:click={() => {
+        if (data.abilities.mode !== "roll") {
+          data.abilities.mode = "roll";
+          data.abilities.data = {
+            str: undefined,
+            con: undefined,
+            dex: undefined,
+            int: undefined,
+            wis: undefined,
+            cha: undefined,
+          };
+          data.abilities.rolledScores = rollStats();
+          data.abilities.availableScores = [...data.abilities.rolledScores];
+        }
+      }}>Roll</button
+    >
   </div>
 
   {#if data.abilities.mode === "pointbuy"}
@@ -103,17 +124,37 @@
       >
         <div class="label">{AbilityAbbreviations[ability]}</div>
         <div class="value-bar">
-          {#if data.abilities.mode === "standard"}
+          {#if data.abilities.mode === "standard" || data.abilities.mode === "roll"}
             <!-- svelte-ignore a11y-no-onchange -->
             <select
               on:change={(event) => {
-                data.abilities.data[ability] = parseInt(event.target.value);
+                if (data.abilities.data[ability]) {
+                  data.abilities.availableScores = [
+                    ...data.abilities.availableScores,
+                    data.abilities.data[ability],
+                  ];
+                }
+
+                if (parseInt(event.target.value)) {
+                  const value = parseInt(event.target.value);
+                  data.abilities.data[ability] = value;
+
+                  data.abilities.availableScores.splice(
+                    data.abilities.availableScores.findIndex((a) => a === value),
+                    1
+                  );
+
+                  // Must reassign for svelte to update
+                  data.abilities.availableScores = data.abilities.availableScores;
+                } else {
+                  data.abilities.data[ability] = undefined;
+                }
               }}
             >
               <option>--</option>
-              {#each standardScores as score}
+              {#each data.abilities.rolledScores as score}
                 <option
-                  disabled={Object.values(data.abilities.data).includes(score)}
+                  disabled={!data.abilities.availableScores.includes(score)}
                   selected={data.abilities.data[ability] === score}>{score}</option
                 >
               {/each}
