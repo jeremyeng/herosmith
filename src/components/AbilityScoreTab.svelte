@@ -151,8 +151,11 @@
                 }
               }}
             >
+              {#if data.abilities.data[ability]}
+                <option selected>{data.abilities.data[ability]}</option>
+              {/if}
               <option>--</option>
-              {#each data.abilities.rolledScores as score}
+              {#each data.abilities.availableScores as score}
                 <option
                   disabled={!data.abilities.availableScores.includes(score)}
                   selected={data.abilities.data[ability] === score}>{score}</option
