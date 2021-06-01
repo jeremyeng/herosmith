@@ -57,6 +57,7 @@
   <div class="mode-select">
     <button
       type="button"
+      class:selected={data.abilities.mode === "standard"}
       on:click={() => {
         if (data.abilities.mode !== "standard") {
           data.abilities.mode = "standard";
@@ -75,6 +76,7 @@
     >
     <button
       type="button"
+      class:selected={data.abilities.mode === "pointbuy"}
       on:click={() => {
         if (data.abilities.mode !== "pointbuy") {
           data.abilities.mode = "pointbuy";
@@ -92,6 +94,7 @@
     >
     <button
       type="button"
+      class:selected={data.abilities.mode === "roll"}
       on:click={() => {
         if (data.abilities.mode !== "roll") {
           data.abilities.mode = "roll";
@@ -110,6 +113,7 @@
     >
     <button
       type="button"
+      class:selected={data.abilities.mode === "manual"}
       on:click={() => {
         if (data.abilities.mode !== "manual") {
           data.abilities.mode = "manual";
@@ -310,5 +314,9 @@
     display: flex;
     justify-content: center;
     font-size: 20px;
+  }
+
+  .selected {
+    border-color: #782e22;
   }
 </style>
