@@ -148,11 +148,12 @@
             <!-- svelte-ignore a11y-no-onchange -->
             <select
               on:change={(event) => {
+                event.preventDefault();
                 if (data.abilities.data[ability]) {
                   data.abilities.availableScores = [
                     ...data.abilities.availableScores,
                     data.abilities.data[ability],
-                  ].sort((a, b) => b - a);
+                  ];
                 }
 
                 if (parseInt(event.target.value)) {
@@ -171,11 +172,8 @@
                 }
               }}
             >
-              {#if data.abilities.data[ability]}
-                <option selected>{data.abilities.data[ability]}</option>
-              {/if}
               <option>--</option>
-              {#each data.abilities.availableScores as score}
+              {#each data.abilities.rolledScores as score}
                 <option
                   disabled={!data.abilities.availableScores.includes(score)}
                   selected={!data.abilities.data[ability] && data.abilities.data[ability] === score}
