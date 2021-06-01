@@ -108,6 +108,22 @@
         }
       }}>Roll</button
     >
+    <button
+      type="button"
+      on:click={() => {
+        if (data.abilities.mode !== "manual") {
+          data.abilities.mode = "manual";
+          data.abilities.data = {
+            str: 10,
+            con: 10,
+            dex: 10,
+            int: 10,
+            wis: 10,
+            cha: 10,
+          };
+        }
+      }}>Manual</button
+    >
   </div>
 
   {#if data.abilities.mode === "pointbuy"}
@@ -178,6 +194,14 @@
               disabled={data.abilities.pointBuyBudget - costOfIncrease(ability) < 0 || value === 15}
               on:click={() => raiseAbilityScore(ability)}><i class="fas fa-plus" /></button
             >
+          {:else if data.abilities.mode === "manual"}
+            <input
+              type="number"
+              value={data.abilities.data[ability]}
+              on:change={(event) => {
+                data.abilities.data[ability] = parseInt(event.target.value);
+              }}
+            />
           {/if}
         </div>
         {#if value && value >= 10}
@@ -200,6 +224,11 @@
 </div>
 
 <style>
+  input[type="number"] {
+    width: 36px;
+    font-size: 24px;
+  }
+
   .ability-scores-tab {
     margin: 0 0.5rem;
   }
