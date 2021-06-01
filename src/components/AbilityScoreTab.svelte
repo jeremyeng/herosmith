@@ -1,6 +1,7 @@
 <script>
   import AbilityAbbreviations from "data/abilityAbbreviations.js";
   import rollStats from "utils/rollStats.js";
+  import { uniq } from "lodash";
 
   export let data;
 
@@ -52,6 +53,30 @@
       pointBuyCosts[data.abilities.data.abilities[ability]] -
       pointBuyCosts[data.abilities.data.abilities[ability] - 1]
     );
+  }
+
+  function availableOptions(ability) {
+    let optionsHtmlString = "<option>--</option>";
+    for (const score of uniq(data.abilities.rolledScores)) {
+      const pickedOccurrences = Object.values(data.abilities.data.abilities).filter(
+        (s) => s === score
+      ).length;
+      const availableOccurrences = data.abilities.availableScores.filter((s) => s === score).length;
+
+      for (let i = 0; i < pickedOccurrences; i++) {
+        if (data.abilities.data.abilities[ability] === score) {
+          optionsHtmlString += `<option disabled selected>${score}</option>`;
+        } else {
+          optionsHtmlString += `<option disabled>${score}</option>`;
+        }
+      }
+
+      for (let i = 0; i < availableOccurrences; i++) {
+        optionsHtmlString += `<option>${score}</option>`;
+      }
+    }
+
+    return optionsHtmlString;
   }
 </script>
 
@@ -174,13 +199,7 @@
                 }
               }}
             >
-              <option>--</option>
-              {#each data.abilities.rolledScores as score}
-                <option
-                  disabled={!data.abilities.availableScores.includes(score)}
-                  selected={data.abilities.data.abilities[ability] === score}>{score}</option
-                >
-              {/each}
+              {@html availableOptions(ability)}
             </select>
           {:else if data.abilities.mode === "pointbuy"}
             <button
