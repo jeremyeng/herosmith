@@ -132,7 +132,7 @@
                   data.abilities.availableScores = [
                     ...data.abilities.availableScores,
                     data.abilities.data[ability],
-                  ];
+                  ].sort((a, b) => b - a);
                 }
 
                 if (parseInt(event.target.value)) {
@@ -158,7 +158,8 @@
               {#each data.abilities.availableScores as score}
                 <option
                   disabled={!data.abilities.availableScores.includes(score)}
-                  selected={data.abilities.data[ability] === score}>{score}</option
+                  selected={!data.abilities.data[ability] && data.abilities.data[ability] === score}
+                  >{score}</option
                 >
               {/each}
             </select>
