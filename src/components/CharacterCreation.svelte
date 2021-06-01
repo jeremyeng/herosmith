@@ -13,17 +13,20 @@
   let data = {
     abilities: {
       data: {
-        str: 8,
-        con: 8,
-        dex: 8,
-        int: 8,
-        wis: 8,
-        cha: 8,
+        abilities: {
+          str: 8,
+          con: 8,
+          dex: 8,
+          int: 8,
+          wis: 8,
+          cha: 8,
+        },
       },
       mode: "pointbuy",
       pointBuyBudget: 27,
       rolledScores: [],
       availableScores: [],
+      decisionData: {},
     },
     race: {
       uuid: "",
@@ -84,9 +87,8 @@
     const mergeData = Object.keys(data).reduce(dataReducer, {});
 
     if (mergeData.abilities) {
-      for (const [ability, increase] of Object.entries(mergeData.abilities)) {
-        actorData[`data.abilities.${ability}.value`] =
-          actor.data.data.abilities[ability].value + increase;
+      for (const [ability, value] of Object.entries(mergeData.abilities)) {
+        actorData[`data.abilities.${ability}.value`] = value;
       }
     }
 

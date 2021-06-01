@@ -32,23 +32,25 @@
 
   function reduceAbilityScore(ability) {
     data.abilities.pointBuyBudget += costOfDecrease(ability);
-    data.abilities.data[ability] -= 1;
+    data.abilities.data.abilities[ability] -= 1;
   }
 
   function raiseAbilityScore(ability) {
     data.abilities.pointBuyBudget -= costOfIncrease(ability);
-    data.abilities.data[ability] += 1;
+    data.abilities.data.abilities[ability] += 1;
   }
 
   function costOfIncrease(ability) {
     return (
-      pointBuyCosts[data.abilities.data[ability] + 1] - pointBuyCosts[data.abilities.data[ability]]
+      pointBuyCosts[data.abilities.data.abilities[ability] + 1] -
+      pointBuyCosts[data.abilities.data.abilities[ability]]
     );
   }
 
   function costOfDecrease(ability) {
     return (
-      pointBuyCosts[data.abilities.data[ability]] - pointBuyCosts[data.abilities.data[ability] - 1]
+      pointBuyCosts[data.abilities.data.abilities[ability]] -
+      pointBuyCosts[data.abilities.data.abilities[ability] - 1]
     );
   }
 </script>
@@ -63,7 +65,7 @@
           data.abilities.mode = "standard";
           data.abilities.rolledScores = standardScores;
           data.abilities.availableScores = [...data.abilities.rolledScores];
-          data.abilities.data = {
+          data.abilities.data.abilities = {
             str: undefined,
             con: undefined,
             dex: undefined,
@@ -81,7 +83,7 @@
         if (data.abilities.mode !== "pointbuy") {
           data.abilities.mode = "pointbuy";
           data.abilities.pointBuyBudget = 27;
-          data.abilities.data = {
+          data.abilities.data.abilities = {
             str: 8,
             con: 8,
             dex: 8,
@@ -98,7 +100,7 @@
       on:click={() => {
         if (data.abilities.mode !== "roll") {
           data.abilities.mode = "roll";
-          data.abilities.data = {
+          data.abilities.data.abilities = {
             str: undefined,
             con: undefined,
             dex: undefined,
@@ -117,7 +119,7 @@
       on:click={() => {
         if (data.abilities.mode !== "manual") {
           data.abilities.mode = "manual";
-          data.abilities.data = {
+          data.abilities.data.abilities = {
             str: 10,
             con: 10,
             dex: 10,
@@ -134,7 +136,7 @@
     <div class="point-buy-budget"><b>Points Remaining:</b> {data.abilities.pointBuyBudget}/27</div>
   {/if}
   <div class="ability-score-row">
-    {#each Object.entries(data.abilities.data) as [ability, value]}
+    {#each Object.entries(data.abilities.data.abilities) as [ability, value]}
       <div
         class="ability-score"
         class:current={currentAbility === ability}
@@ -149,16 +151,16 @@
             <select
               on:change={(event) => {
                 event.preventDefault();
-                if (data.abilities.data[ability]) {
+                if (data.abilities.data.abilities[ability]) {
                   data.abilities.availableScores = [
                     ...data.abilities.availableScores,
-                    data.abilities.data[ability],
+                    data.abilities.data.abilities[ability],
                   ];
                 }
 
                 if (parseInt(event.target.value)) {
                   const value = parseInt(event.target.value);
-                  data.abilities.data[ability] = value;
+                  data.abilities.data.abilities[ability] = value;
 
                   data.abilities.availableScores.splice(
                     data.abilities.availableScores.findIndex((a) => a === value),
@@ -168,7 +170,7 @@
                   // Must reassign for svelte to update
                   data.abilities.availableScores = data.abilities.availableScores;
                 } else {
-                  data.abilities.data[ability] = undefined;
+                  data.abilities.data.abilities[ability] = undefined;
                 }
               }}
             >
@@ -176,8 +178,7 @@
               {#each data.abilities.rolledScores as score}
                 <option
                   disabled={!data.abilities.availableScores.includes(score)}
-                  selected={!data.abilities.data[ability] && data.abilities.data[ability] === score}
-                  >{score}</option
+                  selected={data.abilities.data.abilities[ability] === score}>{score}</option
                 >
               {/each}
             </select>
@@ -199,9 +200,9 @@
           {:else if data.abilities.mode === "manual"}
             <input
               type="number"
-              value={data.abilities.data[ability]}
+              value={data.abilities.data.abilities[ability]}
               on:change={(event) => {
-                data.abilities.data[ability] = parseInt(event.target.value);
+                data.abilities.data.abilities[ability] = parseInt(event.target.value);
               }}
             />
           {/if}
