@@ -5,7 +5,6 @@
 
   export let data;
 
-  let standardScores = [8, 10, 12, 13, 14, 15];
   let pointBuyCosts = {
     8: 0,
     9: 1,
@@ -88,8 +87,6 @@
       on:click={() => {
         if (data.abilities.mode !== "standard") {
           data.abilities.mode = "standard";
-          data.abilities.rolledScores = standardScores;
-          data.abilities.availableScores = [...data.abilities.rolledScores];
           data.abilities.data.abilities = {
             str: undefined,
             con: undefined,
@@ -98,6 +95,8 @@
             wis: undefined,
             cha: undefined,
           };
+          data.abilities.rolledScores = [15, 14, 13, 12, 10, 8];
+          data.abilities.availableScores = [...data.abilities.rolledScores];
         }
       }}>Standard</button
     >
