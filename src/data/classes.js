@@ -67,7 +67,7 @@ const CLASSES = {
       1: {
         choices: [
           {
-            name: "Melee Martial Weapon Proficiency",
+            name: "Melee Martial Weapon",
             choose: 1,
             options: Object.values(itemOptions("weapons.melee.martial")),
           },
