@@ -1,5 +1,6 @@
 import skillOptions from "data/skillOptions.js";
 import toolOptions from "data/toolOptions.js";
+import itemOptions from "data/itemOptions.js";
 
 const CLASSES = {
   // Barbarian
@@ -61,6 +62,17 @@ const CLASSES = {
       15: { features: ["Compendium.dnd5e.classfeatures.l8tUhZ5Pecm9wz7I"] },
       18: { features: ["Compendium.dnd5e.classfeatures.Q1exex5ALteprrPo"] },
       20: { features: ["Compendium.dnd5e.classfeatures.jVU4AgqfrFaqgXns"] },
+    },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Melee Martial Weapon Proficiency",
+            choose: 1,
+            options: Object.values(itemOptions("weapons.melee.martial")),
+          },
+        ],
+      },
     },
   },
 
