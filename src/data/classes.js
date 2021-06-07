@@ -258,6 +258,51 @@ const CLASSES = {
       5: { features: ["Compendium.dnd5e.classfeatures.NMy4piwXIpLjYbRE"] },
       10: { features: ["Compendium.dnd5e.classfeatures.eVXqHn0ojWrEuYGU"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Mace or Warhammer",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.simple.mace"),
+              itemOptions("weapons.melee.martial.warhammer"),
+            ],
+          },
+          {
+            name: "Leather Armor, Scale Mail, or Chain Mail",
+            choose: 1,
+            options: [
+              itemOptions("armor.light.leatherarmor"),
+              itemOptions("armor.medium.scalemail"),
+              itemOptions("armor.heavy.chainmail"),
+            ],
+          },
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Priest's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["priest", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Druid

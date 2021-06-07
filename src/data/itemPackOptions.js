@@ -80,6 +80,72 @@ const itemPacks = {
       ],
     },
   },
+  explorer: {
+    name: "Explorer's Pack",
+    data: {
+      items: [
+        // Backpack
+        "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+        // Bedroll
+        "Compendium.dnd5e.items.DVXmyetZuvxbzAwW",
+
+        // Mess Kit
+        "Compendium.dnd5e.items.V13fjV5oSmvbRdgP",
+
+        // Tinderbox
+        "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+        // 10 Torches
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+        // 10 Rations
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+        // Waterskin
+        "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+        // 50 ft of Hempen Rope
+        "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+      ],
+    },
+  },
+  priest: {
+    name: "Priest's Pack",
+    data: {
+      items: [
+        // Backpack
+        "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+        // Blanket
+        "Compendium.dnd5e.items.419eNv7xp2p7Xlo5",
+
+        // 10 Candles
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.0NoBBP3MMkvJlwZY"),
+
+        // Tinderbox
+        "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+        // Alms Box
+        "Compendium.dnd5e.items.g8fQZ1WyTz2bTtvA",
+
+        // 2 Blocks of Incense
+        ...Array.from({ length: 2 }, () => "Compendium.dnd5e.items.eJY20LOs3pOkRDPl"),
+
+        // Censer
+        "Compendium.dnd5e.items.7ztvHyYJCcOOAWmR",
+
+        // Vestments
+        "Compendium.dnd5e.items.irtqrzaUCeshmTZp",
+
+        // 2 Rations
+        ...Array.from({ length: 2 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+        // Waterskin
+        "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+      ],
+    },
+  },
 };
 
 export default function itemPackOptions(itemPackNames = Object.keys(itemPacks)) {
