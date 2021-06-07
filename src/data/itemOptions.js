@@ -236,6 +236,92 @@ const items = {
       },
     },
   },
+  armor: {
+    light: {
+      paddedarmor: {
+        name: "Padded Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.GtKV1b5uqFQqpEni"],
+        },
+      },
+      leatherarmor: {
+        name: "Leather Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.WwdpHLXGX5r8uZu5"],
+        },
+      },
+      studdedleatherarmor: {
+        name: "Studded Leather Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.TIV3B1vbrVHIhQAm"],
+        },
+      },
+    },
+    medium: {
+      breastplate: {
+        name: "Breastplate",
+        data: {
+          items: ["Compendium.dnd5e.items.SK2HATQ4abKUlV8i"],
+        },
+      },
+      scalemail: {
+        name: "Scale Mail",
+        data: {
+          items: ["Compendium.dnd5e.items.XmnlF5fgIO3tg6TG"],
+        },
+      },
+      hidearmor: {
+        name: "Hide Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.n1V07puo0RQxPGuF"],
+        },
+      },
+      chainshirt: {
+        name: "Chain Shirt",
+        data: {
+          items: ["Compendium.dnd5e.items.p2zChy24ZJdVqMSH"],
+        },
+      },
+      halfplatearmor: {
+        name: "Half Plate Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.vsgmACFYINloIdPm"],
+        },
+      },
+    },
+    heavy: {
+      platearmor: {
+        name: "Plate Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.OjkIqlW2UpgFcjZa"],
+        },
+      },
+      splintarmor: {
+        name: "Splint Armor",
+        data: {
+          items: ["Compendium.dnd5e.items.cKpJmsJmU8YaiuqG"],
+        },
+      },
+      ringmail: {
+        name: "Ring Mail",
+        data: {
+          items: ["Compendium.dnd5e.items.nsXZejlmgalj4he9"],
+        },
+      },
+      chainmail: {
+        name: "Chain Mail",
+        data: {
+          items: ["Compendium.dnd5e.items.rLMflzmxpe8JGTOA"],
+        },
+      },
+    },
+    shield: {
+      name: "Shield",
+      data: {
+        items: ["Compendium.dnd5e.items.sSs3hSzkKBMNBgTs"],
+      },
+    },
+  },
   tools: {
     instruments: {
       drum: {
