@@ -13,7 +13,7 @@
   {#if CLASSES[data.class.uuid]?.equipment?.[level]?.["choices"]}
     <div class="choices" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
       {#each CLASSES[data.class.uuid]["equipment"][level]["choices"] as choice, i}
-        <Choice {choice} bind:data={data.class.decisionData[i]} />
+        <Choice {choice} bind:data={data.equipment.decisionData[i]} />
       {/each}
     </div>
   {/if}

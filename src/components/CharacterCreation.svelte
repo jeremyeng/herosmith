@@ -44,6 +44,10 @@
       data: {},
       decisionData: {},
     },
+    equipment: {
+      data: {},
+      decisionData: {},
+    },
     background: {
       uuid: "",
       data: {
