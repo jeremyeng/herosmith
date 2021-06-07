@@ -380,6 +380,29 @@ const CLASSES = {
       },
       20: { features: ["Compendium.dnd5e.classfeatures.ip4bvmGoz3qkoqes"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Shield or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Scimitar or Any Simple Melee Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.scimitar"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+        ],
+      },
+    },
   },
 
   // Fighter
