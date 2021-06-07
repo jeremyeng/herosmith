@@ -454,6 +454,67 @@ const CLASSES = {
       5: { features: ["Compendium.dnd5e.classfeatures.q9g1MLXuLZyxjQMg"] },
       9: { features: ["Compendium.dnd5e.classfeatures.653ZHbNcmm7ZGXbw"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Chainmail or Leather Armor, Longbow, and 20 Arrows",
+            choose: 1,
+            options: [
+              itemOptions("armor.heavy.chainmail"),
+              {
+                name: "Leather Armor, Longbow, and 20 Arrows",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+                    "Compendium.dnd5e.items.3cymOVja8jXbzrdT",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            name: "Martial Weapons",
+            choose: 2,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.martial")),
+              ...Object.values(itemOptions("weapons.ranged.martial")),
+            ],
+          },
+          {
+            name: "Light Crossbow and 20 Bolts or 2 Handaxes",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              {
+                name: "Two Handaxes",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Monk

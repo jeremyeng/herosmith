@@ -44,6 +44,39 @@ const itemPacks = {
       ],
     },
   },
+  dungeoneer: {
+    name: "Dungeoneer's Pack",
+    data: {
+      items: [
+        // Backpack
+        "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+        // Crowbar
+        "Compendium.dnd5e.items.V5UAjT3ed6sDNtgm",
+
+        // Hammer
+        "Compendium.dnd5e.items.14pNRT4sZy9rgvhb",
+
+        // 10 Pitons
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.TqyvIglHDj5kfohR"),
+
+        // 10 Torches
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+        // Tinderbox
+        "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+        // 10 Rations
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+        // Waterskin
+        "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+        // 50 ft of Hempen Rope
+        "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+      ],
+    },
+  },
   entertainer: {
     name: "Entertainer's Pack",
     data: {
