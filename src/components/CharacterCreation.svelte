@@ -6,7 +6,7 @@
   import AbilityScoreTab from "components/AbilityScoreTab.svelte";
   import EquipmentTab from "components/EquipmentTab.svelte";
   import { capitalize } from "utils/utils.js";
-  import { mergeWith } from "lodash";
+  import { mergeWith, countBy } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
 
   export let closeWindow;
@@ -198,8 +198,17 @@
     await actor.update(actorData);
     if (mergeData.items) {
       const itemUuids = mergeData.items.concat(mergeData.features);
-      const itemsToAdd = await Promise.all(itemUuids.map((uuid) => fromUuid(uuid)));
-      await actor.addEmbeddedItems(itemsToAdd, (prompt = false));
+      const quantities = countBy(itemUuids);
+      const items = await Promise.all(Object.keys(quantities).map((uuid) => fromUuid(uuid)));
+
+      const itemObjects = [];
+      items.forEach((item) => {
+        const itemObj = item.toObject();
+        itemObj.data.quantity = quantities[item.uuid];
+        itemObjects.push(itemObj);
+      });
+
+      await game.dnd5e.entities.Item5e.createDocuments(itemObjects, { parent: actor });
     }
 
     closeWindow();
