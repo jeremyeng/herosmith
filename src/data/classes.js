@@ -71,6 +71,22 @@ const CLASSES = {
             choose: 1,
             options: Object.values(itemOptions("weapons.melee.martial")),
           },
+          {
+            name: "Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Two Handaxes",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
         ],
       },
     },
