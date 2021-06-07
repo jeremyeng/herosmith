@@ -71,7 +71,7 @@
     align-items: center;
     grid-column: 2;
     font-size: 16px;
-    margin-left: 0.5em;
+    margin-top: 2px;
   }
 
   img {
