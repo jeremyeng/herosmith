@@ -1,6 +1,7 @@
 import skillOptions from "data/skillOptions.js";
 import toolOptions from "data/toolOptions.js";
 import itemOptions from "data/itemOptions.js";
+import itemPackOptions from "data/itemPackOptions.js";
 
 const CLASSES = {
   // Barbarian
@@ -157,6 +158,33 @@ const CLASSES = {
       6: { features: ["Compendium.dnd5e.classfeatures.SEJmsjkEhdAZ90ki"] },
       10: { features: ["Compendium.dnd5e.classfeatures.aonJ2YjkqkYB9WYB"] },
       20: { features: ["Compendium.dnd5e.classfeatures.GBYN5rH4nh1ocRlY"] },
+    },
+
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Rapier, Longsword, Or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.rapier"),
+              itemOptions("weapons.melee.martial.longsword"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Diplomat's Pack or Entertainer's Pack",
+            choose: 1,
+            options: itemPackOptions(["diplomat", "entertainer"]),
+          },
+          {
+            name: "Musical Instrument",
+            choose: 1,
+            options: Object.values(itemOptions("tools.instruments")),
+          },
+        ],
+      },
     },
   },
 

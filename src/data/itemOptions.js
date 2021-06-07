@@ -236,6 +236,70 @@ const items = {
       },
     },
   },
+  tools: {
+    instruments: {
+      drum: {
+        name: "Drum",
+        data: {
+          items: ["Compendium.dnd5e.items.69Dpr25pf4BjkHKb"],
+        },
+      },
+      lyre: {
+        name: "Lyre",
+        data: {
+          items: ["Compendium.dnd5e.items.EwG1EtmbgR3bM68U"],
+        },
+      },
+      shawm: {
+        name: "Shawm",
+        data: {
+          items: ["Compendium.dnd5e.items.G3cqbejJpfB91VhP"],
+        },
+      },
+      panflute: {
+        name: "Pan Flute",
+        data: {
+          items: ["Compendium.dnd5e.items.G5m5gYIx9VAUWC3J"],
+        },
+      },
+      dulcimer: {
+        name: "Dulcimer",
+        data: {
+          items: ["Compendium.dnd5e.items.NtdDkjmpdIMiX7I2"],
+        },
+      },
+      horn: {
+        name: "Horn",
+        data: {
+          items: ["Compendium.dnd5e.items.aa9KuBy4dst7WIW9"],
+        },
+      },
+      viol: {
+        name: "Viol",
+        data: {
+          items: ["Compendium.dnd5e.items.baoe3U5BfMMMxhCU"],
+        },
+      },
+      flute: {
+        name: "Flute",
+        data: {
+          items: ["Compendium.dnd5e.items.eJOrPcAz9EcquyRQ"],
+        },
+      },
+      lute: {
+        name: "Lute",
+        data: {
+          items: ["Compendium.dnd5e.items.qBydtUUIkv520DT7"],
+        },
+      },
+      bagpipes: {
+        name: "Bagpipes",
+        data: {
+          items: ["Compendium.dnd5e.items.yxHi57T5mmVt0oDr"],
+        },
+      },
+    },
+  },
 };
 
 export default function itemOptions(path) {
