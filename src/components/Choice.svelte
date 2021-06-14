@@ -6,9 +6,20 @@
 
   export let data;
   export let choice;
+  export let disabled = false;
+  export let style = "";
 
   function isOptionSelected(selectedData, optData) {
     return selectedData.some((val) => isEqual(val, optData));
+  }
+
+  function isChoiceSelected(selectedData, choiceData) {
+    for (const option of choiceData.options) {
+      if (selectedData.some((val) => isEqual(val, option.data))) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function onMakeDecision(optionData) {
@@ -22,19 +33,28 @@
   $: data = data || [];
 </script>
 
-<div class="choice">
+<div class="choice" {style}>
   <label for={choice.name}>
     <h3>{choice.name} (Pick {choice.choose})</h3>
   </label>
   <div class="choice-grid">
     {#each choice.options as option}
-      <!-- Display group of items -->
-      {#if option?.data?.items?.length > 1}
+      {#if option?.choose}
+        <!-- Display Another Choice -->
+        <svelte:self
+          bind:data
+          choice={option}
+          disabled={data.length >= choice.choose && !isChoiceSelected(data, option)}
+          style={"padding-left:1em;"}
+        />
+      {:else if option?.data?.items?.length > 1}
+        <!-- Display group of items -->
         <ItemGroupCard
           name={option.name}
           contents={option?.data?.items}
           selected={isOptionSelected(data, option.data)}
-          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          disabled={disabled ||
+            (data.length >= choice.choose && !isOptionSelected(data, option.data))}
           on:selected={() => {
             onMakeDecision(option.data);
           }}
@@ -44,7 +64,8 @@
         <ItemCard
           uuid={option?.data?.items[0]}
           selected={isOptionSelected(data, option.data)}
-          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          disabled={disabled ||
+            (data.length >= choice.choose && !isOptionSelected(data, option.data))}
           on:selected={() => {
             onMakeDecision(option.data);
           }}
@@ -54,7 +75,8 @@
           text={option.name}
           data={option.data}
           selected={isOptionSelected(data, option.data)}
-          disabled={data.length >= choice.choose && !isOptionSelected(data, option.data)}
+          disabled={disabled ||
+            (data.length >= choice.choose && !isOptionSelected(data, option.data))}
           on:selected={() => {
             if (isOptionSelected(data, option.data)) {
               data = data.filter((val) => !isEqual(val, option.data));
