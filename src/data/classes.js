@@ -733,6 +733,41 @@ const CLASSES = {
       11: { features: ["Compendium.dnd5e.classfeatures.FAk41RPCTcvCk6KI"] },
       14: { features: ["Compendium.dnd5e.classfeatures.U7BIPVPsptBmwsnV"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Martial Weapon + Shield Or 2 Martial Weapons",
+            choose: 2,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.martial")),
+              ...Object.values(itemOptions("weapons.ranged.martial")),
+            ],
+          },
+          {
+            name: "5 Javelins or Any Simple Melee Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "5 Javelins",
+                data: {
+                  items: [
+                    ...Array.from({ length: 5 }, () => "Compendium.dnd5e.items.DWLMnODrnHn8IbAG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+          {
+            name: "Priest's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["priest", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Ranger
