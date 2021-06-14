@@ -625,6 +625,26 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.3jwFt3hSqDswBlOH"] },
       20: { features: ["Compendium.dnd5e.classfeatures.mQNPg89YIs7g5tG4"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Shortsword Or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.shortsword"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Paladin
