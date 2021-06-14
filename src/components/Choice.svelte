@@ -7,7 +7,6 @@
   export let data;
   export let choice;
   export let disabled = false;
-  export let style = "";
 
   function isOptionSelected(selectedData, optData) {
     return selectedData.some((val) => isEqual(val, optData));
@@ -33,7 +32,7 @@
   $: data = data || [];
 </script>
 
-<div class="choice" {style}>
+<div class="choice">
   <label for={choice.name}>
     <h3>{choice.name} (Pick {choice.choose})</h3>
   </label>
