@@ -832,6 +832,44 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.QBVmY56RMQuh6C8h"] },
       20: { features: ["Compendium.dnd5e.classfeatures.3CaP1vFHVR8LgHjx"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Scale Mail, or Leather Armor",
+            choose: 1,
+            options: [
+              itemOptions("armor.medium.scalemail"),
+              itemOptions("armor.light.leatherarmor"),
+            ],
+          },
+          {
+            name: "2 Shortswords or 2 Simple Melee Weapons",
+            choose: 1,
+            options: [
+              {
+                name: "2 Shortswords",
+                data: {
+                  items: [
+                    ...Array.from({ length: 2 }, () => "Compendium.dnd5e.items.osLzOwQdPtrK3rQH"),
+                  ],
+                },
+              },
+              {
+                name: "2 Simple Melee Weapons",
+                choose: 2,
+                options: [...Object.values(itemOptions("weapons.melee.simple"))],
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Rogue

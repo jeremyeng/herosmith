@@ -44,7 +44,7 @@
     grid-template-columns: min-content;
     border: 2px solid rgba(181, 179, 164, 0.4);
     align-items: center;
-    width: 100%;
+    max-width: 300px;
     border-radius: 5px;
     padding: 6px;
     box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);

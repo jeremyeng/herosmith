@@ -37,7 +37,10 @@
   <label for={choice.name}>
     <h3>{choice.name} (Pick {choice.choose})</h3>
   </label>
-  <div class="choice-grid">
+  <div
+    class:choice-grid={!choice.options.some((option) => option.choose)}
+    class:choice-list={choice.options.some((option) => option.choose)}
+  >
     {#each choice.options as option}
       {#if option?.choose}
         <!-- Display Another Choice -->
@@ -45,7 +48,6 @@
           bind:data
           choice={option}
           disabled={data.length >= choice.choose && !isChoiceSelected(data, option)}
-          style={"padding-left:1em;"}
         />
       {:else if option?.data?.items?.length > 1}
         <!-- Display group of items -->
@@ -92,7 +94,7 @@
 
 <style>
   .choice {
-    margin: 3em 0;
+    margin: 2em 0;
   }
 
   h3 {
@@ -104,5 +106,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1em;
     align-items: start;
+  }
+
+  .choice-list {
+    padding-left: 1em;
   }
 </style>
