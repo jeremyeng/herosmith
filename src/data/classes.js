@@ -1270,6 +1270,67 @@ const CLASSES = {
         ],
       },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.simple.quarterstaff"),
+              itemOptions("weapons.melee.simple.dagger"),
+            ],
+          },
+          {
+            name: "Component Pouch or Arcane Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Component Pouch",
+                data: {
+                  items: ["Compendium.dnd5e.items.eZGmdOhaTWMicXPW"],
+                },
+              },
+              {
+                name: "Crystal",
+                data: {
+                  items: ["Compendium.dnd5e.items.uXOT4fYbgPY8DGdd"],
+                },
+              },
+              {
+                name: "Orb",
+                data: {
+                  items: ["Compendium.dnd5e.items.tH5Rn0JVRG1zdmPa"],
+                },
+              },
+              {
+                name: "Rod",
+                data: {
+                  items: ["Compendium.dnd5e.items.OojyyGfh91iViuMF"],
+                },
+              },
+              {
+                name: "Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.BeKIrNIvNHRPQ4t5"],
+                },
+              },
+              {
+                name: "Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.KA2P6I48iOWlnboO"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Scholar's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["scholar", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 };
 
