@@ -1022,6 +1022,76 @@ const CLASSES = {
       3: { features: ["Compendium.dnd5e.classfeatures.9Uh7uTDNZ04oTJsL"] },
       20: { features: ["Compendium.dnd5e.classfeatures.F2lEKSmOY0NUruzY"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Component Pouch or Arcane Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Component Pouch",
+                data: {
+                  items: ["Compendium.dnd5e.items.eZGmdOhaTWMicXPW"],
+                },
+              },
+              {
+                name: "Crystal",
+                data: {
+                  items: ["Compendium.dnd5e.items.uXOT4fYbgPY8DGdd"],
+                },
+              },
+              {
+                name: "Orb",
+                data: {
+                  items: ["Compendium.dnd5e.items.tH5Rn0JVRG1zdmPa"],
+                },
+              },
+              {
+                name: "Rod",
+                data: {
+                  items: ["Compendium.dnd5e.items.OojyyGfh91iViuMF"],
+                },
+              },
+              {
+                name: "Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.BeKIrNIvNHRPQ4t5"],
+                },
+              },
+              {
+                name: "Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.KA2P6I48iOWlnboO"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Warlock
