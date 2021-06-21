@@ -227,6 +227,33 @@ const itemPacks = {
       ],
     },
   },
+  scholar: {
+    name: "Scholar's Pack",
+    data: {
+      items: [
+        // Backpack
+        "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+        // Book of Lore
+        "Compendium.dnd5e.items.l794iywHk8Wc6Uvi",
+
+        // Ink Bottle
+        "Compendium.dnd5e.items.dP7jMKyHTTgVb3ii",
+
+        // Ink Pen
+        "Compendium.dnd5e.items.uVm7MiB71QblfnoY",
+
+        // 10 Sheets of Parchment
+        ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.WFQS2vT8ddrFjTJg"),
+
+        // Little Bag of Sand
+        "Compendium.dnd5e.items.iOMRrzfzFCfPGuD6",
+
+        // Small Knife
+        "Compendium.dnd5e.items.3nVvaHVfHsgwGlkL",
+      ],
+    },
+  },
 };
 
 export default function itemPackOptions(itemPackNames = Object.keys(itemPacks)) {
