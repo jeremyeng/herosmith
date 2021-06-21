@@ -935,6 +935,42 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.L7nJSRosos8sHJH9"] },
       20: { features: ["Compendium.dnd5e.classfeatures.rQhWDaMHMn7iU4f2"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Rapier or Shortsword",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.shortsword"),
+              itemOptions("weapons.melee.martial.rapier"),
+            ],
+          },
+          {
+            name: "Shortbow + Quiver of 20 Arrows or Shortsword",
+            choose: 1,
+            options: [
+              {
+                name: "Shortbow + Quiver of 20 Arrows",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.osLzOwQdPtrK3rQH",
+                    "Compendium.dnd5e.items.4MtQKPn9qMWCFjDA",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+                  ],
+                },
+              },
+              itemOptions("weapons.melee.martial.shortsword"),
+            ],
+          },
+          {
+            name: "Burglar's Pack, Dungeoneer's Pack, or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["burglar", "dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Sorcerer
