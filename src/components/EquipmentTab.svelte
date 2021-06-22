@@ -1,6 +1,8 @@
 <script>
   import Choice from "components/Choice.svelte";
   import CLASSES from "data/classes.js";
+  import ItemList from "components/ItemList.svelte";
+
   import { fade } from "svelte/transition";
   import { cubicInOut } from "svelte/easing";
 
@@ -10,6 +12,12 @@
 
 <div class="equipment-tab">
   <h2>Class Equipment</h2>
+  <!-- Standard Class Equipment -->
+  {#if CLASSES[data.class.uuid]?.data?.[level]?.["items"]}
+    <ItemList uuidList={CLASSES[data.class.uuid]["data"][level]["items"]} />
+  {/if}
+
+  <!-- Class Equipment Choices -->
   {#if CLASSES[data.class.uuid]?.equipment?.[level]?.["choices"]}
     <div class="choices" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
       {#each CLASSES[data.class.uuid]["equipment"][level]["choices"] as choice, i}
