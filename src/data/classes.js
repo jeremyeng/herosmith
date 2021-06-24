@@ -164,6 +164,13 @@ const CLASSES = {
         armor_proficiencies: ["lgt"],
         weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
         save_proficiencies: ["dex", "cha"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // Dagger
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt",
           "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA",
