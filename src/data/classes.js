@@ -38,6 +38,34 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "shl"],
         weapon_proficiencies: ["mar", "sim"],
         save_proficiencies: ["str", "con"],
+        items: [
+          // 4 Javelins
+          ...Array.from({ length: 4 }, () => "Compendium.dnd5e.items.DWLMnODrnHn8IbAG"),
+
+          // Backpack
+          "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+          // Bedroll
+          "Compendium.dnd5e.items.DVXmyetZuvxbzAwW",
+
+          // Mess Kit
+          "Compendium.dnd5e.items.V13fjV5oSmvbRdgP",
+
+          // Tinderbox
+          "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+          // 10 Torches
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+          // 10 Rations
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+          // Waterskin
+          "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+          // 50 ft of Hempen Rope
+          "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+        ],
         features: [
           "Compendium.dnd5e.classes.pvEzGSv71zBhaolc",
           "Compendium.dnd5e.classfeatures.VoR0SUrNX5EJVPIO",
