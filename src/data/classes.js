@@ -710,6 +710,10 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["sim", "shortsword"],
         save_proficiencies: ["str", "dex"],
+        items: [
+          // 10 Darts
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.3rCO8MTIdPGSW6IJ"),
+        ],
         features: [
           "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq",
           "Compendium.dnd5e.classfeatures.UAvV7N7T4zJhxdfI",
