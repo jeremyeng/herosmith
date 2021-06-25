@@ -833,6 +833,7 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "hvy", "shl"],
         weapon_proficiencies: ["sim", "mar"],
         save_proficiencies: ["wis", "cha"],
+        items: ["Compendium.dnd5e.items.rLMflzmxpe8JGTOA"],
         features: [
           "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c",
           "Compendium.dnd5e.classfeatures.E8ozg8avUVOX9N7u",
@@ -883,6 +884,30 @@ const CLASSES = {
                 },
               },
               ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+          {
+            name: "Holy Symbol",
+            choose: 1,
+            options: [
+              {
+                name: "Amulet",
+                data: {
+                  items: ["Compendium.dnd5e.items.paqlMjggWkBIAeCe"],
+                },
+              },
+              {
+                name: "Emblem",
+                data: {
+                  items: ["Compendium.dnd5e.items.laVqttkGMW4B9654"],
+                },
+              },
+              {
+                name: "Reliquary",
+                data: {
+                  items: ["Compendium.dnd5e.items.gP1URGq3kVIIFHJ7"],
+                },
+              },
             ],
           },
           {
