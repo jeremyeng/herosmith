@@ -286,9 +286,6 @@ const CLASSES = {
         items: [
           // Shield
           "Compendium.dnd5e.items.sSs3hSzkKBMNBgTs",
-
-          // Holy Symbol
-          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
         ],
         features: [
           "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub",
