@@ -957,6 +957,11 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "shl"],
         weapon_proficiencies: ["sim", "mar"],
         save_proficiencies: ["str", "dex"],
+        items: [
+          "Compendium.dnd5e.items.3cymOVja8jXbzrdT",
+          "Compendium.dnd5e.items.4MtQKPn9qMWCFjDA",
+          ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+        ],
         features: [
           "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS",
           "Compendium.dnd5e.classfeatures.4Vpj9vCOB37GtXk6",
