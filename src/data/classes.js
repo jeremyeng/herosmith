@@ -426,6 +426,34 @@ const CLASSES = {
         ],
         save_proficiencies: ["int", "wis"],
         tool_proficiencies: ["herb"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // Backpack
+          "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+          // Bedroll
+          "Compendium.dnd5e.items.DVXmyetZuvxbzAwW",
+
+          // Mess Kit
+          "Compendium.dnd5e.items.V13fjV5oSmvbRdgP",
+
+          // Tinderbox
+          "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+          // 10 Torches
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+          // 10 Rations
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+          // Waterskin
+          "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+          // 50 ft of Hempen Rope
+          "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+        ],
         features: [
           "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N",
           "Compendium.dnd5e.classfeatures.LzJ5ayHt0OlSVGxi",
@@ -464,6 +492,36 @@ const CLASSES = {
             options: [
               itemOptions("weapons.melee.martial.scimitar"),
               ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+          {
+            name: "Druidic Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Sprig of Mistletoe",
+                data: {
+                  items: ["Compendium.dnd5e.items.xDK9GQd2iqOGH8Sd"],
+                },
+              },
+              {
+                name: "Totem",
+                data: {
+                  items: ["Compendium.dnd5e.items.PGL6aaM0wE5h0VN5"],
+                },
+              },
+              {
+                name: "Wooden Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.FF1ktpb2YSiyv896"],
+                },
+              },
+              {
+                name: "Yew Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.t5yP0d7YaKwuKKiH"],
+                },
+              },
             ],
           },
         ],
