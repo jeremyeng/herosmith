@@ -1178,6 +1178,11 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
         save_proficiencies: ["con", "cha"],
+        items: [
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU",
           "Compendium.dnd5e.classfeatures.cmRCL9T9UgRYOj1c",
