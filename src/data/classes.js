@@ -1073,6 +1073,17 @@ const CLASSES = {
         weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
         save_proficiencies: ["dex", "int"],
         tool_proficiencies: ["thief"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+
+          // Thief's Tools
+          "Compendium.dnd5e.items.woWZ1sO5IUVGzo58",
+        ],
         features: [
           "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF",
           "Compendium.dnd5e.classfeatures.3sYPftQKnbbVnHrh",
