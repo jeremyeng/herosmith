@@ -1301,6 +1301,14 @@ const CLASSES = {
         armor_proficiencies: ["lgt"],
         weapon_proficiencies: ["sim"],
         save_proficiencies: ["wis", "cha"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa",
           "Compendium.dnd5e.classfeatures.jTXHaK0vvT5DV3uO",
@@ -1319,8 +1327,8 @@ const CLASSES = {
       1: {
         choices: [
           {
-            name: "Any Simple Weapon",
-            choose: 1,
+            name: "Two Simple Weapons",
+            choose: 2,
             options: [
               {
                 name: "Light Crossbow + 20 Bolts",
