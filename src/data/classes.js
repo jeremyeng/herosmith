@@ -1434,6 +1434,10 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
         save_proficiencies: ["int", "wis"],
+        items: [
+          // Spellbook
+          "Compendium.dnd5e.items.LBajgahniRJbAgDr",
+        ],
         features: [
           "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3",
           "Compendium.dnd5e.classfeatures.gbNo5eVPaqr8IVKL",
