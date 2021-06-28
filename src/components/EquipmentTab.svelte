@@ -12,6 +12,10 @@
 
 <div class="equipment-tab">
   <h2>Class Equipment</h2>
+  {#if !data.class.uuid}
+    <p class="error">Select a class to view starting equipment</p>
+  {/if}
+
   <!-- Standard Class Equipment -->
   {#if CLASSES[data.class.uuid]?.data?.[level]?.["items"]}
     <ItemList uuidList={CLASSES[data.class.uuid]["data"][level]["items"]} />
@@ -25,7 +29,11 @@
       {/each}
     </div>
   {/if}
+
   <h2>Background Equipment</h2>
+  {#if !data.background.uuid}
+    <p class="error">Select a background to view starting equipment</p>
+  {/if}
 </div>
 
 <style>
