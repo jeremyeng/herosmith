@@ -33,13 +33,6 @@
   "conflicts": [],
   "esmodules": ["public/build/bundle.js"],
   "styles": ["public/build/bundle.css", "public/global.css"],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
   "url": "This is auto replaced",
   "manifest": "This is auto replaced",
   "download": "This is auto replaced",

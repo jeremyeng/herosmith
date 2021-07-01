@@ -4,11 +4,16 @@
   import BackgroundTab from "components/BackgroundTab.svelte";
   import ReviewTab from "components/ReviewTab.svelte";
   import AbilityScoreTab from "components/AbilityScoreTab.svelte";
+  import EquipmentTab from "components/EquipmentTab.svelte";
   import { capitalize } from "utils/utils.js";
-  import { mergeWith } from "lodash";
+  import { mergeWith, countBy } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
 
   export let closeWindow;
+
+  let editorOptions = {
+    equipmentMode: "",
+  };
 
   let data = {
     abilities: {
@@ -43,6 +48,14 @@
       data: {},
       decisionData: {},
     },
+    classEquipment: {
+      data: {},
+      decisionData: {},
+    },
+    backgroundEquipment: {
+      data: {},
+      decisionData: {},
+    },
     background: {
       uuid: "",
       data: {
@@ -55,7 +68,7 @@
     },
   };
 
-  let tabs = ["Races", "Class", "Abilities", "Background", "Review"];
+  let tabs = ["Races", "Class", "Abilities", "Background", "Equipment", "Review"];
   let currentTab = "Races";
 
   async function createCharacter(event) {
@@ -107,6 +120,8 @@
     if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
 
     if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
+
+    if (mergeData.currency) actorData["data.currency"] = mergeData.currency;
 
     if (mergeData.personality) actorData["data.details.trait"] = mergeData.personality.join("\n");
 
@@ -193,8 +208,17 @@
     await actor.update(actorData);
     if (mergeData.items) {
       const itemUuids = mergeData.items.concat(mergeData.features);
-      const itemsToAdd = await Promise.all(itemUuids.map((uuid) => fromUuid(uuid)));
-      await actor.addEmbeddedItems(itemsToAdd, (prompt = false));
+      const quantities = countBy(itemUuids);
+      const items = await Promise.all(Object.keys(quantities).map((uuid) => fromUuid(uuid)));
+
+      const itemObjects = [];
+      items.forEach((item) => {
+        const itemObj = item.toObject();
+        itemObj.data.quantity = quantities[item.uuid];
+        itemObjects.push(itemObj);
+      });
+
+      await game.dnd5e.entities.Item5e.createDocuments(itemObjects, { parent: actor });
     }
 
     closeWindow();
@@ -225,6 +249,10 @@
 
   {#if currentTab === "Background"}
     <BackgroundTab bind:data />
+  {/if}
+
+  {#if currentTab === "Equipment"}
+    <EquipmentTab bind:data bind:editorOptions />
   {/if}
 
   {#if currentTab === "Review"}

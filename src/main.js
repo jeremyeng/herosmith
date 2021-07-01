@@ -52,6 +52,9 @@ class CharacterCreationWindow extends Application {
   }
 
   activateListeners(html) {
+    html.get(0).addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
     this.component = new CharacterCreation({
       target: html.get(0),
       props: {
@@ -71,11 +74,13 @@ Hooks.once("ready", async function () {});
 // This hooks onto the rendering of the Actor Directory to show the button
 Hooks.on("renderActorDirectory", async function () {
   console.log(`Herosmith | Adding actors directory button`);
-  $("section[id='actors'] .directory-header").first().prepend(
-    `<div class="flexrow">
+  $("section[id='actors'] .directory-header")
+    .first()
+    .prepend(
+      `<div class="flexrow">
       <button class='header-herosmith-button'><i class='fas fa-hammer'></i>Create Character</button>
      </div>`
-  );
+    );
   $(".header-herosmith-button").on("click", function () {
     new CharacterCreationWindow().render(true);
   });

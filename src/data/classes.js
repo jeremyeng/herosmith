@@ -1,9 +1,13 @@
 import skillOptions from "data/skillOptions.js";
 import toolOptions from "data/toolOptions.js";
+import itemOptions from "data/itemOptions.js";
+import itemPackOptions from "data/itemPackOptions.js";
 
 const CLASSES = {
   // Barbarian
   "Compendium.dnd5e.classes.pvEzGSv71zBhaolc": {
+    gold_dice: "2d4",
+    gold_multiplier: 10,
     subclasses: {
       "path-of-the-berserker": {
         name: "Path of the Berserker",
@@ -36,6 +40,34 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "shl"],
         weapon_proficiencies: ["mar", "sim"],
         save_proficiencies: ["str", "con"],
+        items: [
+          // 4 Javelins
+          ...Array.from({ length: 4 }, () => "Compendium.dnd5e.items.DWLMnODrnHn8IbAG"),
+
+          // Backpack
+          "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+          // Bedroll
+          "Compendium.dnd5e.items.DVXmyetZuvxbzAwW",
+
+          // Mess Kit
+          "Compendium.dnd5e.items.V13fjV5oSmvbRdgP",
+
+          // Tinderbox
+          "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+          // 10 Torches
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+          // 10 Rations
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+          // Waterskin
+          "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+          // 50 ft of Hempen Rope
+          "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+        ],
         features: [
           "Compendium.dnd5e.classes.pvEzGSv71zBhaolc",
           "Compendium.dnd5e.classfeatures.VoR0SUrNX5EJVPIO",
@@ -62,10 +94,39 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.Q1exex5ALteprrPo"] },
       20: { features: ["Compendium.dnd5e.classfeatures.jVU4AgqfrFaqgXns"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Melee Martial Weapon",
+            choose: 1,
+            options: Object.values(itemOptions("weapons.melee.martial")),
+          },
+          {
+            name: "Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Two Handaxes",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+        ],
+      },
+    },
   },
 
   // Bard
   "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "college-of-lore": {
         label: "College of Lore",
@@ -107,6 +168,13 @@ const CLASSES = {
         armor_proficiencies: ["lgt"],
         weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
         save_proficiencies: ["dex", "cha"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // Dagger
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt",
           "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA",
@@ -130,10 +198,39 @@ const CLASSES = {
       10: { features: ["Compendium.dnd5e.classfeatures.aonJ2YjkqkYB9WYB"] },
       20: { features: ["Compendium.dnd5e.classfeatures.GBYN5rH4nh1ocRlY"] },
     },
+
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Rapier, Longsword, Or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.rapier"),
+              itemOptions("weapons.melee.martial.longsword"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Diplomat's Pack or Entertainer's Pack",
+            choose: 1,
+            options: itemPackOptions(["diplomat", "entertainer"]),
+          },
+          {
+            name: "Musical Instrument",
+            choose: 1,
+            options: Object.values(itemOptions("tools.instruments")),
+          },
+        ],
+      },
+    },
   },
 
   // Cleric
   "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "life-domain": {
         label: "Life Domain",
@@ -192,6 +289,10 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "shl"],
         weapon_proficiencies: ["sim"],
         save_proficiencies: ["wis", "cha"],
+        items: [
+          // Shield
+          "Compendium.dnd5e.items.sSs3hSzkKBMNBgTs",
+        ],
         features: [
           "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub",
           "Compendium.dnd5e.classfeatures.x637K2Icp2ZFM1TB",
@@ -202,10 +303,81 @@ const CLASSES = {
       5: { features: ["Compendium.dnd5e.classfeatures.NMy4piwXIpLjYbRE"] },
       10: { features: ["Compendium.dnd5e.classfeatures.eVXqHn0ojWrEuYGU"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Mace or Warhammer",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.simple.mace"),
+              itemOptions("weapons.melee.martial.warhammer"),
+            ],
+          },
+          {
+            name: "Leather Armor, Scale Mail, or Chain Mail",
+            choose: 1,
+            options: [
+              itemOptions("armor.light.leatherarmor"),
+              itemOptions("armor.medium.scalemail"),
+              itemOptions("armor.heavy.chainmail"),
+            ],
+          },
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Holy Symbol",
+            choose: 1,
+            options: [
+              {
+                name: "Amulet",
+                data: {
+                  items: ["Compendium.dnd5e.items.paqlMjggWkBIAeCe"],
+                },
+              },
+              {
+                name: "Emblem",
+                data: {
+                  items: ["Compendium.dnd5e.items.laVqttkGMW4B9654"],
+                },
+              },
+              {
+                name: "Reliquary",
+                data: {
+                  items: ["Compendium.dnd5e.items.gP1URGq3kVIIFHJ7"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Priest's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["priest", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Druid
   "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N": {
+    gold_dice: "2d4",
+    gold_multiplier: 10,
     subclasses: {
       "circle-of-the-land": {
         label: "Circle of the Land",
@@ -259,6 +431,34 @@ const CLASSES = {
         ],
         save_proficiencies: ["int", "wis"],
         tool_proficiencies: ["herb"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // Backpack
+          "Compendium.dnd5e.items.H8YCd689ezlD26aT",
+
+          // Bedroll
+          "Compendium.dnd5e.items.DVXmyetZuvxbzAwW",
+
+          // Mess Kit
+          "Compendium.dnd5e.items.V13fjV5oSmvbRdgP",
+
+          // Tinderbox
+          "Compendium.dnd5e.items.DNOSEAvF4Oh1DlWy",
+
+          // 10 Torches
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.BnOCLuNWhVvzHLjl"),
+
+          // 10 Rations
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.f4w4GxBi0nYXmhX4"),
+
+          // Waterskin
+          "Compendium.dnd5e.items.Uv0ilmzbWvqmlCVH",
+
+          // 50 ft of Hempen Rope
+          "Compendium.dnd5e.items.QXmaarJ4X8P0C1HV",
+        ],
         features: [
           "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N",
           "Compendium.dnd5e.classfeatures.LzJ5ayHt0OlSVGxi",
@@ -279,10 +479,65 @@ const CLASSES = {
       },
       20: { features: ["Compendium.dnd5e.classfeatures.ip4bvmGoz3qkoqes"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Shield or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Scimitar or Any Simple Melee Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.scimitar"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+          {
+            name: "Druidic Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Sprig of Mistletoe",
+                data: {
+                  items: ["Compendium.dnd5e.items.xDK9GQd2iqOGH8Sd"],
+                },
+              },
+              {
+                name: "Totem",
+                data: {
+                  items: ["Compendium.dnd5e.items.PGL6aaM0wE5h0VN5"],
+                },
+              },
+              {
+                name: "Wooden Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.FF1ktpb2YSiyv896"],
+                },
+              },
+              {
+                name: "Yew Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.t5yP0d7YaKwuKKiH"],
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
   },
 
   // Fighter
   "Compendium.dnd5e.classes.ABEBgWyRhVlDUIfq": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       champion: {
         label: "Champion",
@@ -330,10 +585,73 @@ const CLASSES = {
       5: { features: ["Compendium.dnd5e.classfeatures.q9g1MLXuLZyxjQMg"] },
       9: { features: ["Compendium.dnd5e.classfeatures.653ZHbNcmm7ZGXbw"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Chainmail or Leather Armor, Longbow, and 20 Arrows",
+            choose: 1,
+            options: [
+              itemOptions("armor.heavy.chainmail"),
+              {
+                name: "Leather Armor, Longbow, and 20 Arrows",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+                    "Compendium.dnd5e.items.3cymOVja8jXbzrdT",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            name: "Martial Weapons",
+            choose: 2,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.martial")),
+              ...Object.values(itemOptions("weapons.ranged.martial")),
+            ],
+          },
+          {
+            name: "Light Crossbow and 20 Bolts or 2 Handaxes",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              {
+                name: "Two Handaxes",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                    "Compendium.dnd5e.items.eO7Fbv5WBk5zvGOc",
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Monk
   "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq": {
+    gold_dice: "5d4",
+    gold_multiplier: 1,
     subclasses: {
       "way-of-the-open-hand": {
         label: "Way of the Open Hand",
@@ -401,6 +719,10 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["sim", "shortsword"],
         save_proficiencies: ["str", "dex"],
+        items: [
+          // 10 Darts
+          ...Array.from({ length: 10 }, () => "Compendium.dnd5e.items.3rCO8MTIdPGSW6IJ"),
+        ],
         features: [
           "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq",
           "Compendium.dnd5e.classfeatures.UAvV7N7T4zJhxdfI",
@@ -440,10 +762,32 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.3jwFt3hSqDswBlOH"] },
       20: { features: ["Compendium.dnd5e.classfeatures.mQNPg89YIs7g5tG4"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Shortsword Or Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.shortsword"),
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Paladin
   "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "oath-of-devotion": {
         label: "Oath of Devotion",
@@ -503,6 +847,7 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "hvy", "shl"],
         weapon_proficiencies: ["sim", "mar"],
         save_proficiencies: ["wis", "cha"],
+        items: ["Compendium.dnd5e.items.rLMflzmxpe8JGTOA"],
         features: [
           "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c",
           "Compendium.dnd5e.classfeatures.E8ozg8avUVOX9N7u",
@@ -528,10 +873,71 @@ const CLASSES = {
       11: { features: ["Compendium.dnd5e.classfeatures.FAk41RPCTcvCk6KI"] },
       14: { features: ["Compendium.dnd5e.classfeatures.U7BIPVPsptBmwsnV"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Martial Weapon + Shield Or 2 Martial Weapons",
+            choose: 2,
+            options: [
+              itemOptions("armor.shield"),
+              ...Object.values(itemOptions("weapons.melee.martial")),
+              ...Object.values(itemOptions("weapons.ranged.martial")),
+            ],
+          },
+          {
+            name: "5 Javelins or Any Simple Melee Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "5 Javelins",
+                data: {
+                  items: [
+                    ...Array.from({ length: 5 }, () => "Compendium.dnd5e.items.DWLMnODrnHn8IbAG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+            ],
+          },
+          {
+            name: "Holy Symbol",
+            choose: 1,
+            options: [
+              {
+                name: "Amulet",
+                data: {
+                  items: ["Compendium.dnd5e.items.paqlMjggWkBIAeCe"],
+                },
+              },
+              {
+                name: "Emblem",
+                data: {
+                  items: ["Compendium.dnd5e.items.laVqttkGMW4B9654"],
+                },
+              },
+              {
+                name: "Reliquary",
+                data: {
+                  items: ["Compendium.dnd5e.items.gP1URGq3kVIIFHJ7"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Priest's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["priest", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Ranger
   "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       hunter: {
         label: "Hunter",
@@ -567,6 +973,11 @@ const CLASSES = {
         armor_proficiencies: ["lgt", "med", "shl"],
         weapon_proficiencies: ["sim", "mar"],
         save_proficiencies: ["str", "dex"],
+        items: [
+          "Compendium.dnd5e.items.3cymOVja8jXbzrdT",
+          "Compendium.dnd5e.items.4MtQKPn9qMWCFjDA",
+          ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+        ],
         features: [
           "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS",
           "Compendium.dnd5e.classfeatures.4Vpj9vCOB37GtXk6",
@@ -592,10 +1003,50 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.QBVmY56RMQuh6C8h"] },
       20: { features: ["Compendium.dnd5e.classfeatures.3CaP1vFHVR8LgHjx"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Scale Mail, or Leather Armor",
+            choose: 1,
+            options: [
+              itemOptions("armor.medium.scalemail"),
+              itemOptions("armor.light.leatherarmor"),
+            ],
+          },
+          {
+            name: "2 Shortswords or 2 Simple Melee Weapons",
+            choose: 1,
+            options: [
+              {
+                name: "2 Shortswords",
+                data: {
+                  items: [
+                    ...Array.from({ length: 2 }, () => "Compendium.dnd5e.items.osLzOwQdPtrK3rQH"),
+                  ],
+                },
+              },
+              {
+                name: "2 Simple Melee Weapons",
+                choose: 2,
+                options: [...Object.values(itemOptions("weapons.melee.simple"))],
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Rogue
   "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       thief: {
         label: "Thief",
@@ -640,6 +1091,17 @@ const CLASSES = {
         weapon_proficiencies: ["sim", "handcrossbow", "longsword", "shortsword", "rapier"],
         save_proficiencies: ["dex", "int"],
         tool_proficiencies: ["thief"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+
+          // Thief's Tools
+          "Compendium.dnd5e.items.woWZ1sO5IUVGzo58",
+        ],
         features: [
           "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF",
           "Compendium.dnd5e.classfeatures.3sYPftQKnbbVnHrh",
@@ -657,10 +1119,48 @@ const CLASSES = {
       18: { features: ["Compendium.dnd5e.classfeatures.L7nJSRosos8sHJH9"] },
       20: { features: ["Compendium.dnd5e.classfeatures.rQhWDaMHMn7iU4f2"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Rapier or Shortsword",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.martial.shortsword"),
+              itemOptions("weapons.melee.martial.rapier"),
+            ],
+          },
+          {
+            name: "Shortbow + Quiver of 20 Arrows or Shortsword",
+            choose: 1,
+            options: [
+              {
+                name: "Shortbow + Quiver of 20 Arrows",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.osLzOwQdPtrK3rQH",
+                    "Compendium.dnd5e.items.4MtQKPn9qMWCFjDA",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.3c7JXOzsv55gqJS5"),
+                  ],
+                },
+              },
+              itemOptions("weapons.melee.martial.shortsword"),
+            ],
+          },
+          {
+            name: "Burglar's Pack, Dungeoneer's Pack, or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["burglar", "dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Sorcerer
   "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU": {
+    gold_dice: "3d4",
+    gold_multiplier: 10,
     subclasses: {
       "draconic-bloodline": {
         label: "Draconic Bloodline",
@@ -698,6 +1198,11 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
         save_proficiencies: ["con", "cha"],
+        items: [
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU",
           "Compendium.dnd5e.classfeatures.cmRCL9T9UgRYOj1c",
@@ -708,10 +1213,82 @@ const CLASSES = {
       3: { features: ["Compendium.dnd5e.classfeatures.9Uh7uTDNZ04oTJsL"] },
       20: { features: ["Compendium.dnd5e.classfeatures.F2lEKSmOY0NUruzY"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Component Pouch or Arcane Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Component Pouch",
+                data: {
+                  items: ["Compendium.dnd5e.items.eZGmdOhaTWMicXPW"],
+                },
+              },
+              {
+                name: "Crystal",
+                data: {
+                  items: ["Compendium.dnd5e.items.uXOT4fYbgPY8DGdd"],
+                },
+              },
+              {
+                name: "Orb",
+                data: {
+                  items: ["Compendium.dnd5e.items.tH5Rn0JVRG1zdmPa"],
+                },
+              },
+              {
+                name: "Rod",
+                data: {
+                  items: ["Compendium.dnd5e.items.OojyyGfh91iViuMF"],
+                },
+              },
+              {
+                name: "Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.BeKIrNIvNHRPQ4t5"],
+                },
+              },
+              {
+                name: "Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.KA2P6I48iOWlnboO"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "explorer"]),
+          },
+        ],
+      },
+    },
   },
 
   // Warlock
   "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       "the-fiend": {
         label: "The Fiend",
@@ -746,6 +1323,14 @@ const CLASSES = {
         armor_proficiencies: ["lgt"],
         weapon_proficiencies: ["sim"],
         save_proficiencies: ["wis", "cha"],
+        items: [
+          // Leather Armor
+          "Compendium.dnd5e.items.WwdpHLXGX5r8uZu5",
+
+          // 2 Daggers
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+          "Compendium.dnd5e.items.0E565kQUBmndJ1a2",
+        ],
         features: [
           "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa",
           "Compendium.dnd5e.classfeatures.jTXHaK0vvT5DV3uO",
@@ -760,10 +1345,82 @@ const CLASSES = {
       17: { features: ["Compendium.dnd5e.classfeatures.vMxJQEKeK6WwZFaF"] },
       20: { features: ["Compendium.dnd5e.classfeatures.0C04rwyvoknvFYiy"] },
     },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Two Simple Weapons",
+            choose: 2,
+            options: [
+              {
+                name: "Light Crossbow + 20 Bolts",
+                data: {
+                  items: [
+                    "Compendium.dnd5e.items.ddWvQRLmnnIS0eLF",
+                    ...Array.from({ length: 20 }, () => "Compendium.dnd5e.items.SItCnYBqhzqBoaWG"),
+                  ],
+                },
+              },
+              ...Object.values(itemOptions("weapons.melee.simple")),
+              ...Object.values(itemOptions("weapons.ranged.simple")),
+            ],
+          },
+          {
+            name: "Component Pouch or Arcane Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Component Pouch",
+                data: {
+                  items: ["Compendium.dnd5e.items.eZGmdOhaTWMicXPW"],
+                },
+              },
+              {
+                name: "Crystal",
+                data: {
+                  items: ["Compendium.dnd5e.items.uXOT4fYbgPY8DGdd"],
+                },
+              },
+              {
+                name: "Orb",
+                data: {
+                  items: ["Compendium.dnd5e.items.tH5Rn0JVRG1zdmPa"],
+                },
+              },
+              {
+                name: "Rod",
+                data: {
+                  items: ["Compendium.dnd5e.items.OojyyGfh91iViuMF"],
+                },
+              },
+              {
+                name: "Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.BeKIrNIvNHRPQ4t5"],
+                },
+              },
+              {
+                name: "Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.KA2P6I48iOWlnboO"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Dungeoneer's Pack or Scholar's Pack",
+            choose: 1,
+            options: itemPackOptions(["dungeoneer", "scholar"]),
+          },
+        ],
+      },
+    },
   },
 
   // Wizard
   "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       "school-of-evocation": {
         label: "School of Evocation",
@@ -801,6 +1458,10 @@ const CLASSES = {
       1: {
         weapon_proficiencies: ["dagger", "dart", "sling", "quarterstaff", "lightcrossbow"],
         save_proficiencies: ["int", "wis"],
+        items: [
+          // Spellbook
+          "Compendium.dnd5e.items.LBajgahniRJbAgDr",
+        ],
         features: [
           "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3",
           "Compendium.dnd5e.classfeatures.gbNo5eVPaqr8IVKL",
@@ -813,6 +1474,67 @@ const CLASSES = {
         features: [
           "Compendium.dnd5e.classfeatures.nUrZDi6QN1YjwAr6",
           "Compendium.dnd5e.classfeatures.31bKbWe9ZGVLEns6",
+        ],
+      },
+    },
+    equipment: {
+      1: {
+        choices: [
+          {
+            name: "Any Simple Weapon",
+            choose: 1,
+            options: [
+              itemOptions("weapons.melee.simple.quarterstaff"),
+              itemOptions("weapons.melee.simple.dagger"),
+            ],
+          },
+          {
+            name: "Component Pouch or Arcane Focus",
+            choose: 1,
+            options: [
+              {
+                name: "Component Pouch",
+                data: {
+                  items: ["Compendium.dnd5e.items.eZGmdOhaTWMicXPW"],
+                },
+              },
+              {
+                name: "Crystal",
+                data: {
+                  items: ["Compendium.dnd5e.items.uXOT4fYbgPY8DGdd"],
+                },
+              },
+              {
+                name: "Orb",
+                data: {
+                  items: ["Compendium.dnd5e.items.tH5Rn0JVRG1zdmPa"],
+                },
+              },
+              {
+                name: "Rod",
+                data: {
+                  items: ["Compendium.dnd5e.items.OojyyGfh91iViuMF"],
+                },
+              },
+              {
+                name: "Staff",
+                data: {
+                  items: ["Compendium.dnd5e.items.BeKIrNIvNHRPQ4t5"],
+                },
+              },
+              {
+                name: "Wand",
+                data: {
+                  items: ["Compendium.dnd5e.items.KA2P6I48iOWlnboO"],
+                },
+              },
+            ],
+          },
+          {
+            name: "Scholar's Pack or Explorer's Pack",
+            choose: 1,
+            options: itemPackOptions(["scholar", "explorer"]),
+          },
         ],
       },
     },
