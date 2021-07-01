@@ -11,6 +11,10 @@
 
   export let closeWindow;
 
+  let editorOptions = {
+    equipmentMode: "",
+  };
+
   let data = {
     abilities: {
       data: {
@@ -44,8 +48,11 @@
       data: {},
       decisionData: {},
     },
-    equipment: {
-      mode: "",
+    classEquipment: {
+      data: {},
+      decisionData: {},
+    },
+    backgroundEquipment: {
       data: {},
       decisionData: {},
     },
@@ -245,7 +252,7 @@
   {/if}
 
   {#if currentTab === "Equipment"}
-    <EquipmentTab bind:data />
+    <EquipmentTab bind:data bind:editorOptions />
   {/if}
 
   {#if currentTab === "Review"}

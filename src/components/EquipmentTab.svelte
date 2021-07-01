@@ -1,12 +1,15 @@
 <script>
   import Choice from "components/Choice.svelte";
+  import GoldCard from "components/GoldCard.svelte";
   import CLASSES from "data/classes.js";
+  import BACKGROUNDS from "data/backgrounds.js";
   import ItemList from "components/ItemList.svelte";
 
   import { fade } from "svelte/transition";
   import { cubicInOut } from "svelte/easing";
 
   export let data;
+  export let editorOptions;
   export let level = 1;
 
   function rollGold(formula, multiplier) {
@@ -20,29 +23,32 @@
   <div class="choice-buttons">
     <button
       type="button"
-      class:selected={data.equipment.mode === "gold"}
+      class:selected={editorOptions.equipmentMode === "gold"}
       on:click={() => {
-        data.equipment.mode = "gold";
-        data.equipment.data = { currency: { gp: 0 } };
-        data.equipment.decisionData = {};
+        editorOptions.equipmentMode = "gold";
+        data.classEquipment.data = { currency: { gp: 0 } };
+        data.classEquipment.decisionData = {};
       }}>Starting Gold</button
     >
     <button
       type="button"
-      class:selected={data.equipment.mode === "equipment"}
+      class:selected={editorOptions.equipmentMode === "equipment"}
       on:click={() => {
-        data.equipment.mode = "equipment";
-        data.equipment.data = {};
-        data.equipment.decisionData = {};
+        editorOptions.equipmentMode = "equipment";
+        data.classEquipment.data = {};
+        data.classEquipment.decisionData = {};
       }}>Starting Equipment</button
     >
   </div>
-  {#if data.equipment.mode === "equipment"}
+  {#if editorOptions.equipmentMode === "equipment"}
     <h2>Class Equipment</h2>
 
     {#if !data.class.uuid}
       <p class="error">Select a class to view starting equipment</p>
     {/if}
+
+    <!-- Show Gold from Class (if any) -->
+    <GoldCard quantity={CLASSES[data.class.uuid]?.data?.[level]?.currency?.gp} />
 
     <!-- Standard Class Equipment -->
     {#if CLASSES[data.class.uuid]?.data?.[level]?.["items"]}
@@ -53,7 +59,7 @@
     {#if CLASSES[data.class.uuid]?.equipment?.[level]?.["choices"]}
       <div class="choices" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
         {#each CLASSES[data.class.uuid]["equipment"][level]["choices"] as choice, i}
-          <Choice {choice} bind:data={data.equipment.decisionData[i]} />
+          <Choice {choice} bind:data={data.classEquipment.decisionData[i]} />
         {/each}
       </div>
     {/if}
@@ -62,7 +68,24 @@
     {#if !data.background.uuid}
       <p class="error">Select a background to view starting equipment</p>
     {/if}
-  {:else if data.equipment.mode == "gold"}
+
+    <!-- Show Gold from Background (if any) -->
+    <GoldCard quantity={BACKGROUNDS[data.background.uuid]?.data?.[level]?.currency?.gp} />
+
+    <!-- Standard Class Equipment -->
+    {#if BACKGROUNDS[data.background.uuid]?.data?.[level]?.["items"]}
+      <ItemList uuidList={BACKGROUNDS[data.background.uuid]["data"][level]["items"]} />
+    {/if}
+
+    <!-- Class Equipment Choices -->
+    {#if BACKGROUNDS[data.background.uuid]?.equipment?.[level]?.["choices"]}
+      <div class="choices" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
+        {#each BACKGROUNDS[data.background.uuid]["equipment"][level]["choices"] as choice, i}
+          <Choice {choice} bind:data={data.backgroundEquipment.decisionData[i]} />
+        {/each}
+      </div>
+    {/if}
+  {:else if editorOptions.equipmentMode == "gold"}
     <h2>Starting Gold</h2>
 
     {#if !data.class.uuid}
@@ -78,10 +101,10 @@
           <div class="result">
             <input
               type="number"
-              value={data.equipment.data.currency.gp}
+              value={data.classEquipment.data.currency.gp}
               on:change={(event) => {
                 event.preventDefault();
-                data.equipment.data.currency.gp = parseInt(event.target.value);
+                data.classEquipment.data.currency.gp = parseInt(event.target.value);
               }}
             />
           </div>
@@ -89,7 +112,7 @@
         <button
           type="button"
           on:click={() => {
-            data.equipment.data.currency.gp = rollGold(
+            data.classEquipment.data.currency.gp = rollGold(
               CLASSES[data.class.uuid].gold_dice,
               CLASSES[data.class.uuid].gold_multiplier
             );
