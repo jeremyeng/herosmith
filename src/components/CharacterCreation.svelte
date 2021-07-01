@@ -45,6 +45,7 @@
       decisionData: {},
     },
     equipment: {
+      mode: "",
       data: {},
       decisionData: {},
     },
@@ -112,6 +113,8 @@
     if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
 
     if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
+
+    if (mergeData.currency) actorData["data.currency"] = mergeData.currency;
 
     if (mergeData.personality) actorData["data.details.trait"] = mergeData.personality.join("\n");
 
