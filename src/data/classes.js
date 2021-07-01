@@ -6,6 +6,8 @@ import itemPackOptions from "data/itemPackOptions.js";
 const CLASSES = {
   // Barbarian
   "Compendium.dnd5e.classes.pvEzGSv71zBhaolc": {
+    gold_dice: "2d4",
+    gold_multiplier: 10,
     subclasses: {
       "path-of-the-berserker": {
         name: "Path of the Berserker",
@@ -123,6 +125,8 @@ const CLASSES = {
 
   // Bard
   "Compendium.dnd5e.classes.ILvRZGEx3aXqSVUt": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "college-of-lore": {
         label: "College of Lore",
@@ -225,6 +229,8 @@ const CLASSES = {
 
   // Cleric
   "Compendium.dnd5e.classes.tlwBnN8GmqJcTgub": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "life-domain": {
         label: "Life Domain",
@@ -370,6 +376,8 @@ const CLASSES = {
 
   // Druid
   "Compendium.dnd5e.classes.ygVYgPbJkaH0tH1N": {
+    gold_dice: "2d4",
+    gold_multiplier: 10,
     subclasses: {
       "circle-of-the-land": {
         label: "Circle of the Land",
@@ -528,6 +536,8 @@ const CLASSES = {
 
   // Fighter
   "Compendium.dnd5e.classes.ABEBgWyRhVlDUIfq": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       champion: {
         label: "Champion",
@@ -640,6 +650,8 @@ const CLASSES = {
 
   // Monk
   "Compendium.dnd5e.classes.6VoZrWxhOEKGYhnq": {
+    gold_dice: "5d4",
+    gold_multiplier: 1,
     subclasses: {
       "way-of-the-open-hand": {
         label: "Way of the Open Hand",
@@ -774,6 +786,8 @@ const CLASSES = {
 
   // Paladin
   "Compendium.dnd5e.classes.gZiUvbXWLs0pOp0c": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       "oath-of-devotion": {
         label: "Oath of Devotion",
@@ -922,6 +936,8 @@ const CLASSES = {
 
   // Ranger
   "Compendium.dnd5e.classes.VkRQ7glQvTWWiOCS": {
+    gold_dice: "5d4",
+    gold_multiplier: 10,
     subclasses: {
       hunter: {
         label: "Hunter",
@@ -1029,6 +1045,8 @@ const CLASSES = {
 
   // Rogue
   "Compendium.dnd5e.classes.xEb8jmA5HlNs7xTF": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       thief: {
         label: "Thief",
@@ -1141,6 +1159,8 @@ const CLASSES = {
 
   // Sorcerer
   "Compendium.dnd5e.classes.6T08zzKtmmpVwlXU": {
+    gold_dice: "3d4",
+    gold_multiplier: 10,
     subclasses: {
       "draconic-bloodline": {
         label: "Draconic Bloodline",
@@ -1267,6 +1287,8 @@ const CLASSES = {
 
   // Warlock
   "Compendium.dnd5e.classes.7WJp9vhi6F6SlAFa": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       "the-fiend": {
         label: "The Fiend",
@@ -1397,6 +1419,8 @@ const CLASSES = {
 
   // Wizard
   "Compendium.dnd5e.classes.wZK2Q0rXB0AQo8h3": {
+    gold_dice: "4d4",
+    gold_multiplier: 10,
     subclasses: {
       "school-of-evocation": {
         label: "School of Evocation",
