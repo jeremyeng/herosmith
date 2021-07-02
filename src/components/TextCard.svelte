@@ -17,7 +17,15 @@
   export let data = {};
 </script>
 
-<div class="item" class:disabled class:selected on:click={select}>
+<div class="item" class:selected>
+  <input
+    class="select-box"
+    type="checkbox"
+    on:click={select}
+    class:disabled
+    {disabled}
+    checked={selected}
+  />
   <h4 class="name">{text}</h4>
 </div>
 
@@ -27,22 +35,26 @@
   }
 
   .item {
-    text-align: center;
+    display: flex;
     width: 100%;
     border: 2px solid #c9c7b8;
     border-radius: 5px;
     padding: 6px;
-    box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
-    transition: opacity 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.1s ease-in-out,
-      box-shadow 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out, border 0.2s ease-in-out;
     backface-visibility: hidden;
   }
 
-  .item:not(.disabled):hover {
+  .select-box {
+    transition: opacity 0.1s ease-in-out;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  /* .item:not(.disabled):hover {
     cursor: pointer;
     transform: scale(1.025);
     box-shadow: 4px 4px 4px hsl(0deg 0% 0% / 60%);
-  }
+  } */
 
   .item:not(.disabled):active {
     box-shadow: inset 2px 2px 4px hsl(0deg 0% 0% / 60%);
