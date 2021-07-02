@@ -50,16 +50,6 @@
     cursor: pointer;
   }
 
-  /* .item:not(.disabled):hover {
-    cursor: pointer;
-    transform: scale(1.025);
-    box-shadow: 4px 4px 4px hsl(0deg 0% 0% / 60%);
-  } */
-
-  .item:not(.disabled):active {
-    box-shadow: inset 2px 2px 4px hsl(0deg 0% 0% / 60%);
-  }
-
   .disabled {
     opacity: 0.4;
   }
