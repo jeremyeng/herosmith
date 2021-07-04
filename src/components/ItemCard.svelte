@@ -16,20 +16,26 @@
   export let uuid;
 </script>
 
-<div class="item" class:disabled class:selected on:click={select}>
+<div class="item" class:selected>
   {#await fromUuid(uuid) then item}
     <div class="row">
-      <div class="select-area">
+      <input
+        class="select-box"
+        type="checkbox"
+        on:click={select}
+        class:disabled
+        {disabled}
+        checked={selected}
+      />
+      <div
+        class="select-area"
+        on:click={() => {
+          new game.dnd5e.applications.ItemSheet5e(item).render(true);
+        }}
+      >
         <img class="image" src={item.img} alt={`${item.name} icon`} />
         <h4 class="name">{item.name}</h4>
       </div>
-      <i
-        class:more-info={!disabled}
-        on:click={() => {
-          if (!disabled) new game.dnd5e.applications.ItemSheet5e(item).render(true);
-        }}
-        class="fas fa-info-circle"
-      />
     </div>
   {/await}
 </div>
@@ -40,27 +46,20 @@
   }
 
   .item {
-    display: grid;
-    grid-template-columns: min-content;
-    border: 2px solid rgba(181, 179, 164, 0.4);
+    display: flex;
+    border: 2px solid #c9c7b8;
     align-items: center;
     max-width: 300px;
     border-radius: 5px;
     padding: 6px;
-    box-shadow: 2px 2px 4px hsl(0deg 0% 0% / 60%);
-    transition: opacity 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.1s ease-in-out,
-      box-shadow 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out, border 0.2s ease-in-out;
     backface-visibility: hidden;
   }
 
-  .item:not(.disabled):hover {
+  .select-box {
+    transition: opacity 0.2s ease-in-out;
+    margin-right: 10px;
     cursor: pointer;
-    transform: scale(1.025);
-    box-shadow: 4px 4px 4px hsl(0deg 0% 0% / 60%);
-  }
-
-  .item:not(.disabled):active {
-    box-shadow: inset 2px 2px 4px hsl(0deg 0% 0% / 60%);
   }
 
   .disabled {
@@ -84,21 +83,13 @@
     align-items: center;
   }
 
-  .more-info:hover {
-    text-shadow: 0 0 10px #782e22;
-  }
-
-  i {
-    color: #7a7971;
-    width: 2em;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .select-area:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px red;
   }
 
   .image {
     margin-right: 10px;
-    max-width: 50px;
+    max-width: 40px;
   }
 </style>
