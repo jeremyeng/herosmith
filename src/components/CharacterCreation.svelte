@@ -5,6 +5,7 @@
   import ReviewTab from "components/ReviewTab.svelte";
   import AbilityScoreTab from "components/AbilityScoreTab.svelte";
   import EquipmentTab from "components/EquipmentTab.svelte";
+  import SpellTab from "components/SpellTab.svelte";
   import { capitalize } from "utils/utils.js";
   import { mergeWith, countBy } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
@@ -66,9 +67,13 @@
       },
       decisionData: {},
     },
+    spells: {
+      data: {},
+      decisionData: {},
+    },
   };
 
-  let tabs = ["Races", "Class", "Abilities", "Background", "Equipment", "Review"];
+  let tabs = ["Races", "Class", "Abilities", "Background", "Equipment", "Spells", "Review"];
   let currentTab = "Races";
 
   async function createCharacter(event) {
@@ -253,6 +258,10 @@
 
   {#if currentTab === "Equipment"}
     <EquipmentTab bind:data bind:editorOptions />
+  {/if}
+
+  {#if currentTab === "Spells"}
+    <SpellTab bind:data bind:editorOptions />
   {/if}
 
   {#if currentTab === "Review"}
