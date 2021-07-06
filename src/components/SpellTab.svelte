@@ -23,6 +23,9 @@
         <Choice {choice} bind:data={data.spells.decisionData[i]} />
       {/each}
     </div>
+  {:else if data.class.uuid}
+    <!-- Class does not have spells -->
+    <p class="error">Your class is not eligible for spells</p>
   {/if}
 </div>
 
