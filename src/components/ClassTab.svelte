@@ -24,6 +24,14 @@
               data: {},
               decisionData: {},
             };
+            data.classEquipment = {
+              data: {},
+              decisionData: {},
+            };
+            data.spells = {
+              data: {},
+              decisionData: {},
+            };
           } else {
             data.class = {
               uuid: classUuid,
