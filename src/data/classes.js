@@ -1,6 +1,7 @@
 import skillOptions from "data/skillOptions.js";
 import toolOptions from "data/toolOptions.js";
 import itemOptions from "data/itemOptions.js";
+import { classSpellOptions } from "data/spellOptions.js";
 import itemPackOptions from "data/itemPackOptions.js";
 
 const CLASSES = {
@@ -221,6 +222,23 @@ const CLASSES = {
             name: "Musical Instrument",
             choose: 1,
             options: Object.values(itemOptions("tools.instruments")),
+          },
+        ],
+      },
+    },
+
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 2,
+            options: classSpellOptions("bard", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 4,
+            options: classSpellOptions("bard", 1),
           },
         ],
       },
