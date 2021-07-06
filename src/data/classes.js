@@ -390,6 +390,22 @@ const CLASSES = {
         ],
       },
     },
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 3,
+            options: classSpellOptions("cleric", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 2,
+            options: classSpellOptions("cleric", 1),
+          },
+        ],
+      },
+    },
   },
 
   // Druid
@@ -546,6 +562,22 @@ const CLASSES = {
                 },
               },
             ],
+          },
+        ],
+      },
+    },
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 2,
+            options: classSpellOptions("druid", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 2,
+            options: classSpellOptions("druid", 1),
           },
         ],
       },
@@ -1301,6 +1333,22 @@ const CLASSES = {
         ],
       },
     },
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 4,
+            options: classSpellOptions("sorcerer", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 2,
+            options: classSpellOptions("sorcerer", 1),
+          },
+        ],
+      },
+    },
   },
 
   // Warlock
@@ -1433,6 +1481,22 @@ const CLASSES = {
         ],
       },
     },
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 2,
+            options: classSpellOptions("warlock", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 2,
+            options: classSpellOptions("warlock", 1),
+          },
+        ],
+      },
+    },
   },
 
   // Wizard
@@ -1552,6 +1616,22 @@ const CLASSES = {
             name: "Scholar's Pack or Explorer's Pack",
             choose: 1,
             options: itemPackOptions(["scholar", "explorer"]),
+          },
+        ],
+      },
+    },
+    spells: {
+      1: {
+        choices: [
+          {
+            name: "Cantrips",
+            choose: 3,
+            options: classSpellOptions("wizard", 0),
+          },
+          {
+            name: "Level 1 Spells",
+            choose: 2,
+            options: classSpellOptions("wizard", 1),
           },
         ],
       },
