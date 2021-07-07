@@ -26,7 +26,7 @@
         tokenImage: "icons/svg/mystery-man.svg",
         name: "",
         alignment: "",
-        apperance: "",
+        appearance: "",
       },
       decisionData: {},
     },
@@ -133,7 +133,17 @@
 
     if (mergeData.size) actorData["data.traits.size"] = mergeData.size;
 
-    if (mergeData.name) actorData["data.details.race"] = mergeData.name;
+    if (mergeData.race) actorData["data.details.race"] = mergeData.race;
+
+    if (mergeData.name) actorData["name"] = mergeData.name;
+
+    if (mergeData.profileImage) actorData["img"] = mergeData.profileImage;
+
+    if (mergeData.tokenImage) actorData["token.img"] = mergeData.tokenImage;
+
+    if (mergeData.alignment) actorData["data.details.alignment"] = mergeData.alignment;
+
+    if (mergeData.appearance) actorData["data.details.appearance"] = mergeData.appearance;
 
     if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
 

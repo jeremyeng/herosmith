@@ -43,12 +43,12 @@
 
   <div class="name">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" />
+    <input type="text" id="name" name="name" bind:value={data.bio.data.name} />
   </div>
 
   <div class="alignment">
     <label for="alignment">Alignment</label>
-    <select name="alignment" id="alignment">
+    <select name="alignment" id="alignment" bind:value={data.bio.data.alignment}>
       <option value="" />
       <option value="Lawful Good">Lawful Good</option>
       <option value="Neutral Good">Neutral Good</option>
@@ -64,7 +64,7 @@
 
   <div class="appearance">
     <label for="appearance">Appearance</label>
-    <textarea type="text" id="appearance" name="appearance" />
+    <textarea type="text" id="appearance" name="appearance" bind:value={data.bio.data.appearance} />
   </div>
 </div>
 
