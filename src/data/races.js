@@ -18,7 +18,7 @@ const RACES = {
       languages: ["common", "draconic"],
       size: "med",
       speed: 30,
-      name: "Dragonborn",
+      race: "Dragonborn",
     },
   },
 
@@ -73,7 +73,7 @@ const RACES = {
           },
           items: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
           weapon_proficiences: ["longsword", "shortsword", "shortbow", "longbow"],
-          name: "High Elf",
+          race: "High Elf",
         },
         choices: [
           {
@@ -160,7 +160,7 @@ const RACES = {
         dex: 2,
       },
       items: ["Compendium.dnd5e.races.rAGnsfgw3ZqAme1v", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
-      name: "Elf",
+      race: "Elf",
       speed: 30,
       size: "med",
       languages: ["common", "elvish"],
@@ -185,7 +185,7 @@ const RACES = {
             "Compendium.dnd5e.races.koRPOLtj8XAFMwnW",
           ],
           tool_proficiencies: ["art"],
-          name: "Rock Gnome",
+          race: "Rock Gnome",
         },
       },
     },
@@ -197,7 +197,7 @@ const RACES = {
       languages: ["common", "gnomish"],
       size: "sm",
       speed: 25,
-      name: "Gnome",
+      race: "Gnome",
       token: {
         dimSight: 60,
       },
@@ -214,7 +214,7 @@ const RACES = {
       languages: ["common", "elvish"],
       size: "med",
       speed: 30,
-      name: "Half-Elf",
+      race: "Half-Elf",
       token: {
         dimSight: 60,
       },
@@ -254,7 +254,7 @@ const RACES = {
       languages: ["common", "orc"],
       size: "med",
       speed: 30,
-      name: "Half-Orc",
+      race: "Half-Orc",
       skill_proficiencies: ["itm"],
       token: {
         dimSight: 60,
@@ -275,7 +275,7 @@ const RACES = {
             "Compendium.dnd5e.races.ZgYBjYYfiUstQD6f",
             "Compendium.dnd5e.races.GWPjKFeIthBBeCFJ",
           ],
-          name: "Lightfoot Halfling",
+          race: "Lightfoot Halfling",
         },
       },
     },
@@ -292,7 +292,7 @@ const RACES = {
       languages: ["common", "elvish"],
       size: "sm",
       speed: 25,
-      name: "Halfling",
+      race: "Halfling",
     },
   },
 
@@ -311,7 +311,7 @@ const RACES = {
       languages: ["common"],
       size: "med",
       speed: 30,
-      name: "Human",
+      race: "Human",
     },
   },
 
@@ -330,7 +330,7 @@ const RACES = {
       languages: ["common", "infernal"],
       size: "med",
       speed: 30,
-      name: "Tiefling",
+      race: "Tiefling",
       token: {
         dimSight: 60,
       },
