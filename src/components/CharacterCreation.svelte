@@ -1,4 +1,5 @@
 <script>
+  import BioTab from "components/BioTab.svelte";
   import RacesTab from "components/RacesTab.svelte";
   import ClassTab from "components/ClassTab.svelte";
   import BackgroundTab from "components/BackgroundTab.svelte";
@@ -11,12 +12,24 @@
   import { mergeCustomizer } from "utils/utils.js";
 
   export let closeWindow;
+  export let getPosTop;
+  export let getPosLeft;
 
   let editorOptions = {
     equipmentMode: "",
   };
 
   let data = {
+    bio: {
+      data: {
+        profileImage: "icons/svg/mystery-man.svg",
+        tokenImage: "icons/svg/mystery-man.svg",
+        name: "",
+        alignment: "",
+        apperance: "",
+      },
+      decisionData: {},
+    },
     abilities: {
       data: {
         abilities: {
@@ -73,8 +86,8 @@
     },
   };
 
-  let tabs = ["Races", "Class", "Abilities", "Background", "Equipment", "Spells", "Review"];
-  let currentTab = "Races";
+  let tabs = ["Bio", "Races", "Class", "Abilities", "Background", "Equipment", "Spells", "Review"];
+  let currentTab = "Bio";
 
   async function createCharacter(event) {
     event.preventDefault();
@@ -239,6 +252,10 @@
       >
     {/each}
   </nav>
+
+  {#if currentTab === "Bio"}
+    <BioTab bind:data {getPosTop} {getPosLeft} />
+  {/if}
 
   {#if currentTab === "Races"}
     <RacesTab bind:data />
