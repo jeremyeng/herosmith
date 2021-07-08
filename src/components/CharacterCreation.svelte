@@ -3,7 +3,7 @@
   import RacesTab from "components/RacesTab.svelte";
   import ClassTab from "components/ClassTab.svelte";
   import BackgroundTab from "components/BackgroundTab.svelte";
-  import ReviewTab from "components/ReviewTab.svelte";
+  import ReviewCharacterTab from "components/ReviewCharacterTab.svelte";
   import AbilityScoreTab from "components/AbilityScoreTab.svelte";
   import EquipmentTab from "components/EquipmentTab.svelte";
   import SpellTab from "components/SpellTab.svelte";
@@ -86,6 +86,21 @@
     },
   };
 
+  function dataReducer(acc, cur) {
+    console.log(cur);
+    return mergeWith(
+      {},
+      acc,
+      data[cur].data,
+      ...Object.values(data[cur].decisionData).flat(),
+      mergeCustomizer
+    );
+  }
+
+  let mergeData = {};
+
+  $: mergeData = Object.keys(data).reduce(dataReducer, {});
+
   let tabs = ["Bio", "Races", "Class", "Abilities", "Background", "Equipment", "Spells", "Review"];
   let currentTab = "Bio";
 
@@ -104,18 +119,6 @@
     });
 
     let actorData = {};
-
-    function dataReducer(acc, cur) {
-      console.log(cur);
-      return mergeWith(
-        {},
-        acc,
-        data[cur].data,
-        ...Object.values(data[cur].decisionData).flat(),
-        mergeCustomizer
-      );
-    }
-    const mergeData = Object.keys(data).reduce(dataReducer, {});
 
     if (mergeData.abilities) {
       for (const [ability, value] of Object.entries(mergeData.abilities)) {
@@ -292,7 +295,7 @@
   {/if}
 
   {#if currentTab === "Review"}
-    <ReviewTab handleApplyUpdates={createCharacter} />
+    <ReviewCharacterTab data={mergeData} />
   {/if}
 </div>
 
