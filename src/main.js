@@ -59,6 +59,8 @@ class CharacterCreationWindow extends Application {
       target: html.get(0),
       props: {
         closeWindow: this.close.bind(this),
+        getPosTop: this.getPosTop.bind(this),
+        getPosLeft: this.getPosLeft.bind(this),
       },
     });
   }
@@ -66,6 +68,14 @@ class CharacterCreationWindow extends Application {
   close() {
     this.component.$destroy();
     super.close();
+  }
+
+  getPosTop() {
+    return this.position.top;
+  }
+
+  getPosLeft() {
+    return this.position.left;
   }
 }
 
