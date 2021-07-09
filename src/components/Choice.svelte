@@ -29,6 +29,20 @@
     }
   }
 
+  // Spells, Features and Items are all equivalent functionally (they get added the same way)
+  // However, the distinction is useful when reviewing changes.
+  function getItemType(optionData) {
+    if (optionData?.items) {
+      return "items";
+    }
+    if (optionData?.features) {
+      return "features";
+    }
+    if (optionData?.spells) {
+      return "spells";
+    }
+  }
+
   $: data = data || [];
 </script>
 
@@ -48,11 +62,11 @@
           choice={option}
           disabled={data.length >= choice.choose && !isChoiceSelected(data, option)}
         />
-      {:else if option?.data?.items?.length > 1}
+      {:else if option.data?.[getItemType(option.data)]?.length > 1}
         <!-- Display group of items -->
         <ItemGroupCard
           name={option.name}
-          contents={option?.data?.items}
+          contents={option.data?.[getItemType(option.data)]}
           selected={isOptionSelected(data, option.data)}
           disabled={disabled ||
             (data.length >= choice.choose && !isOptionSelected(data, option.data))}
@@ -61,9 +75,9 @@
           }}
         />
         <!-- Display Single Item -->
-      {:else if option?.data?.items?.length === 1}
+      {:else if option.data?.[getItemType(option.data)]?.length === 1}
         <ItemCard
-          uuid={option?.data?.items[0]}
+          uuid={option.data?.[getItemType(option.data)][0]}
           selected={isOptionSelected(data, option.data)}
           disabled={disabled ||
             (data.length >= choice.choose && !isOptionSelected(data, option.data))}

@@ -11,7 +11,6 @@
   export let closeWindow = () => {};
 
   function dataReducer(acc, cur) {
-    console.log(cur);
     return mergeWith(
       {},
       acc,
@@ -22,9 +21,6 @@
   }
 
   let mergeData = {};
-
-  $: console.log(data);
-  $: console.log(mergeData);
 
   $: mergeData = Object.keys(data).reduce(dataReducer, {});
 
@@ -182,7 +178,7 @@
 
 <div class="review-tab">
   <h2>Ability Scores</h2>
-  <div class="ability-score-row section">
+  <div class="ability-score-row">
     {#each Object.entries(mergeData.abilities) as [ability, value]}
       <div class="ability-score">
         <div class="label">{AbilityAbbreviations[ability]}</div>
@@ -207,7 +203,7 @@
         selectable={false}
         showQuantities={false}
       />
-    {:else}
+    {:else if data.race?.uuid}
       <ItemGrid uuidList={[data.race.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
@@ -227,12 +223,12 @@
   </div>
 
   <h2>Equipment</h2>
-  <div class=" section">
+  <div class="section">
     <ItemGrid uuidList={mergeData.items} selectable={false} />
   </div>
 
   <h2>Features</h2>
-  <div class=" section">
+  <div class="section">
     <ItemGrid
       uuidList={mergeData.features.filter(
         (uuid) => uuid !== data.race?.uuid && uuid !== data.subrace?.uuid
@@ -240,6 +236,11 @@
       selectable={false}
       showQuantities={false}
     />
+  </div>
+
+  <h2>Spells</h2>
+  <div class="section">
+    <ItemGrid uuidList={mergeData.spells} selectable={false} showQuantities={false} />
   </div>
 
   <footer>
