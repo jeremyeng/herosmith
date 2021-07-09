@@ -1,13 +1,187 @@
 <script>
   import AbilityAbbreviations from "data/abilityAbbreviations.js";
+  import { capitalize } from "utils/utils.js";
+  import { mergeWith, countBy } from "lodash";
+  import { mergeCustomizer } from "utils/utils.js";
 
-  export let data;
+  import ItemCard from "components/ItemCard.svelte";
+
+  export let data = {};
+  export let closeWindow = () => {};
+
+  function dataReducer(acc, cur) {
+    console.log(cur);
+    return mergeWith(
+      {},
+      acc,
+      data[cur].data,
+      ...Object.values(data[cur].decisionData).flat(),
+      mergeCustomizer
+    );
+  }
+
+  let mergeData = {};
+
+  $: console.log(data);
+
+  $: mergeData = Object.keys(data).reduce(dataReducer, {});
+
+  async function createCharacter(event) {
+    event.preventDefault();
+
+    const actor = await Actor.create({
+      name: "New Test Actor",
+      type: "character",
+      img: "icons/svg/mystery-man.svg",
+      sort: 12000,
+      data: {},
+      token: {},
+      items: [],
+      flags: {},
+    });
+
+    let actorData = {};
+
+    if (mergeData.abilities) {
+      for (const [ability, value] of Object.entries(mergeData.abilities)) {
+        actorData[`data.abilities.${ability}.value`] = value;
+      }
+    }
+
+    if (mergeData.save_proficiencies) {
+      for (const ability of mergeData.save_proficiencies) {
+        actorData[`data.abilities.${ability}.proficient`] = 1;
+      }
+    }
+
+    if (mergeData.speed) actorData["data.attributes.movement.walk"] = mergeData.speed;
+
+    if (mergeData.size) actorData["data.traits.size"] = mergeData.size;
+
+    if (mergeData.item - grid) actorData["data.details.race"] = mergeData.race;
+
+    if (mergeData.name) actorData["name"] = mergeData.name;
+
+    if (mergeData.profileImage) actorData["img"] = mergeData.profileImage;
+
+    if (mergeData.tokenImage) actorData["token.img"] = mergeData.tokenImage;
+
+    if (mergeData.alignment) actorData["data.details.alignment"] = mergeData.alignment;
+
+    if (mergeData.appearance) actorData["data.details.appearance"] = mergeData.appearance;
+
+    if (mergeData?.token?.dimSight) actorData["token.dimSight"] = mergeData.token.dimSight;
+
+    if (mergeData.languages) actorData["data.traits.languages.value"] = mergeData.languages;
+
+    if (mergeData.currency) actorData["data.currency"] = mergeData.currency;
+
+    if (mergeData.personality) actorData["data.details.trait"] = mergeData.personality.join("\n");
+
+    if (mergeData.ideal) actorData["data.details.ideal"] = mergeData.ideal.join("\n");
+
+    if (mergeData.bond) actorData["data.details.bond"] = mergeData.bond.join("\n");
+
+    if (mergeData.flaw) actorData["data.details.flaw"] = mergeData.flaw.join("\n");
+
+    if (mergeData.weapon_proficiencies) {
+      const weaponCategories = ["mar", "sim"];
+
+      let value = [];
+      let custom = [];
+
+      for (const weaponProf of mergeData.weapon_proficiencies) {
+        if (weaponCategories.indexOf(weaponProf) > -1) {
+          value.push(weaponProf);
+        } else {
+          custom.push(weaponProf);
+        }
+      }
+      actorData["data.traits.weaponProf.value"] = value;
+      actorData["data.traits.weaponProf.custom"] = custom
+        .map((weaponProf) => capitalize(weaponProf))
+        .join(";");
+    }
+
+    if (mergeData.armor_proficiencies) {
+      const armorCategories = ["lgt", "med", "hvy", "shl"];
+
+      let value = [];
+      let custom = [];
+
+      for (const armorProf of mergeData.armor_proficiencies) {
+        if (armorCategories.indexOf(armorProf) > -1) {
+          value.push(armorProf);
+        } else {
+          custom.push(armorProf);
+        }
+      }
+      actorData["data.traits.armorProf.value"] = value;
+      actorData["data.traits.armorProf.custom"] = custom
+        .map((armorProf) => capitalize(armorProf))
+        .join(";");
+    }
+
+    if (mergeData.tool_proficiencies) {
+      const toolCategories = [
+        "art",
+        "disg",
+        "forg",
+        "game",
+        "herb",
+        "music",
+        "navg",
+        "pois",
+        "thief",
+        "vehicle",
+      ];
+
+      let value = [];
+      let custom = [];
+
+      for (const toolProf of mergeData.tool_proficiencies) {
+        if (toolCategories.indexOf(toolProf) > -1) {
+          value.push(toolProf);
+        } else {
+          custom.push(toolProf);
+        }
+      }
+      actorData["data.traits.toolProf.value"] = value;
+      actorData["data.traits.toolProf.custom"] = custom
+        .map((toolProf) => capitalize(toolProf))
+        .join(";");
+    }
+
+    if (mergeData.skill_proficiencies) {
+      for (const skill of mergeData.skill_proficiencies) {
+        actorData[`data.skills.${skill}.value`] = 1;
+      }
+    }
+
+    await actor.update(actorData);
+    if (mergeData.items) {
+      const itemUuids = mergeData.items.concat(mergeData.features);
+      const quantities = countBy(itemUuids);
+      const items = await Promise.all(Object.keys(quantities).map((uuid) => fromUuid(uuid)));
+
+      const itemObjects = [];
+      items.forEach((item) => {
+        const itemObj = item.toObject();
+        itemObj.data.quantity = quantities[item.uuid];
+        itemObjects.push(itemObj);
+      });
+
+      await game.dnd5e.entities.Item5e.createDocuments(itemObjects, { parent: actor });
+    }
+
+    closeWindow();
+  }
 </script>
 
 <div class="review-tab">
   <h2>Ability Scores</h2>
-  <div class="ability-score-row">
-    {#each Object.entries(data.abilities) as [ability, value]}
+  <div class="ability-score-row section">
+    {#each Object.entries(mergeData.abilities) as [ability, value]}
       <div class="ability-score">
         <div class="label">{AbilityAbbreviations[ability]}</div>
         <div class="value-bar">
@@ -22,9 +196,44 @@
       </div>
     {/each}
   </div>
+
+  <h2>Race</h2>
+  <div class="item-grid section">
+    {#if data.race?.uuid}
+      <ItemCard uuid={data.race.uuid} isSelectable={false} />
+    {/if}
+
+    {#if data.subrace?.uuid}
+      <ItemCard uuid={data.subrace.uuid} isSelectable={false} />
+    {/if}
+  </div>
+
+  <h2>Class</h2>
+  <div class="item-grid section">
+    {#if data.class?.uuid}
+      <ItemCard uuid={data.class.uuid} isSelectable={false} />
+    {/if}
+  </div>
+
+  <h2>Background</h2>
+  <div class="item-grid section">
+    {#if data.background?.uuid}
+      <ItemCard uuid={data.background.uuid} isSelectable={false} />
+    {/if}
+  </div>
+
+  <footer>
+    <button type="submit" name="Apply Updates" on:click={createCharacter}>
+      <i class="far fa-save" />Apply Updates
+    </button>
+  </footer>
 </div>
 
 <style>
+  .section {
+    margin-bottom: 1em;
+  }
+
   .ability-score {
     font-family: "Modesto Condensed", "Palatino Linotype", serif;
     text-align: center;
@@ -59,5 +268,11 @@
     display: flex;
     justify-content: center;
     font-size: 20px;
+  }
+
+  .item-grid {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
   }
 </style>

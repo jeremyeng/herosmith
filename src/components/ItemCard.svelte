@@ -13,20 +13,23 @@
   }
   export let disabled = false;
   export let selected = false;
+  export let isSelectable = true;
   export let uuid;
 </script>
 
 <div class="item" class:selected>
   {#await fromUuid(uuid) then item}
     <div class="row">
-      <input
-        class="select-box"
-        type="checkbox"
-        on:click={select}
-        class:disabled
-        {disabled}
-        checked={selected}
-      />
+      {#if isSelectable}
+        <input
+          class="select-box"
+          type="checkbox"
+          on:click={select}
+          class:disabled
+          {disabled}
+          checked={selected}
+        />
+      {/if}
       <div
         class="select-area"
         on:click={() => {
