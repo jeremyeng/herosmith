@@ -229,6 +229,11 @@
     <ItemGrid uuidList={mergeData.items} selectable={false} />
   </div>
 
+  <h2>Features</h2>
+  <div class=" section">
+    <ItemGrid uuidList={mergeData.features} selectable={false} showQuantities={false} />
+  </div>
+
   <footer>
     <button type="submit" name="Apply Updates" on:click={createCharacter}>
       <i class="far fa-save" />Apply Updates
