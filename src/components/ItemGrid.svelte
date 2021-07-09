@@ -13,11 +13,7 @@
 
 <div class="item-grid" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
   {#each Object.entries(countBy(uuidList)) as [uuid, quantity]}
-    {#if showQuantities}
-      <ItemCard {uuid} {selectable} {quantity} />
-    {:else}
-      <ItemCard {uuid} {selectable} />
-    {/if}
+    <ItemCard {uuid} {selectable} {quantity} showQuantity={showQuantities} />
   {/each}
 </div>
 
