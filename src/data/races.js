@@ -10,7 +10,7 @@ const RACES = {
         str: 2,
         cha: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.K4DNDcR6vngbp0pf",
         "Compendium.dnd5e.races.XxCuhIk6hAu6rNB0",
         "Compendium.dnd5e.races.KL7wx9Q8XNJQir0k",
@@ -31,7 +31,7 @@ const RACES = {
           abilities: {
             wis: 1,
           },
-          items: ["Compendium.dnd5e.races.UQiRQUTBcsz8gZU1"],
+          features: ["Compendium.dnd5e.races.UQiRQUTBcsz8gZU1"],
           name: "Hill Dwarf",
         },
       },
@@ -40,7 +40,7 @@ const RACES = {
       abilities: {
         con: 2,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.6N31WSez2szqQcIQ",
         "Compendium.dnd5e.races.ufysTkqet2Ctmtyi",
         "Compendium.dnd5e.races.mQPZDRbUhgYTbXKa",
@@ -71,7 +71,7 @@ const RACES = {
           abilities: {
             int: 1,
           },
-          items: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
+          features: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
           weapon_proficiences: ["longsword", "shortsword", "shortbow", "longbow"],
           race: "High Elf",
         },
@@ -159,7 +159,10 @@ const RACES = {
       abilities: {
         dex: 2,
       },
-      items: ["Compendium.dnd5e.races.rAGnsfgw3ZqAme1v", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
+      features: [
+        "Compendium.dnd5e.races.rAGnsfgw3ZqAme1v",
+        "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV",
+      ],
       race: "Elf",
       speed: 30,
       size: "med",
@@ -179,7 +182,7 @@ const RACES = {
           abilities: {
             con: 1,
           },
-          items: [
+          features: [
             "Compendium.dnd5e.races.TZtarkKs6cgGD7z2",
             "Compendium.dnd5e.races.OQA1sHxKnSJq01dL",
             "Compendium.dnd5e.races.koRPOLtj8XAFMwnW",
@@ -193,7 +196,10 @@ const RACES = {
       abilities: {
         int: 2,
       },
-      items: ["Compendium.dnd5e.races.kmRnMETG5hB9Bmwu", "Compendium.dnd5e.races.EHhr9umJ5kxJFCQH"],
+      features: [
+        "Compendium.dnd5e.races.kmRnMETG5hB9Bmwu",
+        "Compendium.dnd5e.races.EHhr9umJ5kxJFCQH",
+      ],
       languages: ["common", "gnomish"],
       size: "sm",
       speed: 25,
@@ -210,7 +216,10 @@ const RACES = {
       abilities: {
         cha: 2,
       },
-      items: ["Compendium.dnd5e.races.Hye5IZwPOSwV0qRR", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
+      features: [
+        "Compendium.dnd5e.races.Hye5IZwPOSwV0qRR",
+        "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV",
+      ],
       languages: ["common", "elvish"],
       size: "med",
       speed: 30,
@@ -246,7 +255,7 @@ const RACES = {
         str: 2,
         con: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.n5L000DkNBU6h2oJ",
         "Compendium.dnd5e.races.97c8i9Z28thvZuA8",
         "Compendium.dnd5e.races.0kUsT4sMUOr5FcoX",
@@ -271,7 +280,7 @@ const RACES = {
           abilities: {
             cha: 1,
           },
-          items: [
+          features: [
             "Compendium.dnd5e.races.ZgYBjYYfiUstQD6f",
             "Compendium.dnd5e.races.GWPjKFeIthBBeCFJ",
           ],
@@ -283,7 +292,7 @@ const RACES = {
       abilities: {
         dex: 2,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.GH2dNne2bt1NjcJk",
         "Compendium.dnd5e.races.LOMdcNAGWh5xpfm4",
         "Compendium.dnd5e.races.7Yoo9hG0hfPSmBoC",
@@ -307,7 +316,7 @@ const RACES = {
         int: 1,
         cha: 1,
       },
-      items: ["Compendium.dnd5e.races.ydP3QzCmur55mtY2"],
+      features: ["Compendium.dnd5e.races.ydP3QzCmur55mtY2"],
       languages: ["common"],
       size: "med",
       speed: 30,
@@ -322,7 +331,7 @@ const RACES = {
         cha: 2,
         int: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.aHTokZ151W0ASSmo",
         "Compendium.dnd5e.races.q71Pe1F8RRtEJt8Q",
         "Compendium.dnd5e.spells.MUO1uYN7JR1hm4dR",
