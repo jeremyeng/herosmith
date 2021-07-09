@@ -13,14 +13,15 @@
   }
   export let disabled = false;
   export let selected = false;
-  export let isSelectable = true;
+  export let selectable = true;
+  export let quantity;
   export let uuid;
 </script>
 
 <div class="item" class:selected>
   {#await fromUuid(uuid) then item}
     <div class="row">
-      {#if isSelectable}
+      {#if selectable}
         <input
           class="select-box"
           type="checkbox"
@@ -37,7 +38,7 @@
         }}
       >
         <img class="image" src={item.img} alt={`${item.name} icon`} />
-        <h4 class="name">{item.name}</h4>
+        <h4 class="name">{item.name} {quantity ? `(x${quantity})` : ""}</h4>
       </div>
     </div>
   {/await}

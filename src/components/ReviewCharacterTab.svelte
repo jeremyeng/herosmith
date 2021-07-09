@@ -5,6 +5,7 @@
   import { mergeCustomizer } from "utils/utils.js";
 
   import ItemCard from "components/ItemCard.svelte";
+  import ItemGrid from "components/ItemGrid.svelte";
 
   export let data = {};
   export let closeWindow = () => {};
@@ -23,6 +24,7 @@
   let mergeData = {};
 
   $: console.log(data);
+  $: console.log(mergeData);
 
   $: mergeData = Object.keys(data).reduce(dataReducer, {});
 
@@ -198,28 +200,33 @@
   </div>
 
   <h2>Race</h2>
-  <div class="item-grid section">
+  <div class="section">
     {#if data.race?.uuid}
-      <ItemCard uuid={data.race.uuid} isSelectable={false} />
+      <ItemGrid uuidList={[data.race.uuid]} selectable={false} showQuantities={false} />
     {/if}
 
     {#if data.subrace?.uuid}
-      <ItemCard uuid={data.subrace.uuid} isSelectable={false} />
+      <ItemGrid uuidList={[data.subrace.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
   <h2>Class</h2>
-  <div class="item-grid section">
+  <div class="section">
     {#if data.class?.uuid}
-      <ItemCard uuid={data.class.uuid} isSelectable={false} />
+      <ItemGrid uuidList={[data.class.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
   <h2>Background</h2>
-  <div class="item-grid section">
+  <div class="section">
     {#if data.background?.uuid}
-      <ItemCard uuid={data.background.uuid} isSelectable={false} />
+      <ItemGrid uuidList={[data.background?.uuid]} selectable={false} showQuantities={false} />
     {/if}
+  </div>
+
+  <h2>Equipment</h2>
+  <div class=" section">
+    <ItemGrid uuidList={mergeData.items} selectable={false} />
   </div>
 
   <footer>
@@ -268,11 +275,5 @@
     display: flex;
     justify-content: center;
     font-size: 20px;
-  }
-
-  .item-grid {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(3, 1fr);
   }
 </style>
