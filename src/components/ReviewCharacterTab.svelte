@@ -201,12 +201,14 @@
 
   <h2>Race</h2>
   <div class="section">
-    {#if data.race?.uuid}
-      <ItemGrid uuidList={[data.race.uuid]} selectable={false} showQuantities={false} />
-    {/if}
-
     {#if data.subrace?.uuid}
-      <ItemGrid uuidList={[data.subrace.uuid]} selectable={false} showQuantities={false} />
+      <ItemGrid
+        uuidList={[data.race.uuid, data.subrace.uuid]}
+        selectable={false}
+        showQuantities={false}
+      />
+    {:else}
+      <ItemGrid uuidList={[data.race.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
@@ -231,7 +233,13 @@
 
   <h2>Features</h2>
   <div class=" section">
-    <ItemGrid uuidList={mergeData.features} selectable={false} showQuantities={false} />
+    <ItemGrid
+      uuidList={mergeData.features.filter(
+        (uuid) => uuid !== data.race?.uuid && uuid !== data.subrace?.uuid
+      )}
+      selectable={false}
+      showQuantities={false}
+    />
   </div>
 
   <footer>
