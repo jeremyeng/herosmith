@@ -2,6 +2,7 @@ import abilityOptions from "data/abilityOptions.js";
 import skillOptions from "data/skillOptions.js";
 import toolOptions from "data/toolOptions.js";
 import languageOptions from "data/languageOptions.js";
+import { spellOptions } from "data/spellOptions.js";
 const RACES = {
   // Dragonborn
   "Compendium.dnd5e.races.K4DNDcR6vngbp0pf": {
@@ -10,7 +11,7 @@ const RACES = {
         str: 2,
         cha: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.K4DNDcR6vngbp0pf",
         "Compendium.dnd5e.races.XxCuhIk6hAu6rNB0",
         "Compendium.dnd5e.races.KL7wx9Q8XNJQir0k",
@@ -31,8 +32,8 @@ const RACES = {
           abilities: {
             wis: 1,
           },
-          items: ["Compendium.dnd5e.races.UQiRQUTBcsz8gZU1"],
-          name: "Hill Dwarf",
+          features: ["Compendium.dnd5e.races.UQiRQUTBcsz8gZU1"],
+          race: "Hill Dwarf",
         },
       },
     },
@@ -40,12 +41,12 @@ const RACES = {
       abilities: {
         con: 2,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.6N31WSez2szqQcIQ",
         "Compendium.dnd5e.races.ufysTkqet2Ctmtyi",
         "Compendium.dnd5e.races.mQPZDRbUhgYTbXKa",
       ],
-      name: "Dwarf",
+      race: "Dwarf",
       speed: 25,
       size: "med",
       languages: ["common", "dwarvish"],
@@ -71,7 +72,7 @@ const RACES = {
           abilities: {
             int: 1,
           },
-          items: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
+          features: ["Compendium.dnd5e.races.A69KxdH1renVPrQV"],
           weapon_proficiences: ["longsword", "shortsword", "shortbow", "longbow"],
           race: "High Elf",
         },
@@ -108,49 +109,22 @@ const RACES = {
           {
             name: "Cantrip",
             choose: 1,
-            options: [
-              {
-                name: "Acid Splash",
-                data: { items: ["Compendium.dnd5e.spells.JLTQyqXEaJDrTXyW"] },
-              },
-              {
-                name: "Chill Touch",
-                data: { items: ["Compendium.dnd5e.spells.vrN18tbTw7io5MWd"] },
-              },
-              {
-                name: "Dancing Lights",
-                data: { items: ["Compendium.dnd5e.spells.CAxSzHWizrafT033"] },
-              },
-              { name: "Fire Bolt", data: { items: ["Compendium.dnd5e.spells.EOmsUcFQJTfG2oio"] } },
-              { name: "Light", data: { items: ["Compendium.dnd5e.spells.Bnn9Nzajixvow9xi"] } },
-              { name: "Mage Hand", data: { items: ["Compendium.dnd5e.spells.Utk1OQRwYkMkFRD3"] } },
-              { name: "Mending", data: { items: ["Compendium.dnd5e.spells.kjmjY0zlE6IEiQVL"] } },
-              { name: "Message", data: { items: ["Compendium.dnd5e.spells.icZokbgV1jIMpNCv"] } },
-              {
-                name: "Minor Illusion",
-                data: { items: ["Compendium.dnd5e.spells.oIzA2MEHwxhtQneU"] },
-              },
-              {
-                name: "Poison Spray",
-                data: { items: ["Compendium.dnd5e.spells.g2u9PYfqWQAyg9OI"] },
-              },
-              {
-                name: "Prestidigitation",
-                data: { items: ["Compendium.dnd5e.spells.udsLtG0BugXHR2JQ"] },
-              },
-              {
-                name: "Ray of Frost",
-                data: { items: ["Compendium.dnd5e.spells.ctW81uiX56xZR2c5"] },
-              },
-              {
-                name: "Shocking Grasp",
-                data: { items: ["Compendium.dnd5e.spells.XvbiNhNqXXIFisIy"] },
-              },
-              {
-                name: "True Strike",
-                data: { items: ["Compendium.dnd5e.spells.mGGlcLdggHwcL7MG"] },
-              },
-            ],
+            options: spellOptions([
+              "acid splash",
+              "chill touch",
+              "dancing lights",
+              "fire bolt",
+              "light",
+              "mage hand",
+              "mending",
+              "message",
+              "minor illusion",
+              "poison spray",
+              "prestidigitation",
+              "ray of frost",
+              "shocking grasp",
+              "true strike",
+            ]),
           },
         ],
       },
@@ -159,7 +133,10 @@ const RACES = {
       abilities: {
         dex: 2,
       },
-      items: ["Compendium.dnd5e.races.rAGnsfgw3ZqAme1v", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
+      features: [
+        "Compendium.dnd5e.races.rAGnsfgw3ZqAme1v",
+        "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV",
+      ],
       race: "Elf",
       speed: 30,
       size: "med",
@@ -179,7 +156,7 @@ const RACES = {
           abilities: {
             con: 1,
           },
-          items: [
+          features: [
             "Compendium.dnd5e.races.TZtarkKs6cgGD7z2",
             "Compendium.dnd5e.races.OQA1sHxKnSJq01dL",
             "Compendium.dnd5e.races.koRPOLtj8XAFMwnW",
@@ -193,7 +170,10 @@ const RACES = {
       abilities: {
         int: 2,
       },
-      items: ["Compendium.dnd5e.races.kmRnMETG5hB9Bmwu", "Compendium.dnd5e.races.EHhr9umJ5kxJFCQH"],
+      features: [
+        "Compendium.dnd5e.races.kmRnMETG5hB9Bmwu",
+        "Compendium.dnd5e.races.EHhr9umJ5kxJFCQH",
+      ],
       languages: ["common", "gnomish"],
       size: "sm",
       speed: 25,
@@ -210,7 +190,10 @@ const RACES = {
       abilities: {
         cha: 2,
       },
-      items: ["Compendium.dnd5e.races.Hye5IZwPOSwV0qRR", "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV"],
+      features: [
+        "Compendium.dnd5e.races.Hye5IZwPOSwV0qRR",
+        "Compendium.dnd5e.races.cnTbpPPeGW7vGjOV",
+      ],
       languages: ["common", "elvish"],
       size: "med",
       speed: 30,
@@ -246,7 +229,7 @@ const RACES = {
         str: 2,
         con: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.n5L000DkNBU6h2oJ",
         "Compendium.dnd5e.races.97c8i9Z28thvZuA8",
         "Compendium.dnd5e.races.0kUsT4sMUOr5FcoX",
@@ -271,7 +254,7 @@ const RACES = {
           abilities: {
             cha: 1,
           },
-          items: [
+          features: [
             "Compendium.dnd5e.races.ZgYBjYYfiUstQD6f",
             "Compendium.dnd5e.races.GWPjKFeIthBBeCFJ",
           ],
@@ -283,7 +266,7 @@ const RACES = {
       abilities: {
         dex: 2,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.GH2dNne2bt1NjcJk",
         "Compendium.dnd5e.races.LOMdcNAGWh5xpfm4",
         "Compendium.dnd5e.races.7Yoo9hG0hfPSmBoC",
@@ -307,7 +290,7 @@ const RACES = {
         int: 1,
         cha: 1,
       },
-      items: ["Compendium.dnd5e.races.ydP3QzCmur55mtY2"],
+      features: ["Compendium.dnd5e.races.ydP3QzCmur55mtY2"],
       languages: ["common"],
       size: "med",
       speed: 30,
@@ -322,7 +305,7 @@ const RACES = {
         cha: 2,
         int: 1,
       },
-      items: [
+      features: [
         "Compendium.dnd5e.races.aHTokZ151W0ASSmo",
         "Compendium.dnd5e.races.q71Pe1F8RRtEJt8Q",
         "Compendium.dnd5e.spells.MUO1uYN7JR1hm4dR",

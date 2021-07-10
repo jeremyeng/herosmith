@@ -13,20 +13,25 @@
   }
   export let disabled = false;
   export let selected = false;
+  export let selectable = true;
+  export let quantity = 1;
+  export let showQuantity = true;
   export let uuid;
 </script>
 
 <div class="item" class:selected>
   {#await fromUuid(uuid) then item}
     <div class="row">
-      <input
-        class="select-box"
-        type="checkbox"
-        on:click={select}
-        class:disabled
-        {disabled}
-        checked={selected}
-      />
+      {#if selectable}
+        <input
+          class="select-box"
+          type="checkbox"
+          on:click={select}
+          class:disabled
+          {disabled}
+          checked={selected}
+        />
+      {/if}
       <div
         class="select-area"
         on:click={() => {
@@ -34,7 +39,7 @@
         }}
       >
         <img class="image" src={item.img} alt={`${item.name} icon`} />
-        <h4 class="name">{item.name}</h4>
+        <h4 class="name">{item.name} {showQuantity ? `(x${quantity})` : ""}</h4>
       </div>
     </div>
   {/await}
