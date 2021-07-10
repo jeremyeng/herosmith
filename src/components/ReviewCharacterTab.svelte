@@ -4,7 +4,6 @@
   import { mergeWith, countBy } from "lodash";
   import { mergeCustomizer } from "utils/utils.js";
 
-  import ItemCard from "components/ItemCard.svelte";
   import ItemGrid from "components/ItemGrid.svelte";
 
   export let data = {};
@@ -195,6 +194,14 @@
   </div>
 
   <h2>Ability Scores</h2>
+  <h4 class="starting-hp">
+    {#if data.class?.uuid}
+      {#await fromUuid(data.class.uuid) then classItem}
+        Hit Points: {parseInt(classItem.data.data.hitDice.slice(1)) +
+          Math.floor((mergeData.abilities.con - 10) / 2)}
+      {/await}
+    {/if}
+  </h4>
   <div class="ability-score-row section">
     {#each Object.entries(mergeData.abilities) as [ability, value]}
       <div class="ability-score">
