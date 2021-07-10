@@ -99,33 +99,19 @@
 
   {#if currentTab === "Bio"}
     <BioTab bind:data {getPosTop} {getPosLeft} />
-  {/if}
-
-  {#if currentTab === "Races"}
+  {:else if currentTab === "Races"}
     <RacesTab bind:data />
-  {/if}
-
-  {#if currentTab === "Class"}
+  {:else if currentTab === "Class"}
     <ClassTab bind:data />
-  {/if}
-
-  {#if currentTab === "Abilities"}
+  {:else if currentTab === "Abilities"}
     <AbilityScoreTab bind:data />
-  {/if}
-
-  {#if currentTab === "Background"}
+  {:else if currentTab === "Background"}
     <BackgroundTab bind:data />
-  {/if}
-
-  {#if currentTab === "Equipment"}
+  {:else if currentTab === "Equipment"}
     <EquipmentTab bind:data bind:editorOptions />
-  {/if}
-
-  {#if currentTab === "Spells"}
+  {:else if currentTab === "Spells"}
     <SpellTab bind:data bind:editorOptions />
-  {/if}
-
-  {#if currentTab === "Review"}
+  {:else if currentTab === "Review"}
     <ReviewCharacterTab {data} {closeWindow} />
   {/if}
 </div>
