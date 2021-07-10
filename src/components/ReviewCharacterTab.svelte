@@ -178,7 +178,7 @@
 
 <div class="review-tab">
   <h2>Ability Scores</h2>
-  <div class="ability-score-row">
+  <div class="ability-score-row section">
     {#each Object.entries(mergeData.abilities) as [ability, value]}
       <div class="ability-score">
         <div class="label">{AbilityAbbreviations[ability]}</div>
@@ -231,7 +231,10 @@
   <div class="section">
     <ItemGrid
       uuidList={mergeData.features.filter(
-        (uuid) => uuid !== data.race?.uuid && uuid !== data.subrace?.uuid
+        (uuid) =>
+          ![data.race?.uuid, data.subrace?.uuid, data.class?.uuid, data.background?.uuid].includes(
+            uuid
+          )
       )}
       selectable={false}
       showQuantities={false}
@@ -252,7 +255,7 @@
 
 <style>
   .section {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
   }
 
   .ability-score {
