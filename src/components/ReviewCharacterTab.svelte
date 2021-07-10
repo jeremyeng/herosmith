@@ -55,7 +55,7 @@
 
     if (mergeData.size) actorData["data.traits.size"] = mergeData.size;
 
-    if (mergeData.item - grid) actorData["data.details.race"] = mergeData.race;
+    if (mergeData.race) actorData["data.details.race"] = mergeData.race;
 
     if (mergeData.name) actorData["name"] = mergeData.name;
 
