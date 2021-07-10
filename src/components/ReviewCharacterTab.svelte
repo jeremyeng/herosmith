@@ -230,7 +230,7 @@
   <h2>Features</h2>
   <div class="section">
     <ItemGrid
-      uuidList={mergeData.features.filter(
+      uuidList={mergeData?.features?.filter(
         (uuid) =>
           ![data.race?.uuid, data.subrace?.uuid, data.class?.uuid, data.background?.uuid].includes(
             uuid
