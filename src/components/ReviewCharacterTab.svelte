@@ -177,6 +177,23 @@
 </script>
 
 <div class="review-tab">
+  <h2>Bio</h2>
+  <div class="bio section">
+    <div class="images">
+      <div class="profile-image">
+        <label>Profile Image</label>
+        <img class="profile" src={mergeData.profileImage} data-edit="img" />
+      </div>
+
+      <div class="token-image">
+        <label>Token Image</label>
+        <img class="profile" src={mergeData.tokenImage} data-edit="img" />
+      </div>
+    </div>
+    <h3>{mergeData.name}</h3>
+    <h4>{mergeData.alignment}</h4>
+  </div>
+
   <h2>Ability Scores</h2>
   <div class="ability-score-row section">
     {#each Object.entries(mergeData.abilities) as [ability, value]}
@@ -256,6 +273,25 @@
 <style>
   .section {
     margin-bottom: 2em;
+  }
+
+  .bio {
+    text-align: center;
+    width: 400px;
+    margin: auto;
+  }
+
+  .images {
+    display: flex;
+    margin-bottom: 1em;
+  }
+
+  .profile-image,
+  .token-image {
+    width: 150px;
+    margin: auto;
+    display: block;
+    text-align: center;
   }
 
   .ability-score {
