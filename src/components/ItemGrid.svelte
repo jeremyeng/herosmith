@@ -3,17 +3,24 @@
 
   import ItemCard from "components/ItemCard.svelte";
 
-  import { fade } from "svelte/transition";
-  import { cubicInOut } from "svelte/easing";
-
-  export let uuidList = [];
+  export let uuids = [];
+  export let selectedUuids = [];
+  export let maxSelectable = 1;
   export let selectable = true;
   export let showQuantities = true;
 </script>
 
-<div class="item-grid" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
-  {#each Object.entries(countBy(uuidList)) as [uuid, quantity]}
-    <ItemCard {uuid} {selectable} {quantity} showQuantity={showQuantities} />
+<div class="item-grid">
+  {#each Object.entries(countBy(uuids)) as [uuid, quantity]}
+    <ItemCard
+      {uuid}
+      {selectable}
+      {quantity}
+      selected={selectedUuids.includes(uuid)}
+      disabled={!selectedUuids.includes(uuid) && selectedUuids.length >= maxSelectable}
+      showQuantity={showQuantities}
+      on:selected
+    />
   {/each}
 </div>
 

@@ -1,44 +1,62 @@
 <script>
   import RACES from "data/races.js";
-  import ItemCard from "components/ItemCard.svelte";
+  import ItemGrid from "components/ItemGrid.svelte";
   import Choice from "components/Choice.svelte";
   import { fade } from "svelte/transition";
   import { sineOut } from "svelte/easing";
 
   export let data = {};
+
+  function onSelectRace(event) {
+    const raceUuid = event.detail.uuid;
+    if (data.race.uuid === raceUuid) {
+      data.race = {
+        uuid: "",
+        data: {},
+        decisionData: {},
+      };
+      data.subrace = {
+        uuid: "",
+        data: {},
+        decisionData: {},
+      };
+    } else {
+      data.race = {
+        uuid: raceUuid,
+        data: RACES[raceUuid].data,
+        decisionData: {},
+      };
+    }
+  }
+
+  function onSelectSubrace(event) {
+    const subraceUuid = event.detail.uuid;
+    if (data.subrace.uuid === subraceUuid) {
+      data.subrace = {
+        uuid: "",
+        data: {},
+        decisionData: {},
+      };
+    } else {
+      data.subrace = {
+        uuid: subraceUuid,
+        data: RACES[data.race.uuid].subraces[subraceUuid].data,
+        decisionData: {},
+      };
+    }
+  }
 </script>
 
 <div>
   <h2>Race</h2>
-  <div class="races">
-    {#each Object.keys(RACES) as raceUuid}
-      <ItemCard
-        uuid={raceUuid}
-        disabled={raceUuid !== data.race.uuid && data.race.uuid.length}
-        selected={raceUuid === data.race.uuid}
-        on:selected={() => {
-          if (data.race.uuid === raceUuid) {
-            data.race = {
-              uuid: "",
-              data: {},
-              decisionData: {},
-            };
-            data.subrace = {
-              uuid: "",
-              data: {},
-              decisionData: {},
-            };
-          } else {
-            data.race = {
-              uuid: raceUuid,
-              data: RACES[raceUuid].data,
-              decisionData: {},
-            };
-          }
-        }}
-      />
-    {/each}
-  </div>
+  <ItemGrid
+    uuids={Object.keys(RACES)}
+    selectedUuids={data.race.uuid ? [data.race.uuid] : []}
+    maxSelectable={1}
+    selectable={true}
+    showQuantities={false}
+    on:selected={onSelectRace}
+  />
 
   {#if RACES[data.race.uuid]?.choices}
     <div class="choices" transition:fade|local={{ duration: 200, easing: sineOut }}>
@@ -51,30 +69,14 @@
   {#if RACES[data.race.uuid]?.subraces}
     <div class="subrace" transition:fade|local={{ duration: 200, easing: sineOut }}>
       <h2 class="subrace-header">Subrace</h2>
-      <div class="races">
-        {#each Object.keys(RACES[data.race.uuid].subraces) as subraceUuid}
-          <ItemCard
-            uuid={subraceUuid}
-            disabled={subraceUuid !== data.subrace.uuid && data.subrace.uuid.length}
-            selected={subraceUuid === data.subrace.uuid}
-            on:selected={() => {
-              if (data.subrace.uuid === subraceUuid) {
-                data.subrace = {
-                  uuid: "",
-                  data: {},
-                  decisionData: {},
-                };
-              } else {
-                data.subrace = {
-                  uuid: subraceUuid,
-                  data: RACES[data.race.uuid].subraces[subraceUuid].data,
-                  decisionData: {},
-                };
-              }
-            }}
-          />
-        {/each}
-      </div>
+      <ItemGrid
+        uuids={Object.keys(RACES[data.race.uuid].subraces)}
+        selectedUuids={data.subrace.uuid ? [data.subrace.uuid] : []}
+        maxSelectable={1}
+        selectable={true}
+        showQuantities={false}
+        on:selected={onSelectSubrace}
+      />
     </div>
   {/if}
 
