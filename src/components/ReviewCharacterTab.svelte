@@ -83,6 +83,16 @@
 
     if (mergeData.flaw) actorData["data.details.flaw"] = mergeData.flaw.join("\n");
 
+    if (data.class.uuid && mergeData.abilities.con) {
+      const classItem = await fromUuid(data.class.uuid);
+
+      const numHitDieSides = parseInt(classItem.data.data.hitDice.slice(1));
+      const conModifier = Math.floor((mergeData.abilities.con - 10) / 2);
+
+      actorData["data.attributes.hp.value"] = numHitDieSides + conModifier;
+      actorData["data.attributes.hp.max"] = numHitDieSides + conModifier;
+    }
+
     if (mergeData.weapon_proficiencies) {
       const weaponCategories = ["mar", "sim"];
 
