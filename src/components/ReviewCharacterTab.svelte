@@ -223,38 +223,38 @@
   <div class="section">
     {#if data.subrace?.uuid}
       <ItemGrid
-        uuidList={[data.race.uuid, data.subrace.uuid]}
+        uuids={[data.race.uuid, data.subrace.uuid]}
         selectable={false}
         showQuantities={false}
       />
     {:else if data.race?.uuid}
-      <ItemGrid uuidList={[data.race.uuid]} selectable={false} showQuantities={false} />
+      <ItemGrid uuids={[data.race.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
   <h2>Class</h2>
   <div class="section">
     {#if data.class?.uuid}
-      <ItemGrid uuidList={[data.class.uuid]} selectable={false} showQuantities={false} />
+      <ItemGrid uuids={[data.class.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
   <h2>Background</h2>
   <div class="section">
     {#if data.background?.uuid}
-      <ItemGrid uuidList={[data.background?.uuid]} selectable={false} showQuantities={false} />
+      <ItemGrid uuids={[data.background?.uuid]} selectable={false} showQuantities={false} />
     {/if}
   </div>
 
   <h2>Equipment</h2>
   <div class="section">
-    <ItemGrid uuidList={mergeData.items} selectable={false} />
+    <ItemGrid uuids={mergeData.items} selectable={false} />
   </div>
 
   <h2>Features</h2>
   <div class="section">
     <ItemGrid
-      uuidList={mergeData?.features?.filter(
+      uuids={mergeData?.features?.filter(
         (uuid) =>
           ![data.race?.uuid, data.subrace?.uuid, data.class?.uuid, data.background?.uuid].includes(
             uuid
@@ -267,7 +267,7 @@
 
   <h2>Spells</h2>
   <div class="section">
-    <ItemGrid uuidList={mergeData.spells} selectable={false} showQuantities={false} />
+    <ItemGrid uuids={mergeData.spells} selectable={false} showQuantities={false} />
   </div>
 
   <footer>
