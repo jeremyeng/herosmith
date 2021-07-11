@@ -20,6 +20,7 @@ const BACKGROUNDS = {
           "Compendium.dnd5e.items.8RXjiddJ6VGyE7vB",
         ],
         skill_proficiencies: ["ins", "rel"],
+        background: "Acolyte",
       },
     },
     personality: "Compendium.herosmith.background_characteristics.ZowmTS1xYNcd80lM",

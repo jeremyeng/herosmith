@@ -57,6 +57,8 @@
 
     if (mergeData.race) actorData["data.details.race"] = mergeData.race;
 
+    if (mergeData.background) actorData["data.details.background"] = mergeData.background;
+
     if (mergeData.name) actorData["name"] = mergeData.name;
 
     if (mergeData.profileImage) actorData["img"] = mergeData.profileImage;
