@@ -81,6 +81,7 @@
           selected={isOptionSelected(data, option.data)}
           disabled={disabled ||
             (data.length >= choice.choose && !isOptionSelected(data, option.data))}
+          showQuantity={false}
           on:selected={() => {
             onMakeDecision(option.data);
           }}
