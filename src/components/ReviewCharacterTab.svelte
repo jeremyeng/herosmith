@@ -157,7 +157,11 @@
 
     await actor.update(actorData);
     if (mergeData.items) {
-      const itemUuids = [...mergeData.items, ...mergeData.features, ...mergeData.spells];
+      const itemUuids = [
+        ...(mergeData.items || []),
+        ...(mergeData.features || []),
+        ...(mergeData.spells || []),
+      ];
       const quantities = countBy(itemUuids);
       const items = await Promise.all(Object.keys(quantities).map((uuid) => fromUuid(uuid)));
 
