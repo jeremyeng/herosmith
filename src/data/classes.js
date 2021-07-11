@@ -1563,7 +1563,7 @@ const CLASSES = {
       1: {
         choices: [
           {
-            name: "Any Simple Weapon",
+            name: "Quarterstaff or Dagger",
             choose: 1,
             options: [
               itemOptions("weapons.melee.simple.quarterstaff"),
