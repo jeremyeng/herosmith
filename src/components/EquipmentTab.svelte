@@ -72,12 +72,12 @@
     <!-- Show Gold from Background (if any) -->
     <GoldCard quantity={BACKGROUNDS[data.background.uuid]?.data?.[level]?.currency?.gp} />
 
-    <!-- Standard Class Equipment -->
+    <!-- Standard Background Equipment -->
     {#if BACKGROUNDS[data.background.uuid]?.data?.[level]?.["items"]}
       <ItemList uuidList={BACKGROUNDS[data.background.uuid]["data"][level]["items"]} />
     {/if}
 
-    <!-- Class Equipment Choices -->
+    <!-- Background Equipment Choices -->
     {#if BACKGROUNDS[data.background.uuid]?.equipment?.[level]?.["choices"]}
       <div class="choices" transition:fade|local={{ duration: 200, easing: cubicInOut }}>
         {#each BACKGROUNDS[data.background.uuid]["equipment"][level]["choices"] as choice, i}
